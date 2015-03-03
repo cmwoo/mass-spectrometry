@@ -18,6 +18,15 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+  gem 'therubyracer'
+end
+
+group :development,:test do  
+  # ... other gems
+  gem 'database_cleaner'
+  gem 'cucumber-rails', :require => false
+  gem 'rspec-rails', '~> 2.14.0'
+  gem 'simplecov'
 end
 
 gem 'jquery-rails'
