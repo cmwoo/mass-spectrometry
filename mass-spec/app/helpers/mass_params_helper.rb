@@ -1,0 +1,2 @@
+module MassParamsHelper
+end
