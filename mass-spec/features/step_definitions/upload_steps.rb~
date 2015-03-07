@@ -2,8 +2,8 @@
 #instead of web_steps and paths
 When /^(?:|I )(?:should be|am) on (.+)$/ do |page_name|
   case page_name
-    when /the Upload XML page/ then visit '/mass_data'
-    when /the Upload Parameters page/ then visit '/mass_params'
+    when /the Upload XML page/ then visit '/xml'
+    when /the Upload Parameters page/ then visit '/param'
     when /the Review and Run page/ then visit '/review'
   end
 end
