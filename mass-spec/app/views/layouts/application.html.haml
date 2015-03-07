@@ -1,0 +1,14 @@
+!!! 5
+%html
+  %head
+    %title Mass Spectrometry
+
+  %body
+    %h1.title Mass Spectrometry
+    #main
+      - if flash[:notice]
+        #notice.message= flash[:notice]
+      - elsif flash[:warning]
+        #warning.message= flash[:warning]
+
+      = yield

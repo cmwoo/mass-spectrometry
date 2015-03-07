@@ -1,4 +1,6 @@
 MassSpec::Application.routes.draw do
+  get "general/index"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -14,6 +16,9 @@ MassSpec::Application.routes.draw do
   #   resources :products
 
   resources :mass_data, :mass_params
+  match '/review' => 'general#review', :as => :review
+  root :to => 'general#index'
+
   # Sample resource route with options:
   #   resources :products do
   #     member do
