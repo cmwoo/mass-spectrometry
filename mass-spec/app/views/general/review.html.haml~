@@ -1,9 +1,9 @@
 -#  This file is app/views/general/review.html.haml
 
-%h2 This is the review page
+%h1 This is the review page
 
 %div{:id => 'center-parent'}
   = render "sidebar"
 
   %div{:class => 'card', :id => 'center'}
-    This is text for the Review And Run page
+    %p This is text for the Review And Run page

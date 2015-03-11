@@ -4,7 +4,7 @@
   %div 
   = button_to 'Instructions', root_path, :class => 'btn', :method => :get
   %div
-  = button_to 'Data (XML)', new_mass_datum_path, :class => 'btn', :method => :get, :disabled => 'true'
+  = button_to 'Data (XML)', new_mass_datum_path, :class => 'btn', :method => :get
   %div 
   = button_to 'Parameters (TXT)', new_mass_param_path, :class => 'btn', :method => :get
   %div 

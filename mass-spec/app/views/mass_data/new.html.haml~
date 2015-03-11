@@ -6,4 +6,5 @@
 
   %div{:class => 'card', :id => 'center'}
     This is text for the New Data page
-    = link_to 'Next', new_mass_param_path
+    %div
+    = button_to 'Next', new_mass_param_path, :class => 'center-btn btn', :method => :get

@@ -6,6 +6,6 @@
   = render "general/sidebar"
 
   %div{:class => 'card', :id => 'center'}
-    This is text for the New Parameters page
-    %p
-    = link_to 'Next', review_path
+    %p This is text for the New Parameters page
+    %div
+    = button_to 'Next', review_path, :class => 'center-btn btn', :method => :get

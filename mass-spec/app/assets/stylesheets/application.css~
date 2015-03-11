@@ -41,15 +41,16 @@ p{
 
 #center {
   width: 600px;
-  display: table-cell;
+  display: inline-block;
   padding: 10px;
-  float: left;
+  min-height: 180px; /* Same Height as Sidebar -20px padding */
+  height: auto;
 }
 
 #sidebar{
   width: 200px;
   height: 100%;
-  display: table-cell;
+  display: inline-block;
   vertical-align: top;
 }
 
@@ -89,12 +90,25 @@ p{
   background: White;
   padding: 10px 5px;
   text-decoration: none;
-  font-size: 13pt;
+  font-size: 12pt;
   width: 100%;
 }
 
 .btn:hover {
   background: Navy;
+  text-decoration: none;
+  color: White;
+}
+
+.center-btn{
+  min-width: 80px;
+  width: auto;
+  background: Navy;
+  color: White;
+}
+
+.center-btn:hover {
+  background: Grey;
   text-decoration: none;
   color: White;
 }

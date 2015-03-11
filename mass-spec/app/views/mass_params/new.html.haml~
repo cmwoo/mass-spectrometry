@@ -1,3 +1,5 @@
+-#  This file is app/views/mass_params/index.html.haml
+
 %h1 Create New Params View
 
 %div{:id => 'center-parent'}
@@ -5,5 +7,5 @@
 
   %div{:class => 'card', :id => 'center'}
     This is text for the New Parameters page
-    %p
-    = link_to 'Next', review_path
+    %div
+    = button_to 'Next', review_path, :class => 'center-btn btn', :method => :get
