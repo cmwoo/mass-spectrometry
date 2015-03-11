@@ -43,14 +43,15 @@ p{
 
 #center-parent{
   position: relative;
-  height: 100%;
+  height: auto;
+  min-height: 215px;
 }
 
 #center {
   width: 600px;
   display: inline-block;
   padding: 10px;
-  min-height: 195px; /* Same Height as Sidebar -20px padding */
+  /*min-height: 195px; /* Same Height as Sidebar -20px padding */
   height: auto;
 }
 
@@ -62,12 +63,12 @@ p{
 }
 
 #header{
-  height: 30px;
+  height: auto;
   background: Navy;
   color: White;
   width: 100%;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;
 }
 
 #main {
