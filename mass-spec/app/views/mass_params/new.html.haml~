@@ -1,5 +1,3 @@
--#  This file is app/views/mass_params/index.html.haml
-
 %h1 Create New Params View
 
 %div{:id => 'center-parent'}

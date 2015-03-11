@@ -1,6 +1,6 @@
 -#  This file is app/views/general/review.html.haml
 
-%h1 This is the review page
+%h2 This is the review page
 
 %div{:id => 'center-parent'}
   = render "sidebar"

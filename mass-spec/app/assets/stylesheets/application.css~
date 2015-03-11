@@ -41,14 +41,15 @@ p{
 
 #center {
   width: 600px;
-  display: inline-block;
+  display: table-cell;
   padding: 10px;
+  float: left;
 }
 
 #sidebar{
   width: 200px;
   height: 100%;
-  display: inline-block;
+  display: table-cell;
   vertical-align: top;
 }
 

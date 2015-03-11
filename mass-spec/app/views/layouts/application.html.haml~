@@ -1,13 +1,11 @@
 !!! 5
 %html
   %head
-    %title Rotten Potatoes!
+    %title Mass Spectrometry
     = stylesheet_link_tag 'application'
-    = javascript_include_tag 'application'
-    = csrf_meta_tags
+    %span{:class => "card", :id=>"header"} ICON
 
   %body
-    %h1.title Rotten Potatoes!
     #main
       - if flash[:notice]
         #notice.message= flash[:notice]
@@ -15,3 +13,5 @@
         #warning.message= flash[:warning]
 
       = yield
+  %footer#footer
+    Copyright/Contact information

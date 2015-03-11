@@ -1,0 +1,13 @@
+-# sidebar.html.haml as a partial
+
+%div{:class => 'card', :id => 'sidebar'}
+  %div 
+  = button_to 'Instructions', root_path, :class => 'btn', :method => :get
+  %div
+  = button_to 'Data (XML)', new_mass_datum_path, :class => 'btn', :method => :get
+  %div 
+  = button_to 'Parameters (TXT)', new_mass_param_path, :class => 'btn', :method => :get
+  %div 
+  = button_to 'Review & Run', review_path, :class => 'btn', :method => :get
+  %div 
+  = button_to 'Finish', root_path, :class => 'btn', :method => :get
