@@ -5,6 +5,6 @@
   = render "general/sidebar"
 
   %div{:class => 'card', :id => 'center'}
-    This is text for the New Data page
+    %p This is text for the New Data page
     %div
     = button_to 'Next', new_mass_param_path, :class => 'center-btn btn', :method => :get
