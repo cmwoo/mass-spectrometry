@@ -21,3 +21,16 @@ Scenario: upload a param file
   And I press "Submit"
   Then I should be on the Review and Run page
   
+Scenario: upload a bad mass spectrometry data file
+  Given I am on the Upload XML page
+  And I upload a non-xml data file
+  And I fill in "Email" with "example@example.com"
+  And I press "Submit"
+  Then I should be on the Upload XML page
+
+Scenario: upload a bad param file
+  Given I am on the Upload Parameters page
+  And I upload a non-txt param file
+  And I press "Submit"
+  Then I should be on the Upload Parameters page
+

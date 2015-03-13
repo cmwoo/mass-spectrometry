@@ -28,3 +28,13 @@ Given(/^I upload a param file$/) do
   attach_file(:param_file, File.join(Rails.root, 'features', 'upload-files', 'mass_param.txt'))
 end
 
+Given(/^I upload a non-xml data file$/) do
+  attach_file(:xml_file, File.join(Rails.root, 'features', 'upload-files', 'mass_data_bad.txt'))
+end
+
+Given(/^I upload a non-txt param file$/) do
+  attach_file(:param_file, File.join(Rails.root, 'features', 'upload-files', 'mass_param_bad.xml'))
+end
+
+
+
