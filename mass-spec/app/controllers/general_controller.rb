@@ -3,4 +3,8 @@ class GeneralController < ApplicationController
   end
   def review
   end
+  def examples
+  end
+  def about
+  end
 end

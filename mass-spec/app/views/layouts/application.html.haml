@@ -5,6 +5,10 @@
     = stylesheet_link_tag 'application'
     %div{:class => "card", :id=>"header"} 
       = image_tag asset_path("icon.png"), :size => '75x75'
+      %div{:id => "headerLinks"}
+        = link_to ' About', about_path
+        |
+        = link_to ' Examples', examples_path 
 
   %body
     #main

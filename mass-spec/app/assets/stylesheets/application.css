@@ -89,6 +89,21 @@ p{
   text-align: center;
 }
 
+#headerLinks {
+  float: right;
+  padding-right: 20px;
+  padding-top: 20px;
+}
+
+#headerLinks a {
+  color: #fff;
+  text-decoration: none;
+}
+
+#headerLinks a:hover {
+  text-decoration: underline;
+}
+
 .btn {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
