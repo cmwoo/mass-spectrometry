@@ -1,28 +1,28 @@
 {
   "Cucumber Features": {
     "coverage": {
-      "/media/sf_shared/mass-spectrometry/mass-spec/app/controllers/application_controller.rb": [
+      "/home/saasbook/Documents/mass-spectrometry/app/controllers/application_controller.rb": [
         1,
         1,
         null
       ],
-      "/media/sf_shared/mass-spectrometry/mass-spec/app/helpers/application_helper.rb": [
+      "/home/saasbook/Documents/mass-spectrometry/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/media/sf_shared/mass-spectrometry/mass-spec/app/helpers/general_helper.rb": [
+      "/home/saasbook/Documents/mass-spectrometry/app/helpers/general_helper.rb": [
         1,
         null
       ],
-      "/media/sf_shared/mass-spectrometry/mass-spec/app/helpers/mass_data_helper.rb": [
+      "/home/saasbook/Documents/mass-spectrometry/app/helpers/mass_data_helper.rb": [
         1,
         null
       ],
-      "/media/sf_shared/mass-spectrometry/mass-spec/app/helpers/mass_params_helper.rb": [
+      "/home/saasbook/Documents/mass-spectrometry/app/helpers/mass_params_helper.rb": [
         1,
         null
       ],
-      "/media/sf_shared/mass-spectrometry/mass-spec/app/controllers/general_controller.rb": [
+      "/home/saasbook/Documents/mass-spectrometry/app/controllers/general_controller.rb": [
         1,
         null,
         1,
@@ -48,7 +48,7 @@
         null,
         null
       ],
-      "/media/sf_shared/mass-spectrometry/mass-spec/app/controllers/mass_data_controller.rb": [
+      "/home/saasbook/Documents/mass-spectrometry/app/controllers/mass_data_controller.rb": [
         1,
         1,
         null,
@@ -71,7 +71,7 @@
         null,
         null
       ],
-      "/media/sf_shared/mass-spectrometry/mass-spec/app/controllers/mass_params_controller.rb": [
+      "/home/saasbook/Documents/mass-spectrometry/app/controllers/mass_params_controller.rb": [
         1,
         1,
         null,
@@ -91,43 +91,43 @@
         null,
         null
       ],
-      "/media/sf_shared/mass-spectrometry/mass-spec/app/models/mass_data.rb": [
+      "/home/saasbook/Documents/mass-spectrometry/app/models/mass_data.rb": [
         1,
         1,
         null
       ],
-      "/media/sf_shared/mass-spectrometry/mass-spec/app/models/mass_params.rb": [
+      "/home/saasbook/Documents/mass-spectrometry/app/models/mass_params.rb": [
         1,
         1,
         null
       ]
     },
-    "timestamp": 1426275716
+    "timestamp": 1426280532
   },
   "RSpec": {
     "coverage": {
-      "/media/sf_shared/mass-spectrometry/mass-spec/app/controllers/application_controller.rb": [
+      "/home/saasbook/Documents/mass-spectrometry/app/controllers/application_controller.rb": [
         1,
         1,
         null
       ],
-      "/media/sf_shared/mass-spectrometry/mass-spec/app/helpers/application_helper.rb": [
+      "/home/saasbook/Documents/mass-spectrometry/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/media/sf_shared/mass-spectrometry/mass-spec/app/helpers/general_helper.rb": [
+      "/home/saasbook/Documents/mass-spectrometry/app/helpers/general_helper.rb": [
         1,
         null
       ],
-      "/media/sf_shared/mass-spectrometry/mass-spec/app/helpers/mass_data_helper.rb": [
+      "/home/saasbook/Documents/mass-spectrometry/app/helpers/mass_data_helper.rb": [
         1,
         null
       ],
-      "/media/sf_shared/mass-spectrometry/mass-spec/app/helpers/mass_params_helper.rb": [
+      "/home/saasbook/Documents/mass-spectrometry/app/helpers/mass_params_helper.rb": [
         1,
         null
       ],
-      "/media/sf_shared/mass-spectrometry/mass-spec/app/controllers/general_controller.rb": [
+      "/home/saasbook/Documents/mass-spectrometry/app/controllers/general_controller.rb": [
         1,
         null,
         1,
@@ -153,7 +153,7 @@
         null,
         null
       ],
-      "/media/sf_shared/mass-spectrometry/mass-spec/app/controllers/mass_data_controller.rb": [
+      "/home/saasbook/Documents/mass-spectrometry/app/controllers/mass_data_controller.rb": [
         1,
         1,
         null,
@@ -176,7 +176,7 @@
         null,
         null
       ],
-      "/media/sf_shared/mass-spectrometry/mass-spec/app/controllers/mass_params_controller.rb": [
+      "/home/saasbook/Documents/mass-spectrometry/app/controllers/mass_params_controller.rb": [
         1,
         1,
         null,
@@ -196,17 +196,17 @@
         null,
         null
       ],
-      "/media/sf_shared/mass-spectrometry/mass-spec/app/models/mass_data.rb": [
+      "/home/saasbook/Documents/mass-spectrometry/app/models/mass_data.rb": [
         1,
         1,
         null
       ],
-      "/media/sf_shared/mass-spectrometry/mass-spec/app/models/mass_params.rb": [
+      "/home/saasbook/Documents/mass-spectrometry/app/models/mass_params.rb": [
         1,
         1,
         null
       ]
     },
-    "timestamp": 1426275737
+    "timestamp": 1426280526
   }
 }
