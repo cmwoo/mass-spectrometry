@@ -19,6 +19,8 @@ MassSpec::Application.routes.draw do
   resources :mass_data, :mass_params
   match '/review' => 'general#review', :as => :review
   match '/review/upload' => 'general#upload', :as => :upload
+  match '/about' => 'general#about', :as => :about
+  match '/examples' => 'general#examples', :as => :examples
   root :to => 'general#index'
 
 

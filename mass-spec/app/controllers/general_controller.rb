@@ -7,8 +7,17 @@ class GeneralController < ApplicationController
   end
 
   def upload
-  	#puts params
-  	redirect_to "/"
+  	if params[:param_file].nil?
+  		redirect_to new_mass_param_path
+  	else
+  		redirect_to review_path
+  	end
+  end
+
+  def examples
+  end
+
+  def about
   end
 
 end

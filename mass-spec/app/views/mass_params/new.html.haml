@@ -9,4 +9,9 @@
     %div{:id => 'content'}
       %p This is text for the New Parameters page
     %div
+
+    = form_tag upload_path, :multipart => true do
+      = file_field_tag :param_file
+      = submit_tag "Submit"
+
     = button_to 'Next', review_path, :class => 'center-btn btn', :method => :get
