@@ -13,7 +13,7 @@
       %div{:id => 'form'}
         = form_tag upload_data_path, :multipart => true do
           %div= file_field_tag :xml_file, :class => 'form-item'
-          %div= text_field_tag :email, nil, placeholder: "Enter Email Address", :class => 'form-item'
+          %div= text_field_tag "Email", nil, placeholder: "Enter Email Address", :class => 'form-item'
           %div= submit_tag "Submit", :class => 'center-btn btn form-item'
       
     -# = button_to 'Next', new_mass_param_path, :class => 'center-btn btn', :method => :get

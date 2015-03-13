@@ -10,7 +10,7 @@
       %p Please select a parameters text file.
       %div
 
-        = form_tag upload_params_path, :multipart => true do
+        = form_tag upload_path, :multipart => true do
           %div= file_field_tag :param_file, :class => 'form-item'
           %div= submit_tag "Submit", :class => 'center-btn btn form-item'
 

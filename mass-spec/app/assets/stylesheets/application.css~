@@ -158,8 +158,7 @@ p{
 }
 
 #warning {
-  background: red;
-  color: white;
+  background: rosybrown;
   margin: 1em 0;
   padding: 4px;
 }
