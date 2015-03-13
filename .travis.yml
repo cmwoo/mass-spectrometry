@@ -1,0 +1,9 @@
+language: ruby
+rvm:
+  - 1.9.3
+
+before_script: cd mass-spec && bundle install --without production
+env:
+  - DB=sqlite 
+script:
+  - RAILS_ENV=test bundle exec rake db:migrate

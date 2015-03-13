@@ -35,7 +35,7 @@ p{
 }
 
 #content{
-  min-height: 140px; /* Height of center minus height of button (40px) */
+  min-height: 150px; /* Height of center minus height of button (40px) */
   height: auto;
   padding: 0;
   margin: 0;
@@ -43,15 +43,14 @@ p{
 
 #center-parent{
   position: relative;
-  height: auto;
-  min-height: 215px;
+  height: 100%;
 }
 
 #center {
   width: 600px;
   display: inline-block;
   padding: 10px;
-  /*min-height: 195px; /* Same Height as Sidebar -20px padding */
+  min-height: 195px; /* Same Height as Sidebar -20px padding */
   height: auto;
 }
 
@@ -63,12 +62,12 @@ p{
 }
 
 #header{
-  height: auto;
+  height: 30px;
   background: Navy;
   color: White;
   width: 100%;
-  padding-top: 2px;
-  padding-bottom: 2px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 #main {
@@ -87,21 +86,6 @@ p{
   margin-right: auto;
   padding-top: 5px;
   text-align: center;
-}
-
-#headerLinks {
-  float: right;
-  padding-right: 20px;
-  padding-top: 20px;
-}
-
-#headerLinks a {
-  color: #fff;
-  text-decoration: none;
-}
-
-#headerLinks a:hover {
-  text-decoration: underline;
 }
 
 .btn {

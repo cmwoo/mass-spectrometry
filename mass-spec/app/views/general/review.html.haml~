@@ -6,6 +6,4 @@
   = render "sidebar"
 
   %div{:class => 'card', :id => 'center'}
-    %div{:id => 'content'}
-      %p This is text for the Review And Run page
-
+    %p This is text for the Review And Run page

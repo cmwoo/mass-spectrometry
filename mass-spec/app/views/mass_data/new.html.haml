@@ -1,3 +1,17 @@
 %h1 Create New Data View
 
-= link_to 'Next', new_mass_param_path
+
+%div{:id => 'center-parent'}
+  = render "general/sidebar"
+
+  %div{:class => 'card', :id => 'center'}
+    %div{:id => 'content'}
+      %p This is text for the New Data page
+    %div
+
+    = form_tag upload_path, :multipart => true do
+      = text_field_tag "Email", nil, placeholder: "Enter Email Address"
+      = file_field_tag :xml_file
+      = submit_tag "Submit"
+      
+    = button_to 'Next', new_mass_param_path, :class => 'center-btn btn', :method => :get

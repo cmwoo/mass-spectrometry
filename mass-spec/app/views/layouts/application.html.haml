@@ -2,9 +2,17 @@
 %html
   %head
     %title Mass Spectrometry
+    = stylesheet_link_tag 'application'
+    %div{:class => "card", :id=>"header"} 
+      = image_tag asset_path("icon.png"), :size => '75x75'
+      %div{:id => "headerLinks"}
+        = link_to 'Home', root_path
+        |
+        = link_to ' About', about_path
+        |
+        = link_to ' Examples', examples_path 
 
   %body
-    %h1.title Mass Spectrometry
     #main
       - if flash[:notice]
         #notice.message= flash[:notice]
@@ -12,3 +20,5 @@
         #warning.message= flash[:warning]
 
       = yield
+  %footer#footer
+    Copyright/Contact information
