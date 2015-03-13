@@ -11,7 +11,7 @@ Feature: allow users to upload documents
 Scenario: upload a mass spectrometry xml data file
   Given I am on the Upload XML page
   And I upload an xml file
-  And I fill in "Email" with "example@example.com"
+  And I fill in "email" with "example@example.com"
   And I press "Submit"
   Then I should be on the Upload Parameters page
 
@@ -21,3 +21,23 @@ Scenario: upload a param file
   And I press "Submit"
   Then I should be on the Review and Run page
   
+Scenario: upload a mass spectrometry xml data file with no email address
+  Given I am on the Upload XML page
+  And I upload an xml file
+  And I press "Submit"
+  Then I should be on the Upload XML page
+	And I should see "No email input"
+
+Scenario: upload a mass spectrometry xml data file with no file
+  Given I am on the Upload XML page
+  And I fill in "email" with "example@example.com"
+  And I press "Submit"
+  Then I should be on the Upload XML page
+	And I should see "No file input"
+
+Scenario: upload a param file with no param file
+  Given I am on the Upload Parameters page
+  And I press "Submit"
+  Then I should be on the Upload Parameters page
+	And I should see "No file input"
+

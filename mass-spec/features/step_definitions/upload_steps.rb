@@ -28,3 +28,10 @@ Given(/^I upload a param file$/) do
   attach_file(:param_file, File.join(Rails.root, 'features', 'upload-files', 'mass_param.txt'))
 end
 
+Then /^(?:|I )should see "([^"]*)"$/ do |text|
+  if page.respond_to? :should
+    page.should have_content(text)
+  else
+    assert page.has_content?(text)
+  end
+end

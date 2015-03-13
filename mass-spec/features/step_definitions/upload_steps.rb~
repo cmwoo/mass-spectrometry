@@ -9,7 +9,7 @@ When /^(?:|I )(?:should be|am) on (.+)$/ do |page_name|
 end
 
 Given(/^I press "(.*?)"$/) do |arg1|
-  click_button(button)
+  click_button(arg1)
 end
 
 
@@ -21,10 +21,17 @@ end
 # Reference: http://guides.rubyonrails.org/form_helpers.html
 
 Given(/^I upload an xml file$/) do
-  attatch_file(:xml_file, File.join(Rails.root, 'features', 'upload-files', 'mass_xml.xml'))
+  attach_file(:xml_file, File.join(Rails.root, 'features', 'upload-files', 'mass_xml.xml'))
 end
 
 Given(/^I upload a param file$/) do
-  attatch_file(:param_file, File.join(Rails.root, 'features', 'upload-files', 'mass_param.txt'))
+  attach_file(:param_file, File.join(Rails.root, 'features', 'upload-files', 'mass_param.txt'))
 end
 
+Then /^(?:|I )should see "([^"]*)"$/ do |text|
+  if page.respond_to? :should
+    page.should have_content(text)
+  else
+    assert page.has_content?(text)
+  end
+end

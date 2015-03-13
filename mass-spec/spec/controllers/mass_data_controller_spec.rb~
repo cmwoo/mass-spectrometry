@@ -27,6 +27,14 @@ before :each do
       flash[:warning].should == "No file input."
     end
 
+    it "should not accept an empty email" do
+      # fake_data = mock('MassData', :title => 'test_data.xml')
+      # MassData.stub(:create!).with({:file => @dataxml}).and_return(fake_data)
+      post :upload, :xml_file => @dataxml, :email => ""
+      response.should redirect_to new_mass_datum_path
+      flash[:warning].should == "No email input."
+    end
+
 
 
   #  it "should not upload a non xml file" do
