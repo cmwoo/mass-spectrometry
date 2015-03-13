@@ -22,7 +22,7 @@ before :each do
       # fake_data = mock('MassData', :title => 'test_data.xml')
       # MassData.stub(:create!).with({:file => @dataxml}).and_return(fake_data)
       post :upload, :xml_file => nil, :email => @email
-      response.should redirect_to new_mass_param_path
+      response.should redirect_to new_param_datum_path
       flash[:warning].should == "No file input."
     end
 
