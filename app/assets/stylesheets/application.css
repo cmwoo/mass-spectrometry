@@ -65,7 +65,7 @@ p{
 
 #header{
   height: auto;
-  background: Navy;
+  background: #003A70;
   color: White;
   width: 100%;
   padding-top: 2px;
@@ -73,7 +73,7 @@ p{
 }
 
 #main {
-  width: 900px;
+  width: 75%; /* originally 900 */
   height: 100%;
   text-align: center;
   margin-left: auto;
