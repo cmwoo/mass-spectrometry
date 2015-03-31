@@ -1,5 +1,7 @@
 MassSpec::Application.routes.draw do
 
+  devise_for :users
+
   get "general/index"
 
   # The priority is based upon order of creation:

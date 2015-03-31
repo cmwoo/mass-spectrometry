@@ -58,5 +58,8 @@ module MassSpec
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Deploying on Heroku with Rails 3.2 only
+    config.assets.initialize_on_precompile = false
   end
 end
