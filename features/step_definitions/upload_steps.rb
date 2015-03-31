@@ -5,6 +5,8 @@ When /^(?:|I )(?:should be|am) on (.+)$/ do |page_name|
     when /the Upload XML page/ then visit new_mass_datum_path
     when /the Upload Parameters page/ then visit new_mass_param_path
     when /the Review and Run page/ then visit review_path
+		when /^the signup page$/ then visit new_user_registration_path
+		when /^the home page$/ then visit root_path
   end
 end
 
@@ -34,4 +36,8 @@ Then /^(?:|I )should see "([^"]*)"$/ do |text|
   else
     assert page.has_content?(text)
   end
+end
+
+When /^(?:|I )follow "([^"]*)"$/ do |link|
+  click_link(link)
 end

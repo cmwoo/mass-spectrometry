@@ -5,15 +5,15 @@ Feature: allow people to sign up for accounts
   So that I can have all my data, params and results associated with my account
  
 Scenario: User can sign up a new account
-  Given I am on the login page
-  When I follow “Create a new account”
+  Given I am on the home page
+  When I follow "Signup"
   Then I should be on the signup page
-  When I fill in “username” with “chemist”
-  And I fill in “password” with “aaaaaa”
-  And I fill in “email” with “chemist@gmail.com”
-  And I follow “Sign Up”
+  And I fill in "user_email" with "chemist@gmail.com"
+  And I fill in "user_password" with "aaaaaa"
+  And I fill in "user_password_confirmation" with "aaaaaa"
+  And I follow "Sign up"
   Then I should be on the home page
-  And I should be logged in
+  And I should see "Logged in as chemist@gmail.com"
 
 Scenario: User cannot sign up with existing username
   Given I am on the login page

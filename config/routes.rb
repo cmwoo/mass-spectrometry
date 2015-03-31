@@ -26,7 +26,10 @@ MassSpec::Application.routes.draw do
   match '/about' => 'general#about', :as => :about
   match '/examples' => 'general#examples', :as => :examples
   root :to => 'general#index'
-
+  
+  devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
 
   # Sample resource route with options:
   #   resources :products do
