@@ -11,7 +11,7 @@ Scenario: User can sign up a new account
   And I fill in "user_email" with "chemist@gmail.com"
   And I fill in "user_password" with "aaaaaa"
   And I fill in "user_password_confirmation" with "aaaaaa"
-  And I follow "Sign up"
+  And I press "Sign up"
   Then I should be on the home page
   And I should see "Logged in as chemist@gmail.com"
 
