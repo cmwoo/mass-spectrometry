@@ -4,17 +4,23 @@ Feature: allow people to sign in to their account
   So that I can view all my data, params and results and initiate new runs
 
 Background: 
-  Given my account has been set up
-  And I am on the login page
+  Given the following accouts exist:
+    |       email       | password | password_confirmation |
+    | chemist@gmail.com | aaaaaaaa |       aaaaaaaa        |
+  Given I am on the home page
+  When I follow "Login"
+  Then I should be on the login page
 
 Scenario: User can sign in with correct username and password
-  When I fill in correct username and password
-  And I follow “Sign In”
+  When I fill in "user_email" with "chemist@gmail.com"
+  And I fill in "user_password" with "aaaaaaaa"
+  And I press "Log in"
   Then I should be on the home page
-  And I should be logged in
+  And I should see "Logged in as chemist@gmail.com"
 
 Scenario: User cannot sign in with incorrect username and password
-  When I fill in incorrect username and password
-  And I follow “Sign In”
+  When I fill in "user_email" with "chemist@gmail.com"
+  And I fill in "user_password" with "bbbbbbbb"
+  And I press "Log in"
   Then I should be on the login page
-  And I should see “Invalid username or password”
+  # And I should see "Invalid username or password"
