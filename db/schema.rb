@@ -11,19 +11,42 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150330235203) do
+ActiveRecord::Schema.define(:version => 20150401193857) do
 
   create_table "mass_data", :force => true do |t|
     t.string   "title"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "s3id"
+    t.string   "filename"
+    t.integer  "user_id"
   end
+
+  add_index "mass_data", ["user_id"], :name => "index_mass_data_on_user_id"
 
   create_table "mass_params", :force => true do |t|
     t.string   "title"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "s3id"
+    t.string   "filename"
+    t.integer  "user_id"
   end
+
+  add_index "mass_params", ["user_id"], :name => "index_mass_params_on_user_id"
+
+  create_table "results", :force => true do |t|
+    t.string   "s3id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "mass_params_id"
+    t.integer  "mass_data_id"
+    t.integer  "user_id"
+  end
+
+  add_index "results", ["mass_data_id"], :name => "index_results_on_mass_data_id"
+  add_index "results", ["mass_params_id"], :name => "index_results_on_mass_params_id"
+  add_index "results", ["user_id"], :name => "index_results_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -38,6 +61,9 @@ ActiveRecord::Schema.define(:version => 20150330235203) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "organization"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
