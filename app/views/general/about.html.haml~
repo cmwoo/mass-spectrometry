@@ -27,7 +27,7 @@
 
       %p <br /> For references see:  manuscript in preparation
 
-      %p <br /> (3) MS2_Filter: Uses the Tag_Finder pattern matching algorithm and the presence of signature fragment peaks to select tandem MS spectra derived from tagged species.  The filtered output file is then used for targeted database searching.
+      %p (3) MS2_Filter: Uses the Tag_Finder pattern matching algorithm and the presence of signature fragment peaks to select tandem MS spectra derived from tagged species.  The filtered output file is then used for targeted database searching.
 
       %p <br /> For references see:  manuscript in preparation
 
