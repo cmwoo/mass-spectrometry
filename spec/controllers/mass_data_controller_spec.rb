@@ -13,6 +13,10 @@ before :each do
     it "can upload a mass data xml file" do
       # fake_data = mock('MassData', :title => 'test_data.xml')
       # MassData.stub(:create!).with({:file => @dataxml}).and_return(fake_data)
+      user = double('user')
+      allow(request.env['warden']).to receive(:authenticate!) { user }
+      allow(controller).to receive(:current_user) { user }
+
       post :upload, :xml_file => @dataxml
       response.should redirect_to new_mass_param_path
       # flash[:notice].should == "test_data.xml was successfully uploaded."
@@ -21,6 +25,10 @@ before :each do
     it "should not accept an empty file" do
       # fake_data = mock('MassData', :title => 'test_data.xml')
       # MassData.stub(:create!).with({:file => @dataxml}).and_return(fake_data)
+      user = double('user')
+      allow(request.env['warden']).to receive(:authenticate!) { user }
+      allow(controller).to receive(:current_user) { user }
+      
       post :upload, :xml_file => nil
       response.should redirect_to new_mass_datum_path
       flash[:warning].should == "No file input."
