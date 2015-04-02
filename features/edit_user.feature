@@ -3,11 +3,26 @@ Feature: allow users to edit their account settings
   I can edit my account settings
   So that I can have results sent to the correct email
 
+  Background: 
+  Given the following accounts exist:
+    |       email       | password | password_confirmation |
+    | chemist@gmail.com | aaaaaaaa |       aaaaaaaa        |
+  Given I am on the login page
+  Then I fill in "user_email" with "chemist@gmail.com"
+  Then I fill in "user_password" with "aaaaaaaa"
+  Then I press "Log in"
+
 Scenario: User can edit account information
-  Given my account has been set up
-  And I am logged in
-  And I am on the edit information page
-  And I fill in “First Name” with “Daenerys”
-  And I click “Submit”
-  Then I should be on the user information page
-  And my first name should be “Daenerys”
+  Given I am on the edit profile page
+  And I fill in "user_email" with "changed@gmail.com"
+  And I fill in "user_current_password" with "aaaaaaaa"
+  And I press "Update"
+  Then I should be on the home page
+  And I should see "changed@gmail.com"
+
+Scenario: User cannot edit information without correct password
+  Given I am on the edit profile page
+  And I fill in "user_email" with "changed@gmail.com"
+  And I fill in "user_current_password" with "incorrect"
+  And I press "Update"
+  Then I should see "Current password is invalid"

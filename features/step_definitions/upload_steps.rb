@@ -6,6 +6,10 @@ When /^(?:|I )(?:should be|am) on (.+)$/ do |page_name|
     when /the Upload Parameters page/ then visit new_mass_param_path
     when /the Review and Run page/ then visit review_path
     when /the downloads page/ then visit examples_path
+		when /^the signup page$/ then visit new_user_registration_path
+    when /^the login page$/ then visit user_session_path
+    when /^the home page$/ then visit root_path
+    when /^the edit profile page$/ then visit edit_user_registration_path
   end
 end
 
@@ -16,6 +20,12 @@ end
 
 Given(/^I fill in "(.*?)" with "(.*?)"$/) do |arg1, arg2|
   fill_in(arg1, :with => arg2)
+end
+
+When /^(?:|I )fill in the following:$/ do |fields|
+  fields.rows_hash.each do |name, value|
+    When %{I fill in "#{name}" with "#{value}"}
+  end
 end
 
 # Reference: https://cassiomarques.wordpress.com/2009/01/23/how-to-test-file-uploads-with-cucumber/
@@ -34,5 +44,15 @@ Then /^(?:|I )should see "([^"]*)"$/ do |text|
     page.should have_content(text)
   else
     assert page.has_content?(text)
+  end
+end
+
+When /^(?:|I )follow "([^"]*)"$/ do |link|
+  click_link(link)
+end
+
+Given /^the following accounts exist:$/ do |table|
+  table.hashes.each do |attributes|
+    User.create!(attributes)
   end
 end
