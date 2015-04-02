@@ -49,7 +49,7 @@ When /^(?:|I )follow "([^"]*)"$/ do |link|
   click_link(link)
 end
 
-Given /^the following accouts exist:$/ do |table|
+Given /^the following accounts exist:$/ do |table|
   table.hashes.each do |attributes|
     User.create!(attributes)
   end

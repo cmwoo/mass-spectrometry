@@ -4,7 +4,7 @@ Feature: allow users to sign out
   So that I can be sure my information is only accessible by me
 
 Scenario: User can log out
-  Given the following accouts exist:
+  Given the following accounts exist:
     |       email       | password | password_confirmation |
     | chemist@gmail.com | aaaaaaaa |       aaaaaaaa        |
   And I am on the home page

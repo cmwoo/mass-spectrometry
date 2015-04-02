@@ -4,7 +4,7 @@ Feature: allow people to sign in to their account
   So that I can view all my data, params and results and initiate new runs
 
 Background: 
-  Given the following accouts exist:
+  Given the following accounts exist:
     |       email       | password | password_confirmation |
     | chemist@gmail.com | aaaaaaaa |       aaaaaaaa        |
   Given I am on the home page
