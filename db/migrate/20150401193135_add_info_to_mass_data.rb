@@ -5,6 +5,6 @@ class AddInfoToMassData < ActiveRecord::Migration
 
     add_column :mass_data, :user_id, :integer
     add_index :mass_data, :user_id
-    add_foreign_key :mass_data, :users, :dependent => :destroy
+    add_foreign_key :mass_data, :users
   end
 end
