@@ -8,6 +8,7 @@ When /^(?:|I )(?:should be|am) on (.+)$/ do |page_name|
 		when /^the signup page$/ then visit new_user_registration_path
     when /^the login page$/ then visit user_session_path
     when /^the home page$/ then visit root_path
+    when /^the edit profile page$/ then visit edit_user_registration_path
   end
 end
 
