@@ -10,9 +10,6 @@ class MassDataController < ApplicationController
     if params[:xml_file].nil?
       flash[:warning] = "No file input."
       redirect_to new_mass_datum_path
-    elsif params[:email].empty?
-      flash[:warning] = "No email input."
-      redirect_to new_mass_datum_path
     else
       redirect_to new_mass_param_path
     end
