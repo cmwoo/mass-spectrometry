@@ -1,28 +1,44 @@
 {
   "Cucumber Features": {
     "coverage": {
-      "/home/saasbook/Documents/mass-spectrometry/app/controllers/application_controller.rb": [
+      "/Users/jonathangrundman/Documents/CS 169/Group Project/mass-spectrometry/app/models/user.rb": [
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null
+      ],
+      "/Users/jonathangrundman/Documents/CS 169/Group Project/mass-spectrometry/app/controllers/application_controller.rb": [
         1,
         1,
         null
       ],
-      "/home/saasbook/Documents/mass-spectrometry/app/helpers/application_helper.rb": [
+      "/Users/jonathangrundman/Documents/CS 169/Group Project/mass-spectrometry/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/home/saasbook/Documents/mass-spectrometry/app/helpers/general_helper.rb": [
+      "/Users/jonathangrundman/Documents/CS 169/Group Project/mass-spectrometry/app/helpers/general_helper.rb": [
         1,
         null
       ],
-      "/home/saasbook/Documents/mass-spectrometry/app/helpers/mass_data_helper.rb": [
+      "/Users/jonathangrundman/Documents/CS 169/Group Project/mass-spectrometry/app/helpers/mass_data_helper.rb": [
         1,
         null
       ],
-      "/home/saasbook/Documents/mass-spectrometry/app/helpers/mass_params_helper.rb": [
+      "/Users/jonathangrundman/Documents/CS 169/Group Project/mass-spectrometry/app/helpers/mass_params_helper.rb": [
         1,
         null
       ],
-      "/home/saasbook/Documents/mass-spectrometry/app/controllers/general_controller.rb": [
+      "/Users/jonathangrundman/Documents/CS 169/Group Project/mass-spectrometry/app/controllers/general_controller.rb": [
         1,
         null,
         1,
@@ -48,7 +64,7 @@
         null,
         null
       ],
-      "/home/saasbook/Documents/mass-spectrometry/app/controllers/mass_data_controller.rb": [
+      "/Users/jonathangrundman/Documents/CS 169/Group Project/mass-spectrometry/app/controllers/mass_data_controller.rb": [
         1,
         1,
         null,
@@ -71,7 +87,15 @@
         null,
         null
       ],
-      "/home/saasbook/Documents/mass-spectrometry/app/controllers/mass_params_controller.rb": [
+      "/Users/jonathangrundman/Documents/CS 169/Group Project/mass-spectrometry/app/models/mass_datum.rb": [
+        1,
+        1,
+        1,
+        null,
+        1,
+        null
+      ],
+      "/Users/jonathangrundman/Documents/CS 169/Group Project/mass-spectrometry/app/controllers/mass_params_controller.rb": [
         1,
         1,
         null,
@@ -91,18 +115,25 @@
         null,
         null
       ],
-      "/home/saasbook/Documents/mass-spectrometry/app/models/mass_data.rb": [
+      "/Users/jonathangrundman/Documents/CS 169/Group Project/mass-spectrometry/app/models/mass_param.rb": [
         1,
+        1,
+        1,
+        null,
         1,
         null
       ],
-      "/home/saasbook/Documents/mass-spectrometry/app/models/mass_params.rb": [
+      "/Users/jonathangrundman/Documents/CS 169/Group Project/mass-spectrometry/app/models/result.rb": [
         1,
+        1,
+        1,
+        1,
+        null,
         1,
         null
       ]
     },
-    "timestamp": 1426280532
+    "timestamp": 1428006378
   },
   "RSpec": {
     "coverage": {
