@@ -5,6 +5,7 @@ When /^(?:|I )(?:should be|am) on (.+)$/ do |page_name|
     when /the Upload XML page/ then visit new_mass_datum_path
     when /the Upload Parameters page/ then visit new_mass_param_path
     when /the Review and Run page/ then visit review_path
+    when /the downloads page/ then visit examples_path
   end
 end
 
