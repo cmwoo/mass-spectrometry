@@ -136,11 +136,19 @@ p{
   color: White;
 }
 
+.user-btn{
+  padding: 5px;
+}
+
 .center-btn{
   min-width: 80px;
   width: auto;
   background: Navy;
   color: White;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0px;
+  border: none;
 }
 
 .center-btn:hover {
@@ -149,12 +157,22 @@ p{
   color: White;
 }
 
+.center-btn:hover:disabled {
+  background: Grey;
+  text-decoration: none;
+}
+
 .btn:disabled{
   color: Grey;
 }
 .btn:hover:disabled{
   color: Grey;
   background: White;
+}
+
+.field {
+  margin: 5px;
+  font-size: 11pt;
 }
 
 #warning, #alert {

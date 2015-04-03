@@ -49,7 +49,7 @@ p{
 }
 
 #center {
-  width: 600px;
+  width: 800px;
   display: inline-block;
   padding: 10px;
   /*min-height: 195px; /* Same Height as Sidebar -20px padding */
@@ -65,7 +65,7 @@ p{
 
 #header{
   height: auto;
-  background: Navy;
+  background: #003A70;
   color: White;
   width: 100%;
   padding-top: 2px;
@@ -73,7 +73,7 @@ p{
 }
 
 #main {
-  width: 900px;
+  width: 1100px; /* originally 900px */
   height: 100%;
   text-align: center;
   margin-left: auto;
@@ -136,17 +136,30 @@ p{
   color: White;
 }
 
+.user-btn{
+  padding: 5px;
+}
+
 .center-btn{
   min-width: 80px;
   width: auto;
   background: Navy;
   color: White;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0px;
+  border: none;
 }
 
 .center-btn:hover {
   background: Grey;
   text-decoration: none;
   color: White;
+}
+
+.center-btn:hover:disabled {
+  background: Grey;
+  text-decoration: none;
 }
 
 .btn:disabled{
@@ -157,8 +170,18 @@ p{
   background: White;
 }
 
-#warning {
-  background: rosybrown;
+#warning, #alert {
+  background: #b00000;
+  color: white;
   margin: 1em 0;
   padding: 4px;
 }
+
+#notice {
+  background: #d3d3d3;
+  color: #3d3d3d;
+  margin: 1em 0;
+  padding: 4px;
+}
+
+
