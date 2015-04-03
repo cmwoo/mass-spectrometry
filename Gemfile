@@ -27,6 +27,7 @@ group :development,:test do
   gem 'simplecov'
   gem 'rake'
   gem 'sqlite3'
+  gem 'debugger'
 end
 
 group :production do
@@ -36,6 +37,8 @@ end
 gem 'jquery-rails'
 gem 'haml'
 gem 'devise'
+gem 'aws-sdk', '~> 1'
+gem 'aws-sdk-resources', '~> 2'
 
 # To use foreign keys, need new gem
 gem 'foreigner', '~> 1.7.4'
