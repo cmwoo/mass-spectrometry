@@ -5,10 +5,10 @@ Feature: be able to store files that you uploaded
 
 Background:
   Given my account has been set up
-  And I am on the “Upload Data” page
+  And I am on the "Upload Data" page
 
 Scenario: User can upload and store a data file
-  Given I upload “test.xml”
-  And I press “Submit”
-  Then I should be on the “Upload Parameters” page
-  And I should see “Data upload completed”
+  Given I upload "test.xml"
+  And I press "Submit"
+  Then I should be on the "Upload Parameters" page
+  And I should see "Data upload completed"
