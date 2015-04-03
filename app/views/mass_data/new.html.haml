@@ -14,5 +14,6 @@
         %div= file_field_tag :xml_file, :class => 'form-item', :data => {:url => @s3_direct_post.url.to_s, :formData => @s3_direct_post.fields.to_json.html_safe }
       
         = button_to 'Next', upload_data_path, :class => 'center-btn btn', :method => :post
+
 :javascript 
   s3_upload_file('#{@s3_direct_post.url}', #{@s3_direct_post.fields.to_json.html_safe});

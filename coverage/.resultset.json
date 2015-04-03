@@ -68,13 +68,13 @@
         null,
         null,
         1,
-        7,
+        5,
         null,
         null,
         1,
-        4,
-        4,
-        4,
+        2,
+        2,
+        2,
         null,
         0,
         null,
@@ -90,13 +90,13 @@
         null,
         null,
         1,
-        4,
+        6,
         null,
         null,
         1,
-        0,
-        0,
-        0,
+        2,
+        2,
+        2,
         null,
         0,
         null,
@@ -115,32 +115,44 @@
         null
       ]
     },
-    "timestamp": 1428102567
+    "timestamp": 1428103937
   },
   "RSpec": {
     "coverage": {
-      "/home/saasbook/Documents/mass-spectrometry/app/controllers/application_controller.rb": [
+      "/home/saasbook/mass-spectrometry/app/models/user.rb": [
+        1,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null
+      ],
+      "/home/saasbook/mass-spectrometry/app/controllers/application_controller.rb": [
         1,
         1,
         null
       ],
-      "/home/saasbook/Documents/mass-spectrometry/app/helpers/application_helper.rb": [
+      "/home/saasbook/mass-spectrometry/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/home/saasbook/Documents/mass-spectrometry/app/helpers/general_helper.rb": [
+      "/home/saasbook/mass-spectrometry/app/helpers/general_helper.rb": [
         1,
         null
       ],
-      "/home/saasbook/Documents/mass-spectrometry/app/helpers/mass_data_helper.rb": [
+      "/home/saasbook/mass-spectrometry/app/helpers/mass_data_helper.rb": [
         1,
         null
       ],
-      "/home/saasbook/Documents/mass-spectrometry/app/helpers/mass_params_helper.rb": [
+      "/home/saasbook/mass-spectrometry/app/helpers/mass_params_helper.rb": [
         1,
         null
       ],
-      "/home/saasbook/Documents/mass-spectrometry/app/controllers/general_controller.rb": [
+      "/home/saasbook/mass-spectrometry/app/controllers/general_controller.rb": [
         1,
         null,
         1,
@@ -166,36 +178,15 @@
         null,
         null
       ],
-      "/home/saasbook/Documents/mass-spectrometry/app/controllers/mass_data_controller.rb": [
+      "/home/saasbook/mass-spectrometry/app/controllers/mass_data_controller.rb": [
         1,
-        1,
-        null,
-        null,
-        null,
-        1,
-        null,
-        null,
-        1,
-        3,
-        1,
-        1,
-        2,
-        1,
-        1,
-        null,
-        1,
-        null,
-        null,
-        null,
-        null
-      ],
-      "/home/saasbook/Documents/mass-spectrometry/app/controllers/mass_params_controller.rb": [
         1,
         1,
         null,
         null,
         null,
         1,
+        0,
         null,
         null,
         1,
@@ -209,17 +200,39 @@
         null,
         null
       ],
-      "/home/saasbook/Documents/mass-spectrometry/app/models/mass_data.rb": [
+      "/home/saasbook/mass-spectrometry/app/controllers/mass_params_controller.rb": [
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        2,
+        1,
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/home/saasbook/mass-spectrometry/app/models/mass_data.rb": [
         1,
         1,
         null
       ],
-      "/home/saasbook/Documents/mass-spectrometry/app/models/mass_params.rb": [
+      "/home/saasbook/mass-spectrometry/app/models/mass_params.rb": [
         1,
         1,
         null
       ]
     },
-    "timestamp": 1426280526
+    "timestamp": 1428103457
   }
 }
