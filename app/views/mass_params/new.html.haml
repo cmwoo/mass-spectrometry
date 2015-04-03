@@ -8,12 +8,11 @@
   %div{:class => 'card', :id => 'center'}
     %div{:id => 'content'}
       %p Please select a parameters text file.
-      %div
+      
+      %div{:id => 'form', :class => "directUpload"}
+        %div= file_field_tag :xml_file, :class => 'form-item', :data => {:url => @s3_direct_post.url.to_s, :formData => @s3_direct_post.fields.to_json.html_safe }
+      
+        = button_to 'Next', upload_data_path, :class => 'center-btn btn', :method => :post
 
-        = form_tag upload_params_path, :multipart => true, :class => "directUpload" do
-          %div= file_field_tag :param_file, :class => 'form-item'
-          %div= submit_tag "Submit", :class => 'center-btn btn form-item'
-
-    -# = button_to 'Next', review_path, :class => 'center-btn btn', :method => :get
 :javascript 
   s3_upload_file('#{@s3_direct_post.url}', #{@s3_direct_post.fields.to_json.html_safe});

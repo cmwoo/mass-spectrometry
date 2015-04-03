@@ -2,7 +2,7 @@ var s3_upload_file = function(url, formData) {
   $('.directUpload').find("input:file").each(function(i, elem) {
 
     var fileInput    = $(elem);
-    var form         = $(fileInput.parents('form:first'));
+    var form         = $('.directUpload').find('form:first');
     var submitButton = form.find('input[type="submit"]');
     var progressBar  = $("<div class='bar'></div>");
     var barContainer = $("<div class='progress'></div>").append(progressBar);
