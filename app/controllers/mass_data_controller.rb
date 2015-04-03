@@ -5,6 +5,8 @@ class MassDataController < ApplicationController
   	#redirect_to new_mass_param_path
   end
   def new
+    @s3_direct_post = S3_BUCKET.presigned_post(key: "#{current_user.id}/data/${filename}", success_action_status: 201)
+    debugger
   end
 
   def upload
