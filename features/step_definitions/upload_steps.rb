@@ -70,3 +70,7 @@ When /^I visit the (.*?) page$/ do |page_name|
     when /the Upload Parameters page/ then visit new_mass_param_path
   end
 end
+
+Then /^I should receive the file "(.*)"$/ do |filename|
+  pending
+end
