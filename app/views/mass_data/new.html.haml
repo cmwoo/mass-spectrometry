@@ -17,3 +17,5 @@
           %div= submit_tag "Submit", :class => 'center-btn btn form-item'
       
     -# = button_to 'Next', new_mass_param_path, :class => 'center-btn btn', :method => :get
+:javascript 
+  s3_upload_file('#{@s3_direct_post.url}', #{@s3_direct_post.fields.to_json.html_safe});

@@ -10,8 +10,10 @@
       %p Please select a parameters text file.
       %div
 
-        = form_tag upload_params_path, :multipart => true do
+        = form_tag upload_params_path, :multipart => true, :class => "directUpload" do
           %div= file_field_tag :param_file, :class => 'form-item'
           %div= submit_tag "Submit", :class => 'center-btn btn form-item'
 
     -# = button_to 'Next', review_path, :class => 'center-btn btn', :method => :get
+:javascript 
+  s3_upload_file('#{@s3_direct_post.url}', #{@s3_direct_post.fields.to_json.html_safe});
