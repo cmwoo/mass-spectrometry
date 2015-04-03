@@ -16,7 +16,7 @@ Scenario: User can sign up a new account
   And I should see "Logged in as chemist@gmail.com"
 
 Scenario: User cannot sign up with existing email address
-  Given the following accouts exist:
+  Given the following accounts exist:
     |       email       | password | password_confirmation |
     | chemist@gmail.com | aaaaaaaa |       aaaaaaaa        |
   And I am on the home page

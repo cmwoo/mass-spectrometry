@@ -55,3 +55,18 @@ Given /^the following accounts exist:$/ do |table|
     User.create!(attributes)
   end
 end
+
+Given /^I am logged in/ do
+  step 'I am on the home page'
+  step 'I follow "Login"'
+  step 'I fill in "user_email" with "chemist@gmail.com"'
+  step 'I fill in "user_password" with "aaaaaaaa"'
+  step 'I press "Log in"'
+end
+
+When /^I visit the (.*?) page$/ do |page_name|
+  case page_name
+    when /the Upload XML page/ then visit new_mass_datum_path
+    when /the Upload Parameters page/ then visit new_mass_param_path
+  end
+end
