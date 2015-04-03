@@ -14,3 +14,6 @@
 /log/*.log
 /tmp
 *~
+
+# Ignore secret files
+/config/initializers/devise.rb
