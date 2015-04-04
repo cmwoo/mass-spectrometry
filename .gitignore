@@ -14,3 +14,9 @@
 /log/*.log
 /tmp
 *~
+
+# Ignore awk credentials file
+config/initializers/aws-sdk.rb
+
+#Ignore DS_Store
+.DS_Store

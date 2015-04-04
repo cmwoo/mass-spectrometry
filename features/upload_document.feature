@@ -8,6 +8,10 @@ Feature: allow users to upload documents
   So that I can run my mass spectrometry data with the right parameters
   I want to upload a params file to the website
 
+  As a chemist
+  I want to store my files on the website
+  So that I can run them remotely and get results
+
 Background: 
   Given the following accounts exist:
     |       email       | password | password_confirmation |
