@@ -27,6 +27,7 @@ group :development,:test do
   gem 'simplecov'
   gem 'rake'
   gem 'sqlite3'
+  gem 'debugger'
 end
 
 group :production do

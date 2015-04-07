@@ -17,7 +17,7 @@ before :each do
       allow(request.env['warden']).to receive(:authenticate!) { user }
       allow(controller).to receive(:current_user) { user }
 
-      post :upload, :xml_file => @dataxml
+      post :create, :s3_key => 'key'
       response.should redirect_to new_mass_param_path
       # flash[:notice].should == "test_data.xml was successfully uploaded."
     end
@@ -29,7 +29,7 @@ before :each do
       allow(request.env['warden']).to receive(:authenticate!) { user }
       allow(controller).to receive(:current_user) { user }
       
-      post :upload, :xml_file => nil
+      post :create, :s3_key => nil
       response.should redirect_to new_mass_datum_path
       flash[:warning].should == "No file input."
     end

@@ -18,7 +18,7 @@ before :each do
       allow(request.env['warden']).to receive(:authenticate!) { user }
       allow(controller).to receive(:current_user) { user }
       
-      post :upload, :param_file => @paramsxml
+      post :create, :s3_key => 'key'
       response.should redirect_to review_path
     end
 
@@ -29,7 +29,7 @@ before :each do
       allow(request.env['warden']).to receive(:authenticate!) { user }
       allow(controller).to receive(:current_user) { user }
 
-      post :upload, :xml_file => nil, :email => @email
+      post :create, :s3_key => nil, :email => @email
       response.should redirect_to new_mass_param_path
       flash[:warning].should == "No file input."
     end

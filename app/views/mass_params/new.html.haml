@@ -10,9 +10,10 @@
       %p Please select a parameters text file.
       
       %div{:id => 'form', :class => "directUpload"}
-        %div= file_field_tag :param_file, :class => 'form-item', :data => {:url => @s3_direct_post.url.to_s, :formData => @s3_direct_post.fields.to_json.html_safe }
-      
-        = button_to 'Next', upload_params_path, :class => 'center-btn btn', :method => :post
+        %div= file_field_tag :param_file, :class => 'form-item', :data => {:url => @s3_direct_post.url.to_s, 
+        :formData => @s3_direct_post.fields.to_json.html_safe }
+        = form_for(@mass_param, html: { class: "directUpload" }) do |f| 
+          = f.submit 'Next',:class => 'center-btn btn'
 
 :javascript 
   s3_upload_file('#{@s3_direct_post.url}', #{@s3_direct_post.fields.to_json.html_safe});
