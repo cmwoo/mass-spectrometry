@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe MassData do
+describe MassDatum do
 
 #  before :each do
 #    @dataxml = fixture_file_upload('/files/test_data.xml', 'text/xml')

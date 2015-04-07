@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe MassParams do
+describe MassParam do
 
 #  before :each do
 #    @paramsxml = fixture_file_upload('/files/test_params.txt', 'text/xml')

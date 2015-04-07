@@ -39,6 +39,9 @@ gem 'devise'
 gem 'aws-sdk', '~> 1'
 gem 'aws-sdk-resources', '~> 2'
 
+# To use foreign keys, need new gem
+gem 'foreigner', '~> 1.7.4'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

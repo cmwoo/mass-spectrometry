@@ -1,0 +1,81 @@
+# Charge states:w to consider:
+charge_min: 1
+charge_max: 5
+
+# m/z tolerance - usually slightly looser than the actual instrumental requirements would dictate.
+# A value of mz_tolerance: 0.025 works well for orbitrap data. The mz_tolerance_2 value is
+# a parameters used to determine if peaks are potentially isotopically related, and is
+# typically a smaller value than mz_tolerance. mz_tolerance_2 = 0.014 is a good value for
+# orbitrap data.
+mz_tolerance: 0.01
+mz_tolerance_2: 0.005
+
+# the number of scans that two features can be separated by and still be considered 'related'
+scan_tolerance: 10
+
+
+# the number of points to be considered in matching a feature:
+pattern_size: 5
+
+
+# The minimum score for reported features:
+min_score: 1
+
+# Inclusion list window 
+# NEED TO COMMENT...
+retention_time_window: 2.0
+
+# The peak reported in an inclusion list. For example, with the dibrmoide tag
+# it is desired that the middle (M+2) peak be used for an inclusion list as it
+# is the most intense peak. Note that include_mass_mode accepts floating point
+# values, but values that are significantly different from integer quantities
+# do not make sense. This value defaults to 0.0
+include_mass_mod: 2.0
+
+# pattern matching parameters. Sigma is the absolute variance in peak signal intensity
+# for pattern matching purposes, while per_sigma is the percentage variance in signal
+# intensity for pattern matching purposes. The value of sigma does not seem to be overly
+# important, while the value of per_sigma = 0.085 appears to be idea for matching the
+# dibromide pattern in orbitrap data.
+sigma: 0.0
+per_sigma: 0.085
+
+# Name of file to log output:
+log_file: ms_searching.log
+
+
+# The pattern of interest to search for: as a list of peak intensities separated by 1 m/z unit.
+# For example, the dibromide pattern would be input at
+# pattern: 0.25, 0, 0.5, 0, 0.25; mw=300
+# where trailing zeroes are appended to reach the defined pattern size, and the entire pattern
+# is normalized to a total signal of 1.0. Patterns longer than pattern_size are removed. The mw=
+# tag is used to input the molecular weight of the pattern to be accounted for. This number
+# plays a role in how the pattern is adjusted to account for contaminating isotopes in a
+# data-dependent fashion. Using a large mw= tag will force the program to use th pattern
+# unaltered during searching. The prior= tag is a weighting factor that is used in a Bayesian
+# method to determine a final score for the search pattern accounting for the goodness of fit
+# of the other alt_patterns defined below. Priors are effectively normalized to 1.0.
+#
+# Technical note: this information is saved in a _T_pattern type (vector<float>, double, double)
+# typedef PatternLib<float,double>::pattern_type  _T_pattern;
+search_pattern: pattern=0.25, 0.0, 0.5, 0.0, 0.25; mw=500; prior=0.0001
+
+
+# Alternative patterns to score against. At least one alternative pattern is necessary (usually
+# alt_pattern: 1; mw=0; prior=1), while additional patterns can be added empirically to reduce
+# the occurance of false-positive matches.
+alt_pattern: pattern=1; mw=0; prior=1;
+alt_pattern: pattern=0.1, 0.5, 0.25; mw=300; prior=0.0001
+alt_pattern: pattern=1, 1, 1, 1, 1, 1, 1; mw=10000; prior=0.001
+alt_pattern: pattern=1,0,6,0,15,0,20,0,15,0,6,0,1; mw=100; prior=0.0001
+#alt_pattern: pattern=1,0,4,0,6,0,4,0,1; mw=200; prior=0.0001
+alt_pattern: pattern=1,0,8,0,28,0,56,0,70,0,56,0,28,0,8,0,1; mw=200; prior=0.0001
+#alt_pattern: mw=100; prior = 0.01; pattern=1,4,7,9,8,2,1,1
+
+# Outputs to use. Values are assumed to be false if not defined.
+full_output: true        # A detailed output of all search results.
+inclusion_list: false    # only m/z values
+mz_charge: true          # m/z values with charge state
+mz_charge_scan: true     # the m/z value, charge state, and scan numbers of detected features
+
+
