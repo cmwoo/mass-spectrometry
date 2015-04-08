@@ -16,6 +16,7 @@ before :each do
       user = double('user')
       allow(request.env['warden']).to receive(:authenticate!) { user }
       allow(controller).to receive(:current_user) { user }
+      user.stub(:id).and_return(1)
 
       post :create, :s3_key => 'key'
       response.should redirect_to new_mass_param_path

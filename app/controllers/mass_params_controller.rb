@@ -3,7 +3,7 @@ class MassParamsController < ApplicationController
   def create
     if params[:s3_key].nil?
       flash[:warning] = "No file input."
-      redirect_to new_mass_datum_path
+      redirect_to new_mass_param_path
     else
       mass_datum = MassParam.create(:s3id => params[:s3_key], :user_id => current_user.id)
       debugger
