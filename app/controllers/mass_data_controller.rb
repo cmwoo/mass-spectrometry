@@ -6,6 +6,12 @@ class MassDataController < ApplicationController
       redirect_to new_mass_datum_path
     else
       mass_datum = MassDatum.create(:s3id => params[:s3_key], :user_id => current_user.id)
+    if current_user.current_result
+      result = current_user.current_result
+      result.mass_data_id = mass_datum.id
+    else
+      result = Result.create(:mass_data_id => mass_datum.id, :user_id => current_user.id, :flag => false)
+    end
       redirect_to new_mass_param_path
     end
   end

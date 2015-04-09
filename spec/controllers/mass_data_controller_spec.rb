@@ -18,6 +18,8 @@ before :each do
       allow(controller).to receive(:current_user) { user }
       user.stub(:id).and_return(1)
 
+      user.stub(:current_result).and_return(nil)
+
       post :create, :s3_key => 'key'
       response.should redirect_to new_mass_param_path
       # flash[:notice].should == "test_data.xml was successfully uploaded."

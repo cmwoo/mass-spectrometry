@@ -19,6 +19,9 @@ before :each do
       allow(controller).to receive(:current_user) { user }
       user.stub(:id).and_return(1)
 
+      result2 = Result.create(:user_id => 1)
+      user.stub(:current_result).and_return(result2)
+
       post :create, :s3_key => 'key'
       response.should redirect_to review_path
     end

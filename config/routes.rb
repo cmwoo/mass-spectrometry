@@ -19,7 +19,8 @@ MassSpec::Application.routes.draw do
   #   resources :products
 
   resources :mass_data, :mass_params
-  match '/review' => 'general#review', :as => :review
+  match '/review' => 'results#review', :as => :review
+  match '/finish' => 'results#index', :as => :finish_index
   match '/review/upload' => 'general#upload', :as => :upload
   match '/mass_data/upload' => 'mass_data#upload', :as => :upload_data
   match '/mass_params/upload' => 'mass_params#upload', :as => :upload_params

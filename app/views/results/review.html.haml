@@ -1,0 +1,13 @@
+-#  This file is app/views/results/review.html.haml
+
+%h1 This is the review page
+
+%div{:id => 'center-parent'}
+  = render "general/sidebar"
+
+  %div{:class => 'card', :id => 'center'}
+    %div{:id => 'content'}
+      %p This is text for the Review And Run page
+      %div
+      = button_to 'Run', finish_index_path, :class => 'center-btn btn', :method => :get, :disabled => @disabled
+

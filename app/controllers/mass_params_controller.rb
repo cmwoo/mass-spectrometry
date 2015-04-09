@@ -5,8 +5,15 @@ class MassParamsController < ApplicationController
       flash[:warning] = "No file input."
       redirect_to new_mass_param_path
     else
-      mass_datum = MassParam.create(:s3id => params[:s3_key], :user_id => current_user.id)
+      mass_param = MassParam.create(:s3id => params[:s3_key], :user_id => current_user.id)
       debugger
+      if current_user.current_result
+        result = current_user.current_result
+        result.mass_params_id = mass_param.id
+        result.save
+      else
+        result = Result.create(:mass_params_id => mass_param.id, :user_id => current_user.id, :flag => false)
+      end
       redirect_to review_path
     end
   end

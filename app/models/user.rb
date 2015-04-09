@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
+
+  def current_result
+    Result.where(:user_id => self.id, :flag => false).first
+  end
 end
