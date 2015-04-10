@@ -75,3 +75,11 @@ end
 Then /^I should receive the file "(.*)"$/ do |filename|
   pending
 end
+
+Given /^I am not on the home page/ do
+  visit citations_path
+end
+
+Given /^I click on the icon/ do
+  click_link("Icon")
+end
