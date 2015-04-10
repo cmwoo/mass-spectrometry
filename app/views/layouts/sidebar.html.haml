@@ -1,6 +1,7 @@
 -# sidebar.html.haml as a partial
 -# TODO: add code to decide whether disabled or not for each page
 -# TODO: change paths to the already created Data/Param model as opposed to new
+- # THIS IS NOT THE ACTUAL SIDEBAR FILE, GO TO THE ONE IN GENERAL/_SIDEBAR
 
 %div{:class => 'card', :id => 'sidebar'}
   %div 
@@ -12,4 +13,4 @@
   %div 
   = button_to 'Review & Run', review_path, :class => 'btn', :method => :get
   %div 
-  = button_to 'Finish', root_path, :class => 'btn', :method => :get
+  = button_to 'Finish', finish_index_path, :class => 'btn', :method => :get

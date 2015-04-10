@@ -8,7 +8,7 @@
 
   %div{:class => 'card', :id => 'center'}
     %div{:id => 'content'}
-      %p Please select an xml file to run.
+      %p= "#{@message}" -# Please select an xml file to run.
       
       %div{:class => 'directUpload'}
         %div= file_field_tag :xml_file, :class => 'form-item', :data => {:url => @s3_direct_post.url.to_s,
