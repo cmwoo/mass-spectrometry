@@ -17,14 +17,16 @@ class ResultsController < ApplicationController
 
   def review
    # "review and run"
-   if !current_user.current_result
+   current_result = current_user.current_result
+   if !current_result
      flash[:warning] = "You've already run these files."
      @disabled = true
-   elsif
-     if !current_user.current_result.mass_params_id || !current_user.current_result.mass_data_id
+   elsif !current_result.mass_params_id || !current_result.mass_data_id
        flash[:warning] = "You haven't uploaded one of the files."
        @disabled = true
-     end
+   else
+       @message = "Data: #{current_result.get_mass_data.get_title} 
+                   Parameters: #{current_result.get_mass_params.get_title}"
    end
   end
 end

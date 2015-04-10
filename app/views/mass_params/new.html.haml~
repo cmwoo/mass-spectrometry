@@ -7,7 +7,7 @@
 
   %div{:class => 'card', :id => 'center'}
     %div{:id => 'content'}
-      %p Please select a parameters text file.
+      %p= @message
       
       %div{:id => 'form', :class => "directUpload"}
         %div= file_field_tag :param_file, :class => 'form-item', :data => {:url => @s3_direct_post.url.to_s, 

@@ -15,7 +15,7 @@ class Result < ActiveRecord::Base
   end
 
   def get_mass_data
-    if mass_data_id then MassDatum.find(mass_data_id) end
+    if mass_data_id then MassDatum.find(mass_data_id) else nil end
   end
 
   def get_mass_params

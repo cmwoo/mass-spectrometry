@@ -5,7 +5,7 @@ class MassDatum < ActiveRecord::Base
   attr_accessible :title, :s3id, :user_id
 
   def get_title
-    t = /[\d-]\/(.*)$/.match(s3id)
+    t = /.*\/(.*)$/.match(s3id)
     return t.captures[0]
   end
 end
