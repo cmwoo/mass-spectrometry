@@ -20,14 +20,14 @@ Scenario: upload and run graph search program on data
 
 Scenario: do not run if no params file selected
   Given I am on the Upload XML page
-  And I upload an xml file
-  And I press "Next"
+  And I upload just an xml file
+  And I press "Save and Next"
   And I am on the Review and Run page
-  Then I should see "No params file selected"
+  Then I should see "Please select a parameters file."
 
 Scenario: do not run if no data file selected
   Given I am on the Upload Parameters page
-  And I upload a param file
-  And I press "Next"
+  And I upload just a param file
+  And I press "Save and Next"
   And I am on the Review and Run page
-  Then I should see "No data file selected"
+  Then I should see "Please select a data .zxml file."

@@ -20,10 +20,15 @@ class ResultsController < ApplicationController
    current_result = current_user.current_result
    @message = "Please upload files before running."
    if !current_result
-     flash[:warning] = "You've already run these files."
+     flash[:warning] = "No files have been uploaded."
      @disabled = true
-   elsif !current_result.mass_params_id || !current_result.mass_data_id
-       flash[:warning] = "You haven't uploaded one of the files."
+   elsif !current_result.mass_params_id
+       flash[:warning] = "One of the files has not been uploaded."
+       @message = "Please select a parameters file."
+       @disabled = true
+   elsif !current_result.mass_data_id
+       flash[:warning] = "One of the files has not been uploaded."
+       @message = "Please select a data .zxml file."
        @disabled = true
    else
        @message = "Data: #{current_result.get_mass_data.get_title}\n\n Parameters: #{current_result.get_mass_params.get_title}"

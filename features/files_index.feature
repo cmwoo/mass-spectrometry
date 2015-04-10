@@ -9,13 +9,13 @@ Background:
     |       email       | password | password_confirmation |
     | chemist@gmail.com | aaaaaaaa |       aaaaaaaa        |
   And I am logged in
-  And the following results - params - data files exist
-    |       results                 | params        | data                   |
+  And the following results - params - data files exist for the user
+    |       results             | params      | data                   |
     | results1.zxml             | params1.txt |       data1.zxml       |
     | results2.zxml             | params2.txt |       data2.zxml       |
     | results3.zxml             | params3.txt |       data3.zxml       |
 
 
 Scenario: list the user’s existing files
-  Given that I am on the user’s information page
+  Given I am on the user information page
   Then I should see a list of all my data, params, and results
