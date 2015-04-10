@@ -20,3 +20,7 @@ config/initializers/aws-sdk.rb
 
 #Ignore DS_Store
 .DS_Store
+
+#Ignore ec2 key
+config/key1.pem
+

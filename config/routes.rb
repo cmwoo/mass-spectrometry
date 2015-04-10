@@ -27,6 +27,8 @@ MassSpec::Application.routes.draw do
   match '/examples' => 'general#examples', :as => :examples
   root :to => 'general#index'
 
+  post '/finish' => 'general#finish', :as => :post_finish
+
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
