@@ -13,4 +13,12 @@ class Result < ActiveRecord::Base
     self.flag = true
     self.save
   end
+
+  def get_mass_data
+    if mass_data_id then MassDatum.find(mass_data_id) end
+  end
+
+  def get_mass_params
+    if mass_params_id then MassParam.find(mass_params_id) end
+  end
 end

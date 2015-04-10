@@ -19,8 +19,9 @@ class MassDataController < ApplicationController
 
   def new
     current_result = current_user.current_result
-    if current_result && current_result.mass_data
-      @message = "You have already uploaded #{current_result.mass_data.s3id}."
+    current_mass_data = if current_result then current_result.get_mass_data end
+    if current_result && current_mass_data
+      @message = "You have already uploaded #{current_mass_data.get_title}."
     else
       @message = "Please choose a .zxml file to upload."
     end

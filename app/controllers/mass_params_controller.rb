@@ -19,6 +19,13 @@ class MassParamsController < ApplicationController
   end
 
   def new
+    current_result = current_user.current_result
+    current_mass_params = if current_result then current_result.get_mass_params end
+    if current_result && current_mass_params
+      @message = "You have already uploaded #{current_mass_params.get_title}."
+    else
+      @message = "Please choose a .txt or .params file to upload."
+    end
     @s3_direct_post = S3_BUCKET.presigned_post(key: "params/#{current_user.id}/${filename}", success_action_status: 201)
     @mass_param = MassParam.new
   end
