@@ -170,6 +170,11 @@ p{
   background: White;
 }
 
+.field {
+  margin: 5px;
+  font-size: 11pt;
+}
+
 #warning, #alert {
   background: #b00000;
   color: white;
@@ -184,4 +189,10 @@ p{
   padding: 4px;
 }
 
+.indent {
+  padding-left: 20px;
+}
 
+.indent2 {
+  padding-left: 40px;
+}

@@ -1,5 +1,7 @@
 MassSpec::Application.routes.draw do
 
+  devise_for :users
+
   get "general/index"
 
   # The priority is based upon order of creation:
@@ -18,13 +20,17 @@ MassSpec::Application.routes.draw do
 
   resources :mass_data, :mass_params
   match '/review' => 'general#review', :as => :review
-  match '/review/upload' => 'general#upload'. :as => :upload
+  match '/review/upload' => 'general#upload', :as => :upload
   match '/mass_data/upload' => 'mass_data#upload', :as => :upload_data
   match '/mass_params/upload' => 'mass_params#upload', :as => :upload_params
-  match '/about' => 'general#about', :as => :about
+  match '/citations' => 'general#citations', :as => :citations
   match '/examples' => 'general#examples', :as => :examples
+  match '/instructions' => 'general#instructions', :as => :instructions
   root :to => 'general#index'
 
+  devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
 
   # Sample resource route with options:
   #   resources :products do

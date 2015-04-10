@@ -23,8 +23,9 @@ MassSpec::Application.routes.draw do
   match '/review/upload' => 'general#upload', :as => :upload
   match '/mass_data/upload' => 'mass_data#upload', :as => :upload_data
   match '/mass_params/upload' => 'mass_params#upload', :as => :upload_params
-  match '/about' => 'general#about', :as => :about
+  match '/citations' => 'general#citations', :as => :citations
   match '/examples' => 'general#examples', :as => :examples
+  match '/instructions' => 'general#instructions', :as => :instructions
   root :to => 'general#index'
 
   devise_scope :user do
