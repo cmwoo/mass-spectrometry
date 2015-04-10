@@ -7,7 +7,7 @@
 
   %div{:class => 'card', :id => 'center'}
     %div{:id => 'content'}
-      %p This is text for the Review And Run page
+      %p= simple_format(@message)
       %div
       = button_to 'Run', finish_index_path, :class => 'center-btn btn', :method => :post, :disabled => @disabled
 

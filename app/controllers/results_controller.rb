@@ -18,6 +18,7 @@ class ResultsController < ApplicationController
   def review
    # "review and run"
    current_result = current_user.current_result
+   @message = "Please upload files before running."
    if !current_result
      flash[:warning] = "You've already run these files."
      @disabled = true
@@ -25,8 +26,7 @@ class ResultsController < ApplicationController
        flash[:warning] = "You haven't uploaded one of the files."
        @disabled = true
    else
-       @message = "Data: #{current_result.get_mass_data.get_title} 
-                   Parameters: #{current_result.get_mass_params.get_title}"
+       @message = "Data: #{current_result.get_mass_data.get_title}\n\n Parameters: #{current_result.get_mass_params.get_title}"
    end
   end
 end
