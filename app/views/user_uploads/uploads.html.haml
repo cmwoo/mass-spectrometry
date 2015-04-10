@@ -1,0 +1,24 @@
+-#  This file is app/views/user_uploads/uploads.html.haml
+-#  To disable buttons, :disabled => 'true'
+
+%h1 This is the User Uploads Page
+
+%div{:id => 'center-parent'}
+  %div{:class => 'card', :id => 'center'}
+    %div{:id => 'content'}
+      %table{width: "100%"}
+        %thead
+          %tr
+            %th Data
+            %th Params
+            %th Results
+            %th Submission Date
+        %tbody
+          - @results.each do |result|
+          - data = result.get_mass_data()
+          - params = result.get_mass_params()
+            %tr
+              %td= if data then data.get_title() else "Upload" end
+              %td= if params then params.get_title() else "Upload" end
+              %td= if !result.s3id then "Waiting..." else result.s3id end
+              %td= result.created_at()

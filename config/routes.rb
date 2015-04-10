@@ -1,5 +1,7 @@
 MassSpec::Application.routes.draw do
 
+  get "user_uploads/uploads"
+
   devise_for :users
 
   get "general/index"
@@ -26,6 +28,7 @@ MassSpec::Application.routes.draw do
   match '/mass_params/upload' => 'mass_params#upload', :as => :upload_params
   match '/about' => 'general#about', :as => :about
   match '/examples' => 'general#examples', :as => :examples
+  match '/uploads' => 'user_uploads#uploads', :as => :uploads
   root :to => 'general#index'
 
   devise_scope :user do
