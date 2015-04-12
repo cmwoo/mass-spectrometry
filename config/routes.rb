@@ -28,10 +28,13 @@ MassSpec::Application.routes.draw do
   root :to => 'general#index'
 
   post '/finish' => 'general#finish', :as => :post_finish
+  post '/curl' => 'general#curl', :as => :curl_test
 
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
+
+  mount Resque::Server, :at => "/resque"
 
   # Sample resource route with options:
   #   resources :products do
