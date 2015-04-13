@@ -10,6 +10,7 @@ When /^(?:|I )(?:should be|am) on (.+)$/ do |page_name|
     when /^the login page$/ then visit user_session_path
     when /^the home page$/ then visit root_path
     when /^the edit profile page$/ then visit edit_user_registration_path
+    when /^the user information page$/ then visit uploads_path
   end
 end
 
@@ -57,6 +58,15 @@ Given /^the following accounts exist:$/ do |table|
   end
 end
 
+Given(/^the following results \- params \- data files exist for the user$/) do |table|
+  table.hashes.each do |attributes|
+    mass_datum = MassDatum.create(:s3id => "uploads/21998eeb-ed54-4914-9844-7a4b94008985/"+attributes[:data], :user_id => 1)
+    mass_param = MassParam.create(:s3id => "uploads/21998eeb-ed54-4914-9844-7a4b94008fff/"+attributes[:params], :user_id => 1)
+    result = Result.create(:s3id => "uploads/21998eeb-ed54-4914-9844-7a4b94cb285/"+attributes[:results], :mass_params_id => mass_param.id, :mass_data_id => mass_datum.id, :user_id => 1, :flag => true)
+  end
+end
+
+
 Given /^I am logged in/ do
   step 'I am on the home page'
   step 'I follow "Login"'
@@ -72,10 +82,51 @@ When /^I visit the (.*?) page$/ do |page_name|
   end
 end
 
+Then(/^I should see a list of all my data, params, and results$/) do
+  step 'I should see "Data"'
+  step 'I should see "Params"'
+  step 'I should see "Results"'
+  step 'I should see "Submission Date"'
+  table_count = page.all("table tr").count
+  db_count = User.find(1).results.count + 1
+  assert(table_count == db_count, table_count.to_s + " does not equal " + db_count.to_s)
+end
+
+Given(/^I upload an xml and param file$/) do
+  mass_datum = MassDatum.create(:s3id => "uploads/21998eeb-ed54-4914-9844-7a4b94008985/mass_data.xml", :user_id => 1)
+  mass_param = MassParam.create(:s3id => "uploads/21998eeb-ed54-4914-9844-7a4b94008fff/mass_params.txt", :user_id => 1)
+  result = Result.create(:s3id => nil, :mass_params_id => mass_param.id, :mass_data_id => mass_datum.id, :user_id => 1, :flag => false)
+end
+
+Given(/^I upload just an xml file$/) do
+  mass_datum = MassDatum.create(:s3id => "uploads/21998eeb-ed54-4914-9844-7a4b94008985/mass_data.xml", :user_id => 1)
+  result = Result.create(:s3id => nil, :mass_data_id => mass_datum.id, :user_id => 1, :flag => false)
+end
+
+Given(/^I upload just a param file$/) do
+  mass_param = MassParam.create(:s3id => "uploads/21998eeb-ed54-4914-9844-7a4b94008fff/mass_params.txt", :user_id => 1)
+  result = Result.create(:s3id => nil, :mass_params_id => mass_param.id, :user_id => 1, :flag => false)
+end
+
+
+Given(/^I should see the files I uploaded$/) do
+  step 'I should see "mass_data.xml"'
+  step 'I should see "mass_params.txt"'
+end
+
+
 Then /^I should receive the file "(.*)"$/ do |filename|
   result = page.response_headers['Content-Type'].should == "application/octet-stream"
   if result
     result = page.response_headers['Content-Disposition'].should =~ /attachment; filename="#{filename}"/
   end
   result
+end
+
+Given /^I am not on the home page/ do
+  visit citations_path
+end
+
+Given /^I click on the icon/ do
+  click_link("Icon")
 end

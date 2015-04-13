@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150401193857) do
+ActiveRecord::Schema.define(:version => 20150409001654) do
 
   create_table "mass_data", :force => true do |t|
     t.string   "title"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20150401193857) do
     t.integer  "mass_params_id"
     t.integer  "mass_data_id"
     t.integer  "user_id"
+    t.boolean  "flag"
   end
 
   add_index "results", ["mass_data_id"], :name => "index_results_on_mass_data_id"

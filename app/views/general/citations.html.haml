@@ -1,18 +1,14 @@
--#  This file is app/views/general/index.html.haml
+-#  This file is app/views/general/citations.html.haml
 -#  To disable buttons, :disabled => 'true'
 
-%h1 This is the Index
+%h1 Citations
 
 %div{:id => 'center-parent'}
-  = render "sidebar"
 
   %div{:class => 'card', :id => 'center'}
-    %div{:class => 'content'}
+    %div{:id => 'content'}
       %p 1.  Eget consequat rhoncus ultricies neque ut eu. Pede nec rutrum morbi quisque felis erat, rhoncus vitae wisi nibh fusce mi, in massa id lobortis nulla ipsum. Nullam odio magna, in illo mauris aliquam rutrum. Semper ornare felis, pede gravida consectetuer, lacus est vehicula pede. Dolor lorem quis, donec dui orci, egestas tempus congue, pretium facilisi mauris ipsum aliquam. Praesent vestibulum dignissim ligula donec maecenas urna. Enim lectus risus nunc, elementum diam sed, fusce ac libero leo in in justo, lectus justo tempor viverra aliquam. Gravida ullamcorper bibendum at facilisis vivamus minus, proin donec erat suscipit, ut mauris cum vel, venenatis donec odio fusce lectus egestas, mauris eu lorem lectus. Nisl posuere tincidunt vitae, tellus leo in fermentum lectus tempus.
 
       %p 2.  Eget consequat rhoncus ultricies neque ut eu. Pede nec rutrum morbi quisque felis erat, rhoncus vitae wisi nibh fusce mi, in massa id lobortis nulla ipsum. Nullam odio magna, in illo mauris aliquam rutrum. Semper ornare felis, pede gravida consectetuer, lacus est vehicula pede. Dolor lorem quis, donec dui orci, egestas tempus congue, pretium facilisi mauris ipsum aliquam. Praesent vestibulum dignissim ligula donec maecenas urna. Enim lectus risus nunc, elementum diam sed, fusce ac libero leo in in justo, lectus justo tempor viverra aliquam. Gravida ullamcorper bibendum at facilisis vivamus minus, proin donec erat suscipit, ut mauris cum vel, venenatis donec odio fusce lectus egestas, mauris eu lorem lectus. Nisl posuere tincidunt vitae, tellus leo in fermentum lectus tempus.
 
       %p 3.  Eget consequat rhoncus ultricies neque ut eu. Pede nec rutrum morbi quisque felis erat, rhoncus vitae wisi nibh fusce mi, in massa id lobortis nulla ipsum. Nullam odio magna, in illo mauris aliquam rutrum. Semper ornare felis, pede gravida consectetuer, lacus est vehicula pede. Dolor lorem quis, donec dui orci, egestas tempus congue, pretium facilisi mauris ipsum aliquam. Praesent vestibulum dignissim ligula donec maecenas urna. Enim lectus risus nunc, elementum diam sed, fusce ac libero leo in in justo, lectus justo tempor viverra aliquam. Gravida ullamcorper bibendum at facilisis vivamus minus, proin donec erat suscipit, ut mauris cum vel, venenatis donec odio fusce lectus egestas, mauris eu lorem lectus. Nisl posuere tincidunt vitae, tellus leo in fermentum lectus tempus.
-
-    %div
-    = button_to 'Upload Data', new_mass_datum_path, :class => 'center-btn btn', :method => :get

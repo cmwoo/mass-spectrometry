@@ -1,27 +1,16 @@
 
 #instead of web_steps and paths
-
-module WithinHelpers
-  def with_scope(locator)
-    locator ? within(*selector_for(locator)) { yield } : yield
-  end
-end
-World(WithinHelpers)
-
-# Single-line step scoper
-When /^(.*) within (.*[^:])$/ do |step, parent|
-  with_scope(parent) { When step }
-end
-
 When /^(?:|I )(?:should be|am) on (.+)$/ do |page_name|
   case page_name
     when /the Upload XML page/ then visit new_mass_datum_path
     when /the Upload Parameters page/ then visit new_mass_param_path
     when /the Review and Run page/ then visit review_path
-		when /^the signup page$/ then visit new_user_registration_path
+    when /the downloads page/ then visit examples_path
+    when /^the signup page$/ then visit new_user_registration_path
     when /^the login page$/ then visit user_session_path
     when /^the home page$/ then visit root_path
     when /^the edit profile page$/ then visit edit_user_registration_path
+    when /^the user information page$/ then visit uploads_path
   end
 end
 
@@ -69,10 +58,70 @@ Given /^the following accounts exist:$/ do |table|
   end
 end
 
+Given(/^the following results \- params \- data files exist for the user$/) do |table|
+  table.hashes.each do |attributes|
+    mass_datum = MassDatum.create(:s3id => "uploads/21998eeb-ed54-4914-9844-7a4b94008985/"+attributes[:data], :user_id => 1)
+    mass_param = MassParam.create(:s3id => "uploads/21998eeb-ed54-4914-9844-7a4b94008fff/"+attributes[:params], :user_id => 1)
+    result = Result.create(:s3id => "uploads/21998eeb-ed54-4914-9844-7a4b94cb285/"+attributes[:results], :mass_params_id => mass_param.id, :mass_data_id => mass_datum.id, :user_id => 1, :flag => true)
+  end
+end
+
+
 Given /^I am logged in/ do
   step 'I am on the home page'
   step 'I follow "Login"'
   step 'I fill in "user_email" with "chemist@gmail.com"'
   step 'I fill in "user_password" with "aaaaaaaa"'
   step 'I press "Log in"'
+end
+
+When /^I visit the (.*?) page$/ do |page_name|
+  case page_name
+    when /the Upload XML page/ then visit new_mass_datum_path
+    when /the Upload Parameters page/ then visit new_mass_param_path
+  end
+end
+
+Then(/^I should see a list of all my data, params, and results$/) do
+  step 'I should see "Data"'
+  step 'I should see "Params"'
+  step 'I should see "Results"'
+  step 'I should see "Submission Date"'
+  table_count = page.all("table tr").count
+  db_count = User.find(1).results.count + 1
+  assert(table_count == db_count, table_count.to_s + " does not equal " + db_count.to_s)
+end
+
+Given(/^I upload an xml and param file$/) do
+  mass_datum = MassDatum.create(:s3id => "uploads/21998eeb-ed54-4914-9844-7a4b94008985/mass_data.xml", :user_id => 1)
+  mass_param = MassParam.create(:s3id => "uploads/21998eeb-ed54-4914-9844-7a4b94008fff/mass_params.txt", :user_id => 1)
+  result = Result.create(:s3id => nil, :mass_params_id => mass_param.id, :mass_data_id => mass_datum.id, :user_id => 1, :flag => false)
+end
+
+Given(/^I upload just an xml file$/) do
+  mass_datum = MassDatum.create(:s3id => "uploads/21998eeb-ed54-4914-9844-7a4b94008985/mass_data.xml", :user_id => 1)
+  result = Result.create(:s3id => nil, :mass_data_id => mass_datum.id, :user_id => 1, :flag => false)
+end
+
+Given(/^I upload just a param file$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+
+Given(/^I should see the files I uploaded$/) do
+  step 'I should see "mass_data.xml"'
+  step 'I should see "mass_params.txt"'
+end
+
+
+Then /^I should receive the file "(.*)"$/ do |filename|
+  pending
+end
+
+Given /^I am not on the home page/ do
+  visit citations_path
+end
+
+Given /^I click on the icon/ do
+  find('img[@alt='Icon']').click
 end

@@ -35,10 +35,9 @@ var s3_upload_file = function(url, formData) {
 
         // extract key and generate URL from response
         var key   = $(data.jqXHR.responseXML).find("Key").text();
-        var url   = '//<%= @s3_direct_post.url.host %>/' + key;
 
         // create hidden field
-        var input = $("<input />", { type:'hidden', name: fileInput.attr('name'), value: url })
+        var input = $("<input />", { type:'hidden', name: 's3_key', value: key })
         form.append(input);
       },
       fail: function(e, data) {

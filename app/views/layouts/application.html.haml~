@@ -3,7 +3,29 @@
   %head
     %title Mass Spectrometry
     = stylesheet_link_tag 'application'
-    %span{:class => "card", :id=>"header"} ICON
+    = javascript_include_tag 'application'
+    %div{:class => "card", :id=>"header"} 
+      = image_tag asset_path("icon.png"), :size => '75x75'
+      %div{:id => "headerLinks"}
+        = link_to 'Home', root_path
+        |
+        = link_to ' About', about_path
+        |
+        = link_to ' Examples', examples_path 
+        - if user_signed_in?
+          |
+          = link_to " Uploads", uploads_path
+        %br
+        - if user_signed_in?
+          = "Logged in as #{current_user.email}"
+          |
+          = link_to " Edit Profile", edit_user_registration_path
+          |
+          = link_to " Logout", destroy_user_session_path, :method => :delete
+        - else
+          = link_to "Signup", new_user_registration_path
+          |
+          = link_to " Login", new_user_session_path
 
   %body
     #main
@@ -11,6 +33,8 @@
         #notice.message= flash[:notice]
       - elsif flash[:warning]
         #warning.message= flash[:warning]
+      - elsif flash[:alert]
+        #alert.message= flash[:alert]
 
       = yield
   %footer#footer

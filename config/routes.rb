@@ -1,5 +1,7 @@
 MassSpec::Application.routes.draw do
 
+  get "user_uploads/uploads"
+
   devise_for :users
 
   get "general/index"
@@ -19,12 +21,17 @@ MassSpec::Application.routes.draw do
   #   resources :products
 
   resources :mass_data, :mass_params
-  match '/review' => 'general#review', :as => :review
+  match '/review' => 'results#review', :as => :review
+  match '/finish' => 'results#index', :as => :finish_index
   match '/review/upload' => 'general#upload', :as => :upload
   match '/mass_data/upload' => 'mass_data#upload', :as => :upload_data
   match '/mass_params/upload' => 'mass_params#upload', :as => :upload_params
   match '/about' => 'general#about', :as => :about
   match '/downloads' => 'general#downloads', :as => :downloads
+  match '/citations' => 'general#citations', :as => :citations
+  match '/examples' => 'general#examples', :as => :examples
+  match '/uploads' => 'user_uploads#uploads', :as => :uploads
+  match '/instructions' => 'general#instructions', :as => :instructions
   root :to => 'general#index'
 
   match '/downloads/:file' => 'general#download_file', :as => :download_file, :constraints  => { :file => /[0-z\.]+/ }

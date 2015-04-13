@@ -8,12 +8,13 @@
 
   %div{:class => 'card', :id => 'center'}
     %div{:id => 'content'}
-      %p Please select an xml file to run.
-
-      %div{:id => 'form'}
-        = form_tag upload_data_path, :multipart => true do
-          %div= file_field_tag :xml_file, :class => 'form-item'
-          %div= text_field_tag "Email", nil, placeholder: "Enter Email Address", :class => 'form-item'
-          %div= submit_tag "Submit", :class => 'center-btn btn form-item'
+      %p #{@message}
       
-    -# = button_to 'Next', new_mass_param_path, :class => 'center-btn btn', :method => :get
+      %div{:class => 'directUpload'}
+        %div= file_field_tag :xml_file, :class => 'form-item', :data => {:url => @s3_direct_post.url.to_s,
+        :formData => @s3_direct_post.fields.to_json.html_safe }
+        = form_for(@mass_datum, html: { class: "directUpload" }) do |f| 
+          = f.submit 'Next',:class => 'center-btn btn'
+
+:javascript 
+  s3_upload_file('#{@s3_direct_post.url}', #{@s3_direct_post.fields.to_json.html_safe});

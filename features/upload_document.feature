@@ -52,3 +52,19 @@ Scenario: upload a param file without logging in
   Given I am on the home page
   And I visit the Upload Parameters page
   Then I should be on the login page
+
+Scenario: upload a data file when there's already an uploaded data file
+  Given I am logged in
+  And I am on the Upload XML page
+  And I upload just an xml file
+  And I press "Save and Next"
+  And I visit the Upload XML page
+  Then I should see "You have already uploaded mass_data.xml"
+
+Scenario: upload a params file when there's already an uploaded params file
+  Given I am logged in
+  And I am on the Upload Parameters page
+  And I upload just a param file
+  And I press "Save and Next"
+  And I visit the Upload Parameters page
+  Then I should see "You have already uploaded mass_params.txt"

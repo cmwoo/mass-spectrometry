@@ -1,6 +1,6 @@
 Feature: Download files off of downloads page
   As a chemist
-  I want to download the executable
+  I want to download the executables
   So that I can run the program locally
 
 Scenario: User can download the windows executable

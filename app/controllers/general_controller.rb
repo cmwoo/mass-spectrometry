@@ -25,4 +25,7 @@ class GeneralController < ApplicationController
   def about
   end
 
+  def instructions
+  end
+
 end

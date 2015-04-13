@@ -140,6 +140,15 @@ p{
   padding: 5px;
 }
 
+
+.btn:disabled{
+  color: Grey;
+}
+.btn:hover:disabled{
+  color: Grey;
+  background: White;
+}
+
 .center-btn{
   min-width: 80px;
   width: auto;
@@ -149,6 +158,7 @@ p{
   -moz-border-radius: 0;
   border-radius: 0px;
   border: none;
+  margin: 10px;
 }
 
 .center-btn:hover {
@@ -157,17 +167,24 @@ p{
   color: White;
 }
 
+.center-btn:disabled{
+  background: Grey;
+  color: White;
+}
+
 .center-btn:hover:disabled {
   background: Grey;
   text-decoration: none;
 }
 
-.btn:disabled{
-  color: Grey;
+.field {
+  margin: 5px;
+  font-size: 11pt;
 }
-.btn:hover:disabled{
-  color: Grey;
-  background: White;
+
+.field {
+  margin: 5px;
+  font-size: 11pt;
 }
 
 #warning, #alert {
@@ -184,4 +201,10 @@ p{
   padding: 4px;
 }
 
+.indent {
+  padding-left: 20px;
+}
 
+.indent2 {
+  padding-left: 40px;
+}

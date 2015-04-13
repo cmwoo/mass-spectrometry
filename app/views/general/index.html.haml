@@ -1,18 +1,36 @@
 -#  This file is app/views/general/index.html.haml
 -#  To disable buttons, :disabled => 'true'
 
-%h1 This is the Index
+%h1 Mass Spectrometry
 
 %div{:id => 'center-parent'}
   = render "sidebar"
 
   %div{:class => 'card', :id => 'center'}
     %div{:id => 'content'}
-      %p 1.  Eget consequat rhoncus ultricies neque ut eu. Pede nec rutrum morbi quisque felis erat, rhoncus vitae wisi nibh fusce mi, in massa id lobortis nulla ipsum. Nullam odio magna, in illo mauris aliquam rutrum. Semper ornare felis, pede gravida consectetuer, lacus est vehicula pede. Dolor lorem quis, donec dui orci, egestas tempus congue, pretium facilisi mauris ipsum aliquam. Praesent vestibulum dignissim ligula donec maecenas urna. Enim lectus risus nunc, elementum diam sed, fusce ac libero leo in in justo, lectus justo tempor viverra aliquam. Gravida ullamcorper bibendum at facilisis vivamus minus, proin donec erat suscipit, ut mauris cum vel, venenatis donec odio fusce lectus egestas, mauris eu lorem lectus. Nisl posuere tincidunt vitae, tellus leo in fermentum lectus tempus.
+      %p Isotopic signature transfer and mass pattern prediction (IsoStamp) is a computational algorithm for the targeted detection and identification of modified species by mass spectrometry (MS). The IsoStamp algorithm uses predictive pattern matching to produce peak lists of isotopically recoded species.  The peak lists are used for the immediate validation of modified species by full scan MS and to guide subsequent inclusion list-driven tandem MS.
+     
+      %p <br /> 
 
-      %p 2.  Eget consequat rhoncus ultricies neque ut eu. Pede nec rutrum morbi quisque felis erat, rhoncus vitae wisi nibh fusce mi, in massa id lobortis nulla ipsum. Nullam odio magna, in illo mauris aliquam rutrum. Semper ornare felis, pede gravida consectetuer, lacus est vehicula pede. Dolor lorem quis, donec dui orci, egestas tempus congue, pretium facilisi mauris ipsum aliquam. Praesent vestibulum dignissim ligula donec maecenas urna. Enim lectus risus nunc, elementum diam sed, fusce ac libero leo in in justo, lectus justo tempor viverra aliquam. Gravida ullamcorper bibendum at facilisis vivamus minus, proin donec erat suscipit, ut mauris cum vel, venenatis donec odio fusce lectus egestas, mauris eu lorem lectus. Nisl posuere tincidunt vitae, tellus leo in fermentum lectus tempus.
+      =image_tag asset_path("aboutimg.png")
 
-      %p 3.  Eget consequat rhoncus ultricies neque ut eu. Pede nec rutrum morbi quisque felis erat, rhoncus vitae wisi nibh fusce mi, in massa id lobortis nulla ipsum. Nullam odio magna, in illo mauris aliquam rutrum. Semper ornare felis, pede gravida consectetuer, lacus est vehicula pede. Dolor lorem quis, donec dui orci, egestas tempus congue, pretium facilisi mauris ipsum aliquam. Praesent vestibulum dignissim ligula donec maecenas urna. Enim lectus risus nunc, elementum diam sed, fusce ac libero leo in in justo, lectus justo tempor viverra aliquam. Gravida ullamcorper bibendum at facilisis vivamus minus, proin donec erat suscipit, ut mauris cum vel, venenatis donec odio fusce lectus egestas, mauris eu lorem lectus. Nisl posuere tincidunt vitae, tellus leo in fermentum lectus tempus.
+      %p <br /> We provide three IsoStamp algorithms with further description and references below.
+
+      %p <br /> (1) Graph_Search v1.9:  mzXML files in profile mode are processed using a continuous wavelet transform for peak optimization.  A graph theoretic algorithm is then applied to predict the presence of patterned species. Graph_Search scores based on the clustered peak shape as compared to a theoretical curve, peak abundance, and charge states.
+
+      %p <br /> For references see:
+
+      %p Palaniappan, K. K.; Pitcher, A. A.; Smart, B. P.; Spiciarich, D. R.; Iavarone, A. T.; Bertozzi, C. R.  “Isotopic signature transfer and mass pattern prediction (IsoStamp): An enabling technique for chemically-directed proteomics.”  ACS Chem. Biol. 2011, 6, 829–836.
+
+      %p Austin Pitcher Thesis (LINK).
+
+      %p <br /> (2) Tag_Finder: mzXML files in centroided mode are processed by comparing grouped spectra to the predicted pattern as a function of mass and charge.  Tag_Finder scores on the difference between the predicted and observed peak distribution for tagged vs. untagged species.
+
+      %p <br /> For references see:  manuscript in preparation
+
+      %p <br /> (3) MS2_Filter: Uses the Tag_Finder pattern matching algorithm and the presence of signature fragment peaks to select tandem MS spectra derived from tagged species.  The filtered output file is then used for targeted database searching.
+
+      %p <br /> For references see:  manuscript in preparation
 
     %div
-    = button_to 'Upload Data', new_mass_datum_path, :class => 'center-btn btn', :method => :get
+    = button_to 'Instructions', instructions_path, :class => 'center-btn btn', :method => :get

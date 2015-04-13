@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe MassParamsController do
 
-before :each do
+  before :each do
     @dataxml = fixture_file_upload('/files/test_data.xml', 'text/xml')
     @email = "example@example.com"
     @paramsxml = fixture_file_upload('/files/test_params.txt', 'text/xml')
@@ -10,15 +10,19 @@ before :each do
     #@paramsother = fixture_file_upload('/files/test_params.bad.txt', 'text/txt')
   end
 
-	describe 'upload a mass data' do
+  describe 'upload a mass data' do
     it "can upload a param file" do
       # fake_data = mock('MassData', :title => 'test_data.xml')
       # MassData.stub(:create!).with({:file => @dataxml}).and_return(fake_data)
       user = double('user')
       allow(request.env['warden']).to receive(:authenticate!) { user }
       allow(controller).to receive(:current_user) { user }
-      
-      post :upload, :param_file => @paramsxml
+      user.stub(:id).and_return(1)
+
+      result2 = Result.create(:user_id => 1)
+      user.stub(:current_result).and_return(result2)
+
+      post :create, :s3_key => 'key'
       response.should redirect_to review_path
     end
 
@@ -29,12 +33,22 @@ before :each do
       allow(request.env['warden']).to receive(:authenticate!) { user }
       allow(controller).to receive(:current_user) { user }
 
-      post :upload, :xml_file => nil, :email => @email
+      post :create, :s3_key => nil, :email => @email
       response.should redirect_to new_mass_param_path
       flash[:warning].should == "No file input."
     end
 
+    it "should create a new result result if necessary" do
+      user = double('user')
+      allow(request.env['warden']).to receive(:authenticate!) { user }
+      allow(controller).to receive(:current_user) { user }
+      user.stub(:id).and_return(1)
+      user.should_receive(:current_result).and_return(nil)
+      Result.should_receive(:create)
 
+      post :create, :s3_key => 'key'
+      response.should redirect_to review_path
+    end
 
   #  it "should not upload a non xml file" do
   #    MassData.stub(:create!).with({:file => @dataother})
