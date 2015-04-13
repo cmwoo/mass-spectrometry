@@ -24,8 +24,10 @@ MassSpec::Application.routes.draw do
   match '/mass_data/upload' => 'mass_data#upload', :as => :upload_data
   match '/mass_params/upload' => 'mass_params#upload', :as => :upload_params
   match '/about' => 'general#about', :as => :about
-  match '/examples' => 'general#examples', :as => :examples
+  match '/downloads' => 'general#downloads', :as => :downloads
   root :to => 'general#index'
+
+  match '/downloads/:file' => 'general#download_file', :as => :download_file, :constraints  => { :file => /[0-z\.]+/ }
 
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'

@@ -1,0 +1,22 @@
+
+-#  This file is app/views/general/examples.html.haml
+-#  To disable buttons, :disabled => 'true'
+
+%h1 This is the Downloads Files Page
+
+%div{:id => 'center-parent'}
+
+  %div{:class => 'card', :id => 'center'}
+    %div{:id => 'content'}
+      %p Graph Search Downloads 
+      / %p <br />
+      / = link_to("GraphSearch.exe", "/downloads/graph_search.exe") 
+      / %p <br />
+      / = link_to("SampleParams.params", "/downloads/rwoo_charge1_l.params") 
+      %p <br />
+      = link_to "GraphSearch.exe", download_file_path('graph_search.exe')
+      %p <br />
+      = link_to "SampleParams.params", download_file_path('rwoo_charge1_l.params')
+
+
+
