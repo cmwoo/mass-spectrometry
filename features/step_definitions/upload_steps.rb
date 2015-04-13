@@ -73,5 +73,9 @@ When /^I visit the (.*?) page$/ do |page_name|
 end
 
 Then /^I should receive the file "(.*)"$/ do |filename|
-  pending
+  result = page.response_headers['Content-Type'].should == "application/octet-stream"
+  if result
+    result = page.response_headers['Content-Disposition'].should =~ /attachment; filename="#{filename}"/
+  end
+  result
 end

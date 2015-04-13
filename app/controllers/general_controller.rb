@@ -1,6 +1,6 @@
 class GeneralController < ApplicationController
-  @@file_downloads = ["graph_search.exe", "rwoo_charge1_l.params"]
-  @@downloads_path = File.join(Rails.root, "public", "downloads")
+  @@file_downloads = ["graph_search.exe", "sample_params.params"]
+  @@downloads_path = File.join(Rails.root, "public", "downloads_page")
 
   def index
   end
@@ -15,11 +15,11 @@ class GeneralController < ApplicationController
     @file = params[:file]
     puts @file
     if @@file_downloads.include? @file
-      send_file File.join(@@downloads_path, @file), :disposition => 'attachment;filename=\"#{@file}\"', :type => 'application/octet-stream'
-      redirect_to examples_path
+      send_file(File.join(@@downloads_path, @file), 
+        :disposition => 'attachment',
+        :filename => @file, 
+        type: 'application/octet-stream')
     end
-    redirect_to examples_path
-
   end
 
   def about
