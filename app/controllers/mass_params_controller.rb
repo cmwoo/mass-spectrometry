@@ -29,5 +29,12 @@ class MassParamsController < ApplicationController
     @s3_direct_post = S3_BUCKET.presigned_post(key: "params/#{current_user.id}/${filename}", success_action_status: 201)
     @mass_param = MassParam.new
   end
+  
+  def new_file
+    file = params[:file]
+    filename = file[:title]
+    contents = "field = " + file[:field]
+    send_data(contents, :filename => filename)
+  end
 
 end

@@ -1,0 +1,10 @@
+= form_tag mass_params_new_file_path(@file), :method => :put do
+
+  = label :file, :title, 'Title'
+  = text_field :file, 'title'
+  <br>
+  = label :file, :field, 'Field'
+  = text_field :file, 'field'
+  <br>
+  = submit_tag 'Save File'
+
