@@ -11,16 +11,24 @@ var s3_upload_file = function(url, formData) {
       fileInput:       fileInput,
       url:             url,
       type:            'POST',
-      autoUpload:       true,
       formData:         formData,
       paramName:        'file', // S3 does not like nested name fields i.e. name="user[avatar_url]"
       dataType:         'XML',  // S3 returns XML if success_action_status is set to 201
       replaceFileInput: false,
+      add: function (e,data){
+        var uploadFile = data.files[0];
+        if (!(/\.(params|mzXML)$/i).test(uploadFile.name)) {
+            alert('Incorrect file type');
+        }else {
+            data.submit();
+        }
+      },
       progressall: function (e, data) {
         var progress = parseInt(data.loaded / data.total * 100, 10);
         progressBar.css('width', progress + '%')
       },
       start: function (e) {
+        e.preventDefault()
         submitButton.prop('disabled', true);
 
         progressBar.
