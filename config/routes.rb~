@@ -30,6 +30,7 @@ MassSpec::Application.routes.draw do
   match '/examples' => 'general#examples', :as => :examples
   match '/uploads' => 'user_uploads#uploads', :as => :uploads
   match '/instructions' => 'general#instructions', :as => :instructions
+  match '/mass_data/choose' => 'mass_data#choose', :as => :choose_data
   root :to => 'general#index'
 
   devise_scope :user do

@@ -204,3 +204,23 @@ p{
 .indent2 {
   padding-left: 40px;
 }
+
+#tabs {
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+}
+
+.tab {
+  width: 100%;
+  display: inline-block;
+}
+
+.tab_buttons{
+  width: 45%;
+  display: inline-block;
+}
+
+.msg {
+  text-align: center;
+}
