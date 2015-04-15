@@ -11,11 +11,8 @@ Background:
   And I am logged in
 
 Scenario: upload and run graph search program on data
-  Given I upload an xml and param file
-  And I am on the Review and Run page
-  And I should see the files I uploaded
-  And I press "Run"
-  Then I should be on the Finish page
+  Given I am on the Review and Run page
+  And I press "Next"
   And I should see "Graph search is successfully running. You will receive an email when your analysis is complete."
 
 Scenario: do not run if no params file selected
