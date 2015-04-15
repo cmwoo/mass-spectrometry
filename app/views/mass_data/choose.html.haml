@@ -12,5 +12,13 @@
       = button_to 'Choose Existing Files', choose_data_path, :class => 'center-btn btn tab', :form => {:class => 'tab_buttons'}, :method => :get, :disabled => @disabled_page
 
     %div{:id => 'content'}
-      %p{:class => 'msg'} #{@message}
-     
+      %div
+        = form_tag update_choice_path, :method => :post, :id => "data_form" do
+          %p{:class => 'msg'} #{@message}
+          %p <br />
+          - @all_data.each do |data|
+            %div{:id => 'tabs'}
+              = radio_button_tag "data_id", data.id
+              = data.get_title
+          %p <br />
+          = submit_tag 'Submit', :id => 'data_submit'
