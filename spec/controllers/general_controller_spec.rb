@@ -8,7 +8,7 @@ describe GeneralController do
 #     #@paramsother = fixture_file_upload('/files/test_params.bad.txt', 'text/txt')
 #   end
 
-# 	describe 'upload a mass data' do
+#   describe 'upload a mass data' do
 #     it "can upload a mass data xml file" do
 #       # fake_data = mock('MassData', :title => 'test_data.xml')
 #       # MassData.stub(:create!).with({:file => @dataxml}).and_return(fake_data)
@@ -25,7 +25,7 @@ describe GeneralController do
 #   #  end
 #   end
 
-# 	describe 'upload a param data' do
+#   describe 'upload a param data' do
 #     it "can upload a valid mass param file" do
 #       # fake_data = mock('MassParams', :title => 'test_params.xml')
 #       # MassParams.stub(:create!).with({:file => @paramsxml}).and_return(fake_data)
@@ -48,6 +48,14 @@ describe GeneralController do
 #       response.should be_success
 #     end
 #   end
-
+  
+  describe "test finish" do
+    it "should call ssh function" do
+      r = double("Result")
+      Result.stub(:delay).and_return(r)
+      r.should_receive(:start_ssh)
+      post :finish
+    end
+  end
 
 end
