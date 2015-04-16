@@ -9,7 +9,7 @@
   %div{:class => 'card', :id => 'center'}
     %div{:id => 'tabs'}
       = button_to 'Upload Data', new_mass_datum_path, :class => 'center-btn btn tab', :form => {:class => 'tab_buttons'}, :method => :get, :disabled => @disabled_page
-      = button_to 'Choose Existing Files', choose_mass_data_path, :class => 'center-btn btn tab', :form => {:class => 'tab_buttons'}, :method => :get
+      = button_to 'Choose Existing Files', choose_data_path, :class => 'center-btn btn tab', :form => {:class => 'tab_buttons'}, :method => :get
 
     %div{:id => 'content'}
       %p{:class => 'msg'} #{@message}
