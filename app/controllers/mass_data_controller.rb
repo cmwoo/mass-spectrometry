@@ -48,7 +48,7 @@ class MassDataController < ApplicationController
   end
 
   def update_choice
-    data = MassDatum.find(params[:data_id])
+    data = MassDatum.get_data_or_nil(params[:data_id])
     if !data
       flash[:warning] = "Please choose an existing .zxml file."
       return redirect_to choose_data_path

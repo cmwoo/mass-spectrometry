@@ -47,14 +47,13 @@ class MassParamsController < ApplicationController
   end
 
   def update_params
-    data = MassParam.find(params[:data_id])
+    data = MassParam.get_param_or_nil(params[:data_id])
     if !data
       flash[:warning] = "Please choose an existing params file."
       return redirect_to choose_params_path
     end
     current_result = current_user.current_result
     if current_result
-      flash[:warning] = current_result.mass_params_id
       current_result.mass_params_id = params[:data_id]
       current_result.save
     else
