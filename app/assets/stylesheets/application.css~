@@ -51,7 +51,7 @@ p{
 #center {
   width: 800px;
   display: inline-block;
-  padding: 10px;
+  padding: 20px;
   /*min-height: 195px; /* Same Height as Sidebar -20px padding */
   height: auto;
 }
@@ -174,12 +174,8 @@ p{
 
 .center-btn:hover:disabled {
   background: Grey;
+  color: White;
   text-decoration: none;
-}
-
-.field {
-  margin: 5px;
-  font-size: 11pt;
 }
 
 .field {
@@ -207,4 +203,24 @@ p{
 
 .indent2 {
   padding-left: 40px;
+}
+
+#tabs {
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+}
+
+.tab {
+  width: 100%;
+  display: inline-block;
+}
+
+.button_to{
+  width: 45%;
+  display: inline-block;
+}
+
+.msg {
+  text-align: center;
 }

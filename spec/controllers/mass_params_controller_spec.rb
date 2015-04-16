@@ -50,6 +50,16 @@ describe MassParamsController do
       response.should redirect_to review_path
     end
 
+    it "should not accept nonexisting ids" do
+      user = double('user')
+      allow(request.env['warden']).to receive(:authenticate!) { user }
+      allow(controller).to receive(:current_user) { user }
+      
+      post :update_params, :data_id => 100
+      response.should redirect_to choose_params_path
+      flash[:warning].should == "Please choose an existing params file."
+    end
+
   #  it "should not upload a non xml file" do
   #    MassData.stub(:create!).with({:file => @dataother})
   #    post :uploadData, :upload => @dataother

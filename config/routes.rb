@@ -19,7 +19,10 @@ MassSpec::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-
+  match 'mass_params/update_params' => 'mass_params#update_params', :as => :update_params
+  match 'mass_params/choose' => 'mass_params#choose', :as => :choose_params
+  match '/mass_data/choose' => 'mass_data#choose', :as => :choose_data
+  match '/mass_data/update_choice' => 'mass_data#update_choice', :as => :update_choice
   resources :mass_data, :mass_params
   match '/review' => 'results#review', :as => :review
   match '/finish' => 'results#index', :as => :finish_index

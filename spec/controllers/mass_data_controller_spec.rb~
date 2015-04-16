@@ -48,7 +48,7 @@ describe MassDataController do
       result.should_receive(:mass_data_id)
 
       post :create, :s3_key => 'key'
-      response.should redirect_to review_path
+      response.should redirect_to new_mass_param_path
     end
     #it "should not accept an empty email" do
     #  # fake_data = mock('MassData', :title => 'test_data.xml')
