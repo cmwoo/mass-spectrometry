@@ -22,7 +22,7 @@ MassSpec::Application.routes.draw do
 
   resources :mass_data, :mass_params
   match '/review' => 'results#review', :as => :review
-  match '/finish' => 'results#index', :as => :finish_index
+  get '/finish' => 'results#index', :as => :finish_index
   match '/review/upload' => 'general#upload', :as => :upload
   match '/mass_data/upload' => 'mass_data#upload', :as => :upload_data
   match '/mass_params/upload' => 'mass_params#upload', :as => :upload_params
@@ -33,6 +33,8 @@ MassSpec::Application.routes.draw do
   match '/uploads' => 'user_uploads#uploads', :as => :uploads
   match '/instructions' => 'general#instructions', :as => :instructions
   root :to => 'general#index'
+
+  post '/finish' => 'general#finish', :as => :post_finish
 
   match '/downloads/:file' => 'general#download_file', :as => :download_file, :constraints  => { :file => /[0-z\.]+/ }
 
