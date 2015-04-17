@@ -6,7 +6,6 @@ class MassParamsController < ApplicationController
       redirect_to new_mass_param_path
     else
       mass_param = MassParam.create(:s3id => params[:s3_key], :user_id => current_user.id)
-      debugger
       if current_user.current_result
         result = current_user.current_result
         result.mass_params_id = mass_param.id
