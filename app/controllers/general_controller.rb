@@ -13,12 +13,14 @@ class GeneralController < ApplicationController
 
   def download_file
     @file = params[:file]
-    puts @file
     if @@file_downloads.include? @file
       send_file(File.join(@@downloads_path, @file), 
         :disposition => 'attachment',
         :filename => @file, 
         type: 'application/octet-stream')
+    else
+      flash[:warning] = "Invalid filename"
+      redirect_to downloads_path
     end
   end
 

@@ -1,6 +1,26 @@
 require 'spec_helper'
 
 describe GeneralController do
+
+	describe 'download an executable file' do
+
+		before :each do 
+			@@file_downloads = ["graph_search.exe"]
+		end
+
+		it "show warning when passed invalid file" do
+			get :download_file, :file => 'missingfile.txt'
+   			expect(response).to redirect_to(downloads_path)
+    		expect(flash[:warning]).to be_present
+		end
+
+		it "can download an existing file" do
+			get :download_file, :file => 'graph_search.exe'
+			expect(response.status).to eq(200)
+		end
+
+
+	end
 #   before :each do
 #     @dataxml = fixture_file_upload('/files/test_data.xml', 'text/xml')
 #     @paramsxml = fixture_file_upload('/files/test_params.txt', 'text/xml')
