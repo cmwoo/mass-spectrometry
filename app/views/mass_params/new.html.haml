@@ -6,6 +6,10 @@
   = render "general/sidebar"
 
   %div{:class => 'card', :id => 'center'}
+    %div{:id => 'tabs'}
+      = button_to 'Upload Parameters File', new_mass_param_path, :class => 'center-btn btn tab', :form => {:class => 'tab_buttons'}, :method => :get, :disabled => @disabled_params
+      = button_to 'Choose Existing Files', choose_params_path, :class => 'center-btn btn tab', :form => {:class => 'tab_buttons'}, :method => :get
+
     %div{:id => 'content'}
       %p= @message
       

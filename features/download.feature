@@ -5,11 +5,10 @@ Feature: Download files off of downloads page
 
 Scenario: User can download the windows executable
   Given I am on the downloads page
-  When I follow "GraphSearch.exe"
-  Then I should receive the file "GraphSearch.exe"
+  When I follow "graph_search.exe"
+  Then I should receive the file "graph_search.exe"
 
 Scenario: User can download an example params file
   Given I am on the downloads page
-  When I follow "SampleParams.params"
-  Then I should receive the file "SampleParams.params"
-
+  When I follow "sample_params.params"
+  Then I should receive the file "sample_params.params"

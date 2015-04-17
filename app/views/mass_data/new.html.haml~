@@ -7,14 +7,18 @@
   = render "general/sidebar"
 
   %div{:class => 'card', :id => 'center'}
+    %div{:id => 'tabs'}
+      = button_to 'Upload Data', new_mass_datum_path, :class => 'center-btn btn tab', :form => {:class => 'tab_buttons'}, :method => :get, :disabled => @disabled_page
+      = button_to 'Choose Existing Files', choose_data_path, :class => 'center-btn btn tab', :form => {:class => 'tab_buttons'}, :method => :get
+
     %div{:id => 'content'}
-      %p #{@message}
+      %p{:class => 'msg'} #{@message}
       
       %div{:class => 'directUpload'}
         %div= file_field_tag :xml_file, :class => 'form-item', :data => {:url => @s3_direct_post.url.to_s,
         :formData => @s3_direct_post.fields.to_json.html_safe }
         = form_for(@mass_datum, html: { class: "directUpload" }) do |f| 
-          = f.submit 'Next',:class => 'center-btn btn'
+          = f.submit 'Save and Next',:class => 'center-btn btn'
 
 :javascript 
   s3_upload_file('#{@s3_direct_post.url}', #{@s3_direct_post.fields.to_json.html_safe});

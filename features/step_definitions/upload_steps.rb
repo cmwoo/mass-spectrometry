@@ -5,8 +5,8 @@ When /^(?:|I )(?:should be|am) on (.+)$/ do |page_name|
     when /the Upload XML page/ then visit new_mass_datum_path
     when /the Upload Parameters page/ then visit new_mass_param_path
     when /the Review and Run page/ then visit review_path
-    when /the downloads page/ then visit examples_path
-    when /^the signup page$/ then visit new_user_registration_path
+    when /the downloads page/ then visit downloads_path
+		when /^the signup page$/ then visit new_user_registration_path
     when /^the login page$/ then visit user_session_path
     when /^the home page$/ then visit root_path
     when /^the edit profile page$/ then visit edit_user_registration_path
@@ -112,6 +112,22 @@ Then(/^I should see a list of all my data, params, and results$/) do
   assert(table_count == db_count, table_count.to_s + " does not equal " + db_count.to_s)
 end
 
+Given(/^I see a list of existing parameters files/) do
+  table_count = page.all("input[type='radio']").count
+  db_count = MassParam.where(:user_id => 1).count
+  assert(table_count == db_count, table_count.to_s + " does not equal " + db_count.to_s)
+end
+
+Given(/^I see a list of existing data xml files/) do
+  table_count = page.all("input[type='radio']").count
+  db_count = MassDatum.where(:user_id => 1).count
+  assert(table_count == db_count, table_count.to_s + " does not equal " + db_count.to_s)
+end
+
+Given (/^I select an option/) do
+  choose('data_id_1')
+end
+
 Given(/^I upload an xml and param file$/) do
   mass_datum = MassDatum.create(:s3id => "uploads/21998eeb-ed54-4914-9844-7a4b94008985/mass_data.xml", :user_id => 1)
   mass_param = MassParam.create(:s3id => "uploads/21998eeb-ed54-4914-9844-7a4b94008fff/mass_params.txt", :user_id => 1)
@@ -136,7 +152,11 @@ end
 
 
 Then /^I should receive the file "(.*)"$/ do |filename|
-  pending
+  result = page.response_headers['Content-Type'].should == "application/octet-stream"
+  if result
+    result = page.response_headers['Content-Disposition'].should =~ /attachment; filename="#{filename}"/
+  end
+  result
 end
 
 Given /^I am not on the home page/ do

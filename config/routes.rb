@@ -19,18 +19,27 @@ MassSpec::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-
+  match 'mass_params/update_params' => 'mass_params#update_params', :as => :update_params
+  match 'mass_params/choose' => 'mass_params#choose', :as => :choose_params
+  match '/mass_data/choose' => 'mass_data#choose', :as => :choose_data
+  match '/mass_data/update_choice' => 'mass_data#update_choice', :as => :update_choice
   resources :mass_data, :mass_params
   match '/review' => 'results#review', :as => :review
-  match '/finish' => 'results#index', :as => :finish_index
+  get '/finish' => 'results#index', :as => :finish_index
   match '/review/upload' => 'general#upload', :as => :upload
   match '/mass_data/upload' => 'mass_data#upload', :as => :upload_data
   match '/mass_params/upload' => 'mass_params#upload', :as => :upload_params
+  match '/about' => 'general#about', :as => :about
+  match '/downloads' => 'general#downloads', :as => :downloads
   match '/citations' => 'general#citations', :as => :citations
   match '/examples' => 'general#examples', :as => :examples
   match '/uploads' => 'user_uploads#uploads', :as => :uploads
   match '/instructions' => 'general#instructions', :as => :instructions
   root :to => 'general#index'
+
+  post '/finish' => 'general#finish', :as => :post_finish
+
+  match '/downloads/:file' => 'general#download_file', :as => :download_file, :constraints  => { :file => /[0-z\.]+/ }
 
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'

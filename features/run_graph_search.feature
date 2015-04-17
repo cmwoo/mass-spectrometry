@@ -15,8 +15,7 @@ Scenario: upload and run graph search program on data
   And I am on the Review and Run page
   And I should see the files I uploaded
   And I press "Run"
-  Then I should be on the Finish page
-  And I should see "Graph search is successfully running. You will receive an email when your analysis is complete."
+  Then I should see "Graph search is successfully running. You will receive an email when your analysis is complete."
 
 Scenario: do not run if no params file selected
   Given I am on the Upload XML page
