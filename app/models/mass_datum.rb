@@ -9,7 +9,7 @@ class MassDatum < ActiveRecord::Base
     return t.captures[0]
   end
 
-  def self.get_data_or_nil(id)
+  def self.get_record_or_nil(id)
     begin
       return MassDatum.find(id)
     rescue ActiveRecord::RecordNotFound
