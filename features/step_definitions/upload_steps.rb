@@ -33,11 +33,29 @@ end
 # Reference: http://guides.rubyonrails.org/form_helpers.html
 
 Given(/^I upload an xml file$/) do
-  attach_file(:xml_file, File.join(Rails.root, 'features', 'upload-files', 'mass_xml.xml'))
+  attach_file(:xml_file, File.join(Rails.root, 'features', 'upload-files', 'mass_xml.mzXML'))
 end
 
 Given(/^I upload a param file$/) do
   attach_file(:param_file, File.join(Rails.root, 'features', 'upload-files', 'mass_param.txt'))
+end
+
+
+And /^I upload a file with an incorrect file type$/ do
+  if current_path == "/mass_data/new"
+    file_input_id = :xml_file
+  elsif current_path == "/mass_params/new"
+    file_input_id = :param_file
+  else
+    throw :TypeError, "current path not recognized as a file upload page"
+  end
+  attach_file(file_input_id, File.join(Rails.root, 'features', 'upload-files', 'bad_file.bad'))
+end
+
+Given /^the following accounts exist:$/ do |table|
+  table.hashes.each do |attributes|
+    User.create!(attributes)
+  end
 end
 
 Then /^(?:|I )should see "([^"]*)"$/ do |text|
@@ -48,14 +66,16 @@ Then /^(?:|I )should see "([^"]*)"$/ do |text|
   end
 end
 
-When /^(?:|I )follow "([^"]*)"$/ do |link|
-  click_link(link)
+Then /^(?:|I )should not see "([^"]*)"$/ do |text|
+  if page.respond_to? :should
+    page.should have_no_content(text)
+  else
+    assert page.has_no_content?(text)
+  end
 end
 
-Given /^the following accounts exist:$/ do |table|
-  table.hashes.each do |attributes|
-    User.create!(attributes)
-  end
+When /^(?:|I )follow "([^"]*)"$/ do |link|
+  click_link(link)
 end
 
 Given(/^the following results \- params \- data files exist for the user$/) do |table|
