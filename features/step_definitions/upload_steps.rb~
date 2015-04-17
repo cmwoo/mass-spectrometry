@@ -92,6 +92,18 @@ Then(/^I should see a list of all my data, params, and results$/) do
   assert(table_count == db_count, table_count.to_s + " does not equal " + db_count.to_s)
 end
 
+Given(/^I see a list of existing parameters files/) do
+  table_count = page.all("input[type='radio']").count
+  db_count = MassParam.where(:user_id => 1).count
+  assert(table_count == db_count, table_count.to_s + " does not equal " + db_count.to_s)
+end
+
+Given(/^I see a list of existing data xml files/) do
+  table_count = page.all("input[type='radio']").count
+  db_count = MassDatum.where(:user_id => 1).count
+  assert(table_count == db_count, table_count.to_s + " does not equal " + db_count.to_s)
+end
+
 Given(/^I upload an xml and param file$/) do
   mass_datum = MassDatum.create(:s3id => "uploads/21998eeb-ed54-4914-9844-7a4b94008985/mass_data.xml", :user_id => 1)
   mass_param = MassParam.create(:s3id => "uploads/21998eeb-ed54-4914-9844-7a4b94008fff/mass_params.txt", :user_id => 1)
@@ -104,7 +116,8 @@ Given(/^I upload just an xml file$/) do
 end
 
 Given(/^I upload just a param file$/) do
-  pending # express the regexp above with the code you wish you had
+  mass_param = MassParam.create(:s3id => "uploads/21998eeb-ed54-4914-9844-7a4b94008fff/mass_params.txt", :user_id => 1)
+  result = Result.create(:s3id => nil, :mass_params_id => mass_param.id, :user_id => 1, :flag => false)
 end
 
 
@@ -123,5 +136,5 @@ Given /^I am not on the home page/ do
 end
 
 Given /^I click on the icon/ do
-  find('img[@alt='Icon']').click
+  click_link("Icon")
 end

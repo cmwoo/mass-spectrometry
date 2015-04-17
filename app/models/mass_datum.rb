@@ -8,4 +8,12 @@ class MassDatum < ActiveRecord::Base
     t = /.*\/(.*)$/.match(s3id)
     return t.captures[0]
   end
+
+  def self.get_data_or_nil(id)
+    begin
+      return MassDatum.find(id)
+    rescue ActiveRecord::RecordNotFound
+      return nil
+    end
+  end
 end
