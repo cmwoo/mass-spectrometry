@@ -17,7 +17,7 @@ var s3_upload_file = function(url, formData) {
       replaceFileInput: false,
       add: function (e,data){
         var uploadFile = data.files[0];
-        if (!(/\.(params|mzXML)$/i).test(uploadFile.name)) {
+        if (!(/\.(params|mzXML|txt)$/i).test(uploadFile.name)) {
             alert('Incorrect file type');
         }else {
             data.submit();
