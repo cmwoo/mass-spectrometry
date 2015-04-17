@@ -45,6 +45,8 @@ gem 'foreigner', '~> 1.7.4'
 gem 'net-ssh'
 
 gem 'delayed_job_active_record'
+
+gem "codeclimate-test-reporter", group: :test, require: nil
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
