@@ -5,7 +5,9 @@ MassSpec::Application.routes.draw do
   devise_for :users
 
   get "general/index"
-
+  
+  match '/mass_params/create_file'
+  match '/mass_params/new_file'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
