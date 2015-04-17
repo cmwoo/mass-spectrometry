@@ -60,22 +60,37 @@ describe MassDataController do
       response.should redirect_to choose_data_path
       flash[:warning].should == "Please choose an existing .zxml file."
     end
-    #it "should not accept an empty email" do
-    #  # fake_data = mock('MassData', :title => 'test_data.xml')
-    #  # MassData.stub(:create!).with({:file => @dataxml}).and_return(fake_data)
-    #  post :upload, :xml_file => @dataxml, :email => ""
-    #  response.should redirect_to new_mass_datum_path
-    #  flash[:warning].should == "No email input."
-    #end
+    
+    it "should tell you if you have already uploaded a file" do
+      user = double('user')
+      allow(request.env['warden']).to receive(:authenticate!) { user }
+      allow(controller).to receive(:current_user) { user }
 
+      r = double('result')
+      d = double('mass_data')
+      user.stub(:current_result).and_return(r)
+      r.stub(:get_mass_data).and_return(d)
+      d.stub(:get_title).and_return("title.txt")
+      user.stub(:id).and_return(1)
 
+      get :new
+      expect(response.status).to eq(200)
+    end
 
-  #  it "should not upload a non xml file" do
-  #    MassData.stub(:create!).with({:file => @dataother})
-  #    post :uploadData, :upload => @dataother
-  #    response.should redirect_to new_mass_datum_path
-  #    flash[:notice].should == "test_data.txt is not a xml file."
-  #  end
+    it "should tell you if you have not uploaded a file yet" do
+      user = double('user')
+      allow(request.env['warden']).to receive(:authenticate!) { user }
+      allow(controller).to receive(:current_user) { user }
+
+      r = double('result')
+      d = double('mass_data')
+      user.stub(:current_result).and_return(r)
+      r.stub(:get_mass_data).and_return(nil)
+      user.stub(:id).and_return(1)
+
+      get :new
+      expect(response.status).to eq(200)
+    end
   end
 
 end

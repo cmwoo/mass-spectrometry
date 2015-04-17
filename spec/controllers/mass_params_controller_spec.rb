@@ -60,6 +60,37 @@ describe MassParamsController do
       flash[:warning].should == "Please choose an existing params file."
     end
 
+    it "should tell you if you have already uploaded a file" do
+      user = double('user')
+      allow(request.env['warden']).to receive(:authenticate!) { user }
+      allow(controller).to receive(:current_user) { user }
+
+      r = double('result')
+      p = double('mass_param')
+      user.stub(:current_result).and_return(r)
+      r.stub(:get_mass_params).and_return(p)
+      p.stub(:get_title).and_return("title.txt")
+      user.stub(:id).and_return(1)
+
+      get :new
+      expect(response.status).to eq(200)
+    end
+
+    it "should tell you if you have not uploaded a file yet" do
+      user = double('user')
+      allow(request.env['warden']).to receive(:authenticate!) { user }
+      allow(controller).to receive(:current_user) { user }
+
+      r = double('result')
+      p = double('mass_param')
+      user.stub(:current_result).and_return(r)
+      r.stub(:get_mass_params).and_return(nil)
+      user.stub(:id).and_return(1)
+
+      get :new
+      expect(response.status).to eq(200)
+    end
+
   #  it "should not upload a non xml file" do
   #    MassData.stub(:create!).with({:file => @dataother})
   #    post :uploadData, :upload => @dataother
