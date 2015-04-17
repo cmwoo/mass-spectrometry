@@ -5,14 +5,10 @@ describe MassDataController do
   before :each do
     @dataxml = fixture_file_upload('/files/test_data.xml', 'text/xml')
     @paramsxml = fixture_file_upload('/files/test_params.txt', 'text/xml')
-    #@dataother = fixture_file_upload('/files/test_data.txt', 'text/txt')
-    #@paramsother = fixture_file_upload('/files/test_params.bad.txt', 'text/txt')
   end
 
   describe 'upload a mass data' do
     it "can upload a mass data xml file" do
-      # fake_data = mock('MassData', :title => 'test_data.xml')
-      # MassData.stub(:create!).with({:file => @dataxml}).and_return(fake_data)
       user = double('user')
       allow(request.env['warden']).to receive(:authenticate!) { user }
       allow(controller).to receive(:current_user) { user }
@@ -22,12 +18,9 @@ describe MassDataController do
 
       post :create, :s3_key => 'key'
       response.should redirect_to new_mass_param_path
-      # flash[:notice].should == "test_data.xml was successfully uploaded."
     end
 
     it "should not accept an empty file" do
-      # fake_data = mock('MassData', :title => 'test_data.xml')
-      # MassData.stub(:create!).with({:file => @dataxml}).and_return(fake_data)
       user = double('user')
       allow(request.env['warden']).to receive(:authenticate!) { user }
       allow(controller).to receive(:current_user) { user }
