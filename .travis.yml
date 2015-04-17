@@ -3,3 +3,7 @@ rvm:
   - 1.9.3
 before_script:
   - " bundle exec rake db:migrate RAILS_ENV=test"
+
+addons:
+  code_climate:
+    repo_token: edc98dd4a6ab1e0604ffe7254176952fc24b02f3ba9576f4d3547d0fb621b141
