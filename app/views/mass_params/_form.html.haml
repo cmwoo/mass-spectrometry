@@ -1,10 +1,70 @@
 = form_tag mass_params_new_file_path(@file), :method => :put do
-
-  = label :file, :title, 'Title'
-  = text_field :file, 'title'
-  <br>
-  = label :file, :field, 'Field'
-  = text_field :file, 'field'
-  <br>
+  = javascript_include_tag "mass_params"
+  %div{:id => 'form', :class => ""}
+    = label :file, :filename, 'File Name'
+    = text_field :file, 'filename'
+    = '.params'
+    <br>
+    = label :file, :charge_min, 'charge_min: '
+    = text_field :file, 'charge_min'
+    <br>
+    = label :file, :charge_max, 'charge_max: '
+    = text_field :file, 'charge_max'
+    <br>
+    = label :file, :mz_tolerance, 'mz_tolerance: '
+    = text_field :file, 'mz_tolerance'
+    <br>
+    = label :file, :mz_tolerance_2, 'mz_tolerance_2: '
+    = text_field :file, 'mz_tolerance_2'
+    <br>
+    = label :file, :scan_tolerance, 'scan_tolerance: '
+    = text_field :file, 'scan_tolerance'
+    <br>
+    = label :file, :pattern_size, 'pattern_size: '
+    = text_field :file, 'pattern_size'
+    <br>
+    = label :file, :min_score, 'min_score: '
+    = text_field :file, 'min_score'
+    <br>
+    = label :file, :retention_time_window, 'retention_time_window: '
+    = text_field :file, 'retention_time_window'
+    <br>
+    = label :file, :include_mass_mod, 'include_mass_mod: '
+    = text_field :file, 'include_mass_mod'
+    <br>
+    = label :file, :sigma, 'sigma: '
+    = text_field :file, 'sigma'
+    <br>
+    = label :file, :per_sigma, 'per_sigma: '
+    = text_field :file, 'per_sigma'
+    <br>
+    = label :file, :log_file, 'log_file: '
+    = text_field :file, 'log_file'
+    = '.log'
+    <br>
+    = label :file, :search_pattern, 'search_pattern: '
+    = text_field :file, 'search_pattern'
+    <br>
+    = label :file, :alt_pattern, 'alt_pattern: '
+    = text_field :file, 'alt_pattern'
+    <br>
+    = label :file, :alt_pattern_more, 'additional patterns: '
+    = text_area_tag :alt_pattern_more, nil, size: "40x10"
+    <br>
+    = "Examples: alt_pattern: pattern=0.1, 0.5, 0.25; mw=300; prior=0.0001"
+    <br>
+    = label :file, :full_output, 'full_output: '
+    = select(:file, 'full_output', { "false" => "false", "true" => "true"})
+    <br>
+    = label :file, :inclusion_list, 'inclusion_list: '
+    = select(:file, 'inclusion_list', { "false" => "false", "true" => "true"})
+    <br>
+    = label :file, :mz_charge, 'mz_charge: '
+    = select(:file, 'mz_charge', { "false" => "false", "true" => "true"})
+    <br>
+    = label :file, :mz_charge_scan, 'mz_charge_scan: '
+    = select(:file, 'mz_charge_scan', { "false" => "false", "true" => "true"})
+    <br>
+  
   = submit_tag 'Save File'
 

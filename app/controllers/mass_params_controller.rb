@@ -31,10 +31,17 @@ class MassParamsController < ApplicationController
   end
   
   def new_file
+    fields = ['charge_min', 'charge_max', 'mz_tolerance', 'mz_tolerance_2', 'scan_tolerance', 'pattern_size', 'min_score', 'retention_time_window', 'include_mass_mod', 'sigma', 'per_sigma', 'log_file', 'search_pattern', 'alt_pattern']
+		selects = ['full_output', 'inclusion_list', 'mz_charge', 'mz_charge_scan']
+		patterns_more = params['alt_pattern_more']
     file = params[:file]
-    filename = file[:title]
-    contents = "field = " + file[:field]
-    send_data(contents, :filename => filename)
+    filename = file[:filename]
+    contents = ""
+    fields.each { |f| contents = contents + f + ": " + file[f] + "\n" if !file[f].empty?}
+		patterns_more.each_line {|p| contents = contents + "alt_pattern: " + p}
+		contents = contents + "\n" unless contents[-1] === "\n"
+		selects.each { |s| contents = contents + s + ": " + file[s] + "\n" }
+    send_data(contents, :filename => filename, :disposition => "attachment")
   end
 
 end
