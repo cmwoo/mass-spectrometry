@@ -4,13 +4,7 @@ class MassParamsController < ApplicationController
   @@selects = ['full_output', 'inclusion_list', 'mz_charge', 'mz_charge_scan']
 
   def create
-    if params[:s3_key].nil?
-      flash[:warning] = "No file input."
-      redirect_to new_mass_param_path
-    else
-      mass_param = MassParam.create(:s3id => params[:s3_key], :user_id => current_user.id)
-      assign_mass_param(mass_param.id)
-    end
+    create_model(:MassParam, :mass_params_id)
   end
 
   def new
@@ -72,22 +66,6 @@ class MassParamsController < ApplicationController
   end
 
   def update_params
-    data = MassParam.get_param_or_nil(params[:data_id])
-    if !data
-      flash[:warning] = "Please choose an existing params file."
-      return redirect_to choose_params_path
-    end
-    assign_mass_param(params[:id])
-  end
-
-  def assign_mass_param(id)
-    current_result = current_user.current_result
-    if current_result
-      current_result.mass_params_id = params[id]
-      current_result.save
-    else
-      Result.create(:mass_params_id => params[id], :user_id => current_user.id, :flag => false)
-    end
-    redirect_to review_path
+    update_model_choice(params[:data_id], :mass_params_id, :MassParam, "params")
   end
 end

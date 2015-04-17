@@ -1,13 +1,7 @@
 class MassDataController < ApplicationController
   before_filter :authenticate_user!
   def create
-    if params[:s3_key].nil?
-      flash[:warning] = "No file input."
-      redirect_to new_mass_datum_path
-    else
-      mass_datum = MassDatum.create(:s3id => params[:s3_key], :user_id => current_user.id)
-      assign_mass_data(mass_datum.id)
-    end
+    create_model(:MassDatum, :mass_data_id)
   end
 
   def new
@@ -16,7 +10,6 @@ class MassDataController < ApplicationController
     current_mass_data = if current_result then current_result.get_mass_data else nil end
     if current_result && current_mass_data
       @message = "You have already uploaded #{current_mass_data.get_title}."
-      #@message = "#{current_result.get_mass_data.s3id}"
     else
       @message = "Please choose a .zxml file to upload."
     end
@@ -32,7 +25,6 @@ class MassDataController < ApplicationController
     current_mass_data = if current_result then current_result.get_mass_data else nil end
     if current_result && current_mass_data
       @message = "You have already uploaded #{current_mass_data.get_title}."
-      #@message = "#{current_result.get_mass_data.s3id}"
     else
       @message = "Please choose a file to upload."
     end
@@ -41,22 +33,6 @@ class MassDataController < ApplicationController
   end
 
   def update_choice
-    data = MassDatum.get_data_or_nil(params[:data_id])
-    if !data
-      flash[:warning] = "Please choose an existing .zxml file."
-      return redirect_to choose_data_path
-    end
-    assign_mass_data(params[:data_id])
-  end
-
-  def assign_mass_data(data_id)
-    current_result = current_user.current_result
-    if current_result
-      current_result.mass_data_id = data_id
-      current_result.save
-    else
-      Result.create(:mass_data_id => data_id, :user_id => current_user.id, :flag => false)
-    end
-    redirect_to new_mass_param_path
+    update_model_choice(params[:data_id], :mass_data_id, :MassDatum, ".zxml")
   end
 end
