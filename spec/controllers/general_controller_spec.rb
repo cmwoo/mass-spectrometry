@@ -5,7 +5,8 @@ describe GeneralController do
 	describe 'download an executable file' do
 
 		before :each do 
-			@@file_downloads = ["graph_search.exe"]
+			@@file_downloads = ["test_executable.exe"]
+			@@downloads_path = File.join(Rails.root, "spec", "fixtures", "files")
 		end
 
 		it "show warning when passed invalid file" do
@@ -15,7 +16,7 @@ describe GeneralController do
 		end
 
 		it "can download an existing file" do
-			get :download_file, :file => 'graph_search.exe'
+			get :download_file, :file => 'test_executable.exe'
 			expect(response.status).to eq(200)
 		end
 
