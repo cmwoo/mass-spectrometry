@@ -18,6 +18,14 @@ Given(/^I press "(.*?)"$/) do |arg1|
   click_button(arg1)
 end
 
+Then /^the downloaded file content should be:$/ do |content|
+  page.source.should == content
+end
+
+Given(/^I fill out the parameters form$/) do
+  fields = ['file_charge_min', 'file_charge_max', 'file_mz_tolerance', 'file_mz_tolerance_2', 'file_scan_tolerance', 'file_pattern_size', 'file_min_score', 'file_retention_time_window', 'file_include_mass_mod', 'file_sigma', 'file_per_sigma', 'file_log_file', 'file_search_pattern', 'file_alt_pattern', 'alt_pattern_more']
+  fields.each {|f| fill_in(f, :with => f)}  
+end
 
 Given(/^I fill in "(.*?)" with "(.*?)"$/) do |arg1, arg2|
   fill_in(arg1, :with => arg2)

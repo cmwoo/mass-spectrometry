@@ -1,0 +1,15 @@
+-#  This file is app/views/mass_params/create_file.html.haml
+
+%h1 Create New Params File Form
+
+%div{:id => 'center-parent'}
+  = render "general/sidebar"
+
+  %div{:class => 'card', :id => 'center'}
+    %div{:id => 'content'}
+      %p= @message
+      
+      %div{:id => 'form', :class => ""}
+        = render "mass_params/form"
+      = button_to "Back", new_mass_param_path, :class => 'center-btn btn', :method => :get
+
