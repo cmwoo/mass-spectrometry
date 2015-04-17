@@ -19,7 +19,7 @@ Given(/^I press "(.*?)"$/) do |arg1|
 end
 
 Then /^the downloaded file content should be:$/ do |content|
-  puts page.source
+  page.source.should == content
 end
 
 Given(/^I fill out the parameters form$/) do
