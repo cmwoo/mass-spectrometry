@@ -21,4 +21,15 @@ class Result < ActiveRecord::Base
   def get_mass_params
     if mass_params_id then MassParam.find(mass_params_id) end
   end
+
+  def self.start_ssh
+    hostname = 'ec2-52-10-218-125.us-west-2.compute.amazonaws.com'
+    username = 'root'
+    password = 'mass77spec'
+    output = ""
+    Net::SSH.start( hostname, username, :password => password ) do|ssh|
+      #process
+      output = ssh.exec!("echo 'Graph search is successfully running. You will receive an email when your analysis is complete.'")
+    end
+  end
 end

@@ -18,7 +18,6 @@
         :formData => @s3_direct_post.fields.to_json.html_safe }
         = form_for(@mass_param, html: { class: "directUpload" }) do |f| 
           = f.submit 'Save and Next',:class => 'center-btn btn'
-        = link_to "Create a new params file", mass_params_create_file_path
 
 :javascript 
   s3_upload_file('#{@s3_direct_post.url}', #{@s3_direct_post.fields.to_json.html_safe});

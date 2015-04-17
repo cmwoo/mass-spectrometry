@@ -50,6 +50,16 @@ describe MassDataController do
       post :create, :s3_key => 'key'
       response.should redirect_to new_mass_param_path
     end
+
+    it "should not accept nonexisting ids" do
+      user = double('user')
+      allow(request.env['warden']).to receive(:authenticate!) { user }
+      allow(controller).to receive(:current_user) { user }
+      
+      post :update_choice, :data_id => 100
+      response.should redirect_to choose_data_path
+      flash[:warning].should == "Please choose an existing .zxml file."
+    end
     #it "should not accept an empty email" do
     #  # fake_data = mock('MassData', :title => 'test_data.xml')
     #  # MassData.stub(:create!).with({:file => @dataxml}).and_return(fake_data)

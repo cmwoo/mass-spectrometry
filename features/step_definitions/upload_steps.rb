@@ -18,6 +18,14 @@ Given(/^I press "(.*?)"$/) do |arg1|
   click_button(arg1)
 end
 
+Then /^the downloaded file content should be:$/ do |content|
+  puts page.source
+end
+
+Given(/^I fill out the parameters form$/) do
+  fields = ['file_charge_min', 'file_charge_max', 'file_mz_tolerance', 'file_mz_tolerance_2', 'file_scan_tolerance', 'file_pattern_size', 'file_min_score', 'file_retention_time_window', 'file_include_mass_mod', 'file_sigma', 'file_per_sigma', 'file_log_file', 'file_search_pattern', 'file_alt_pattern', 'alt_pattern_more']
+  fields.each {|f| fill_in(f, :with => f)}  
+end
 
 Given(/^I fill in "(.*?)" with "(.*?)"$/) do |arg1, arg2|
   fill_in(arg1, :with => arg2)
@@ -33,11 +41,29 @@ end
 # Reference: http://guides.rubyonrails.org/form_helpers.html
 
 Given(/^I upload an xml file$/) do
-  attach_file(:xml_file, File.join(Rails.root, 'features', 'upload-files', 'mass_xml.xml'))
+  attach_file(:xml_file, File.join(Rails.root, 'features', 'upload-files', 'mass_xml.mzXML'))
 end
 
 Given(/^I upload a param file$/) do
   attach_file(:param_file, File.join(Rails.root, 'features', 'upload-files', 'mass_param.txt'))
+end
+
+
+And /^I upload a file with an incorrect file type$/ do
+  if current_path == "/mass_data/new"
+    file_input_id = :xml_file
+  elsif current_path == "/mass_params/new"
+    file_input_id = :param_file
+  else
+    throw :TypeError, "current path not recognized as a file upload page"
+  end
+  attach_file(file_input_id, File.join(Rails.root, 'features', 'upload-files', 'bad_file.bad'))
+end
+
+Given /^the following accounts exist:$/ do |table|
+  table.hashes.each do |attributes|
+    User.create!(attributes)
+  end
 end
 
 Then /^(?:|I )should see "([^"]*)"$/ do |text|
@@ -48,14 +74,16 @@ Then /^(?:|I )should see "([^"]*)"$/ do |text|
   end
 end
 
-When /^(?:|I )follow "([^"]*)"$/ do |link|
-  click_link(link)
+Then /^(?:|I )should not see "([^"]*)"$/ do |text|
+  if page.respond_to? :should
+    page.should have_no_content(text)
+  else
+    assert page.has_no_content?(text)
+  end
 end
 
-Given /^the following accounts exist:$/ do |table|
-  table.hashes.each do |attributes|
-    User.create!(attributes)
-  end
+When /^(?:|I )follow "([^"]*)"$/ do |link|
+  click_link(link)
 end
 
 Given(/^the following results \- params \- data files exist for the user$/) do |table|
@@ -90,6 +118,22 @@ Then(/^I should see a list of all my data, params, and results$/) do
   table_count = page.all("table tr").count
   db_count = User.find(1).results.count + 1
   assert(table_count == db_count, table_count.to_s + " does not equal " + db_count.to_s)
+end
+
+Given(/^I see a list of existing parameters files/) do
+  table_count = page.all("input[type='radio']").count
+  db_count = MassParam.where(:user_id => 1).count
+  assert(table_count == db_count, table_count.to_s + " does not equal " + db_count.to_s)
+end
+
+Given(/^I see a list of existing data xml files/) do
+  table_count = page.all("input[type='radio']").count
+  db_count = MassDatum.where(:user_id => 1).count
+  assert(table_count == db_count, table_count.to_s + " does not equal " + db_count.to_s)
+end
+
+Given (/^I select an option/) do
+  choose('data_id_1')
 end
 
 Given(/^I upload an xml and param file$/) do

@@ -1,0 +1,24 @@
+-#  This file is app/views/mass_data/choose.html.haml
+
+%h1 Choose Existing Files View
+
+
+%div{:id => 'center-parent'}
+  = render "general/sidebar"
+
+  %div{:class => 'card', :id => 'center'}
+    %div{:id => 'tabs'}
+      = button_to 'Upload Data', new_mass_datum_path, :class => 'center-btn btn tab', :form => {:class => 'tab_buttons'}, :method => :get
+      = button_to 'Choose Existing Files', choose_data_path, :class => 'center-btn btn tab', :form => {:class => 'tab_buttons'}, :method => :get, :disabled => @disabled_page
+
+    %div{:id => 'content'}
+      %div
+        = form_tag update_choice_path, :method => :post, :id => "data_form" do
+          %p{:class => 'msg'} #{@message}
+          %p <br />
+          - @all_data.each do |data|
+            %div{:id => 'tabs'}
+              = radio_button_tag "data_id", data.id
+              = data.get_title
+          %p <br />
+          = submit_tag 'Save and Next', :id => 'data_submit'

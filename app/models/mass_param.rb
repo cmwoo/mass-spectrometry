@@ -9,4 +9,12 @@ class MassParam < ActiveRecord::Base
     return t.captures[0]
   end
 
+  def self.get_param_or_nil(id)
+    begin
+      return MassParam.find(id)
+    rescue ActiveRecord::RecordNotFound
+      return nil
+    end
+  end
+
 end

@@ -12,12 +12,12 @@ Background:
 
 Scenario: upload an incorrect data file
   Given I am on the Upload XML page
-  And I upload an incorrect xml file
+  And I upload a file with an incorrect file type
   And I press "Next"
-  Then I should see "File format must be .zxml"
+  Then I should not see "Loading"
 
 Scenario: upload an incorrect param file
   Given I am on the Upload Parameters page
-  And I upload an incorrect param file
+  And I upload a file with an incorrect file type
   And I press "Next"
-  Then I should see "File format must be .param or .txt"
+  Then I should not see "Loading"
