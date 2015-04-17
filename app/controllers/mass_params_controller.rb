@@ -6,14 +6,7 @@ class MassParamsController < ApplicationController
       redirect_to new_mass_param_path
     else
       mass_param = MassParam.create(:s3id => params[:s3_key], :user_id => current_user.id)
-      if current_user.current_result
-        result = current_user.current_result
-        result.mass_params_id = mass_param.id
-        result.save
-      else
-        result = Result.create(:mass_params_id => mass_param.id, :user_id => current_user.id, :flag => false)
-      end
-      redirect_to review_path
+      assign_mass_param(mass_param.id)
     end
   end
 
@@ -51,12 +44,16 @@ class MassParamsController < ApplicationController
       flash[:warning] = "Please choose an existing params file."
       return redirect_to choose_params_path
     end
+    assign_mass_param(params[:id])
+  end
+
+  def assign_mass_param(id)
     current_result = current_user.current_result
     if current_result
-      current_result.mass_params_id = params[:data_id]
+      current_result.mass_params_id = params[id]
       current_result.save
     else
-      Result.create(:mass_params_id => params[:data_id], :user_id => current_user.id, :flag => false)
+      Result.create(:mass_params_id => params[id], :user_id => current_user.id, :flag => false)
     end
     redirect_to review_path
   end

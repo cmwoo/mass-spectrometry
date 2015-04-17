@@ -6,14 +6,7 @@ class MassDataController < ApplicationController
       redirect_to new_mass_datum_path
     else
       mass_datum = MassDatum.create(:s3id => params[:s3_key], :user_id => current_user.id)
-      current_result = current_user.current_result
-      if current_result
-        current_result.mass_data_id = mass_datum.id
-        current_result.save
-      else
-        Result.create(:mass_data_id => mass_datum.id, :user_id => current_user.id, :flag => false)
-      end
-      redirect_to new_mass_param_path
+      assign_mass_data(mass_datum.id)
     end
   end
 
@@ -53,12 +46,16 @@ class MassDataController < ApplicationController
       flash[:warning] = "Please choose an existing .zxml file."
       return redirect_to choose_data_path
     end
+    assign_mass_data(params[:data_id])
+  end
+
+  def assign_mass_data(data_id)
     current_result = current_user.current_result
     if current_result
-      current_result.mass_data_id = params[:data_id]
+      current_result.mass_data_id = data_id
       current_result.save
     else
-      Result.create(:mass_data_id => params[:data_id], :user_id => current_user.id, :flag => false)
+      Result.create(:mass_data_id => data_id, :user_id => current_user.id, :flag => false)
     end
     redirect_to new_mass_param_path
   end
