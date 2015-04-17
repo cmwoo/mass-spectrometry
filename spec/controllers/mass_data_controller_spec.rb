@@ -91,6 +91,45 @@ describe MassDataController do
       get :new
       expect(response.status).to eq(200)
     end
+
+    it "should allow you to choose an already existing file" do
+      user = double('user')
+      allow(request.env['warden']).to receive(:authenticate!) { user }
+      allow(controller).to receive(:current_user) { user }
+
+      d = double('mass_data')
+      r = double('result')
+
+      MassDatum.stub(:where).and_return(d)
+      user.stub(:results).and_return(r)
+      user.stub(:current_result).and_return(r)
+      r.stub(:get_mass_data).and_return(d)
+      user.stub(:id).and_return(1)
+      d.stub(:get_title).and_return("title.txt")
+
+      get :choose
+      expect(response.status).to eq(200)
+    end
+
+    it "should allow you to upload a file if you haven't chosen one yet" do
+      user = double('user')
+      allow(request.env['warden']).to receive(:authenticate!) { user }
+      allow(controller).to receive(:current_user) { user }
+
+      d = double('mass_data')
+      r = double('result')
+
+      MassDatum.stub(:where).and_return(d)
+      user.stub(:results).and_return(r)
+      user.stub(:current_result).and_return(nil)
+      r.stub(:get_mass_data).and_return(d)
+      user.stub(:id).and_return(1)
+
+      get :choose
+      expect(response.status).to eq(200)
+    end
+
+
   end
 
 end
