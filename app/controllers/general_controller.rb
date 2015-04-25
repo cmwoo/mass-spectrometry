@@ -1,7 +1,12 @@
 require 'net/ssh'
 
 class GeneralController < ApplicationController
-  @@file_downloads = ["graph_search.exe", "sample_params.params"]
+  @@file_downloads = ["CWT_PD.exe", 
+                      "Graph_search.exe",
+                      "ExampleParams.params",
+                      "Tag_finder.exe",
+                      "ExampleParams.txt"]
+                      
   @@downloads_path = File.join(Rails.root, "public", "downloads_page")
 
   def index
