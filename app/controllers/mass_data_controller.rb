@@ -13,7 +13,7 @@ class MassDataController < ApplicationController
     else
       @message = "Please choose a .zxml file to upload."
     end
-    @s3_direct_post = S3_BUCKET.presigned_post(key: "uploads/#{SecureRandom.uuid}/${filename}", success_action_status: 201)
+    @s3_direct_post = S3_BUCKET.presigned_post(key: "#{current_user.id}/data/#{SecureRandom.uuid}/${filename}", success_action_status: 201)
     @mass_datum = MassDatum.new
   end
 
