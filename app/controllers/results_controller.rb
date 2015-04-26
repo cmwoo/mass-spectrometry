@@ -2,6 +2,7 @@ class ResultsController < ApplicationController
   before_filter :authenticate_user!
 
   def finish
+    #start ssh session in background
     Result.delay.start_ssh
 
     # final results
