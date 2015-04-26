@@ -3,6 +3,12 @@ Feature: Download files off of downloads page
   I want to download the executables
   So that I can run the program locally
 
+Background:
+  Given the following accounts exist:
+    |       email       | password | password_confirmation |
+    | chemist@gmail.com | aaaaaaaa |       aaaaaaaa        |
+  And I am logged in
+
 Scenario: User can download the windows executable
   Given I am on the downloads page
   When I follow "Graph_search.exe"
