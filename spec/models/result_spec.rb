@@ -4,10 +4,22 @@ describe Result do
   describe "SSH Access" do
     
     it "should send correct commands to the connection" do
+      result = Result.create(:user_id => 1, :mass_params_id => 1, :mass_data_id => 1)
       ssh_connection = mock("SSH Connection")
       Net::SSH.stub(:start).and_yield(ssh_connection)
-      ssh_connection.should_receive(:exec!).with("echo 'Graph search is successfully running. You will receive an email when your analysis is complete.'")
-      Result.start_ssh
+      ssh_connection.should_receive(:exec!)
+
+      mass_param = double("MassParam")
+      mass_datum = double("MassDatum")
+
+      MassDatum.stub(:find).and_return(mass_param)
+      MassParam.stub(:find).and_return(mass_datum)
+
+      mass_datum.stub(:get_title).and_return("data.mzxml")
+      mass_datum.stub(:s3id).and_return(1)
+      mass_param.stub(:s3id).and_return(1)
+
+      result.start_ssh
     end
   end
 

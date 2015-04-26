@@ -4,14 +4,15 @@
 %h1 This is the User Uploads Page
 
 %div{:id => 'center-parent'}
-  %div{:class => 'card', :id => 'center'}
+  %div{:class => 'card', :id => 'center_table'}
     %div{:id => 'content'}
       %table{width: "100%"}
         %thead
           %tr
             %th Data
             %th Params
-            %th Results
+            %th Results (.txt)
+            %th Results (.csv)
             %th Submission Date
         %tbody
           - @results.each do |result|
@@ -20,5 +21,6 @@
             %tr
               %td= if data then data.get_title() else "Upload" end
               %td= if params then params.get_title() else "Upload" end
-              %td= if !result.s3id then "Waiting..." else result.s3id end
+              %td= if !result.s3id then "Waiting..." else result.get_output1_title end
+              %td= if !result.s3id_2 then "Waiting..." else result.get_output2_title end
               %td= result.created_at()

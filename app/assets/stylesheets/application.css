@@ -56,6 +56,14 @@ p{
   height: auto;
 }
 
+#center_table {
+  width: 1000px;
+  display: inline-block;
+  padding: 20px;
+  /*min-height: 195px; /* Same Height as Sidebar -20px padding */
+  height: auto;
+}
+
 #sidebar{
   width: 200px;
   height: 100%;
