@@ -32,13 +32,13 @@ class ResultsController < ApplicationController
    if !current_result
      flash[:warning] = "No files have been uploaded."
      @disabled = true
-   elsif !current_result.mass_params_id
+   elsif !current_result.mass_params_idra
        flash[:warning] = "One of the files has not been uploaded."
        @message = "Please select a parameters file."
        @disabled = true
    elsif !current_result.mass_data_id
        flash[:warning] = "One of the files has not been uploaded."
-       @message = "Please select a data .zxml file."
+       @message = "Please select a data .mzXML file."
        @disabled = true
    else
        @message = "Data: #{current_result.get_mass_data.get_title}\n\n Parameters: #{current_result.get_mass_params.get_title}"
