@@ -32,11 +32,11 @@ class GeneralController < ApplicationController
   def instructions
   end
 
-  def finish
-    Result.delay.start_ssh
-    flash[:notice] = "Graph search is successfully running. You will receive an email when your analysis is complete."
-    redirect_to finish_index_path
-  end
+  #def finish
+  #  Result.delay.start_ssh
+  #  flash[:notice] = "Graph search is successfully running. You will receive an email when your analysis is complete."
+  #  redirect_to finish_index_path
+  #end
 
 
 
