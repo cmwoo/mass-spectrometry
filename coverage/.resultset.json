@@ -1,7 +1,7 @@
 {
   "Cucumber Features": {
     "coverage": {
-      "/home/saasbook/Documents/mass-spectrometry/app/models/user.rb": [
+      "/media/sf_shared/mass-spectrometry/app/models/user.rb": [
         1,
         1,
         1,
@@ -21,7 +21,7 @@
         null,
         null
       ],
-      "/home/saasbook/Documents/mass-spectrometry/app/controllers/application_controller.rb": [
+      "/media/sf_shared/mass-spectrometry/app/controllers/application_controller.rb": [
         1,
         1,
         1,
@@ -68,31 +68,31 @@
         null,
         null
       ],
-      "/home/saasbook/Documents/mass-spectrometry/app/helpers/application_helper.rb": [
+      "/media/sf_shared/mass-spectrometry/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/home/saasbook/Documents/mass-spectrometry/app/helpers/general_helper.rb": [
+      "/media/sf_shared/mass-spectrometry/app/helpers/general_helper.rb": [
         1,
         null
       ],
-      "/home/saasbook/Documents/mass-spectrometry/app/helpers/mass_data_helper.rb": [
+      "/media/sf_shared/mass-spectrometry/app/helpers/mass_data_helper.rb": [
         1,
         null
       ],
-      "/home/saasbook/Documents/mass-spectrometry/app/helpers/mass_params_helper.rb": [
+      "/media/sf_shared/mass-spectrometry/app/helpers/mass_params_helper.rb": [
         1,
         null
       ],
-      "/home/saasbook/Documents/mass-spectrometry/app/helpers/results_helper.rb": [
+      "/media/sf_shared/mass-spectrometry/app/helpers/results_helper.rb": [
         1,
         null
       ],
-      "/home/saasbook/Documents/mass-spectrometry/app/helpers/user_uploads_helper.rb": [
+      "/media/sf_shared/mass-spectrometry/app/helpers/user_uploads_helper.rb": [
         1,
         null
       ],
-      "/home/saasbook/Documents/mass-spectrometry/app/controllers/general_controller.rb": [
+      "/media/sf_shared/mass-spectrometry/app/controllers/general_controller.rb": [
         1,
         null,
         1,
@@ -148,7 +148,7 @@
         null,
         null
       ],
-      "/home/saasbook/Documents/mass-spectrometry/app/controllers/mass_data_controller.rb": [
+      "/media/sf_shared/mass-spectrometry/app/controllers/mass_data_controller.rb": [
         1,
         1,
         1,
@@ -188,7 +188,7 @@
         null,
         null
       ],
-      "/home/saasbook/Documents/mass-spectrometry/app/models/mass_datum.rb": [
+      "/media/sf_shared/mass-spectrometry/app/models/mass_datum.rb": [
         1,
         1,
         1,
@@ -209,7 +209,7 @@
         null,
         null
       ],
-      "/home/saasbook/Documents/mass-spectrometry/app/controllers/mass_params_controller.rb": [
+      "/media/sf_shared/mass-spectrometry/app/controllers/mass_params_controller.rb": [
         1,
         1,
         1,
@@ -282,7 +282,7 @@
         null,
         null
       ],
-      "/home/saasbook/Documents/mass-spectrometry/app/models/mass_param.rb": [
+      "/media/sf_shared/mass-spectrometry/app/models/mass_param.rb": [
         1,
         1,
         1,
@@ -304,7 +304,7 @@
         null,
         null
       ],
-      "/home/saasbook/Documents/mass-spectrometry/app/controllers/results_controller.rb": [
+      "/media/sf_shared/mass-spectrometry/app/controllers/results_controller.rb": [
         1,
         1,
         1,
@@ -343,7 +343,7 @@
         null,
         null
       ],
-      "/home/saasbook/Documents/mass-spectrometry/app/models/result.rb": [
+      "/media/sf_shared/mass-spectrometry/app/models/result.rb": [
         1,
         1,
         1,
@@ -369,6 +369,10 @@
         null,
         null,
         1,
+        15,
+        null,
+        null,
+        1,
         0,
         0,
         0,
@@ -380,7 +384,7 @@
         null,
         null
       ],
-      "/home/saasbook/Documents/mass-spectrometry/app/controllers/user_uploads_controller.rb": [
+      "/media/sf_shared/mass-spectrometry/app/controllers/user_uploads_controller.rb": [
         1,
         1,
         1,
@@ -390,7 +394,7 @@
         null
       ]
     },
-    "timestamp": 1430074317
+    "timestamp": 1430088604
   },
   "RSpec": {
     "coverage": {

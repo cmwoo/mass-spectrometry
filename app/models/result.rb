@@ -22,6 +22,10 @@ class Result < ActiveRecord::Base
     if mass_params_id then MassParam.find(mass_params_id) end
   end
 
+  def get_url(object)
+    "https://s3.amazonaws.com/mass-spec-test-bucket/" + object.s3id
+  end
+
   def self.start_ssh
     hostname = 'ec2-52-10-218-125.us-west-2.compute.amazonaws.com'
     username = 'root'

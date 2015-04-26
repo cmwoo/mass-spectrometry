@@ -16,7 +16,5 @@ Background:
 
 Scenario: download the user’s existing files
   Given I am on the user information page
-  When I follow "results1.zxml"
-  Then I should receive the file "results1.zxml"
-  When I follow "data2.zxml"
-  Then I should receive the file "data2.zxml"
+  Then "results1.zxml" links to the corresponding results file stored in s3 server
+  And "data1.zxml" links to the corresponding data file stored in s3 server

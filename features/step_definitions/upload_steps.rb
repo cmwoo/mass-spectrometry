@@ -87,6 +87,17 @@ When /^(?:|I )follow "([^"]*)"$/ do |link|
   click_link(link)
 end
 
+Then /^"([^"]*)" links to the corresponding ([^"]*) file stored in s3 server$/ do |link, file_type|
+  if file_type == "data"
+    url = "https://s3.amazonaws.com/mass-spec-test-bucket/uploads/21998eeb-ed54-4914-9844-7a4b94008985/" + link
+  elsif file_type == "params"
+    url = "https://s3.amazonaws.com/mass-spec-test-bucket/uploads/21998eeb-ed54-4914-9844-7a4b94008fff/" + link
+  else
+    url = "https://s3.amazonaws.com/mass-spec-test-bucket/uploads/21998eeb-ed54-4914-9844-7a4b94cb285/" + link 
+  end
+    page.should have_link(link, :href => url)
+end
+
 Given(/^the following results \- params \- data files exist for the user$/) do |table|
   table.hashes.each do |attributes|
     mass_datum = MassDatum.create(:s3id => "uploads/21998eeb-ed54-4914-9844-7a4b94008985/"+attributes[:data], :user_id => 1)
@@ -94,7 +105,6 @@ Given(/^the following results \- params \- data files exist for the user$/) do |
     result = Result.create(:s3id => "uploads/21998eeb-ed54-4914-9844-7a4b94cb285/"+attributes[:results], :mass_params_id => mass_param.id, :mass_data_id => mass_datum.id, :user_id => 1, :flag => true)
   end
 end
-
 
 Given /^I am logged in/ do
   step 'I am on the home page'
@@ -167,6 +177,7 @@ Then /^I should receive the file "(.*)"$/ do |filename|
   end
   result
 end
+
 
 Given /^I am not on the home page/ do
   visit citations_path
