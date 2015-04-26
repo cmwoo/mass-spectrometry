@@ -1,6 +1,10 @@
 class ResultsController < ApplicationController
   before_filter :authenticate_user!
-  def index
+
+  def finish
+    #start ssh session in background
+    Result.delay.start_ssh
+
     # final results
     if !current_user.current_result
       #error
@@ -11,8 +15,14 @@ class ResultsController < ApplicationController
         flash[:warning] = "Please upload files to run."
       else
         current_user.current_result.set_as_run
+        flash[:notice] = "Graph search is successfully running. You will receive an email when your analysis is complete."
       end
     end
+    redirect_to finish_index_path
+  end
+
+  def index
+
   end
 
   def review
