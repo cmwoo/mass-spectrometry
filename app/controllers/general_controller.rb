@@ -1,7 +1,14 @@
 require 'net/ssh'
 
 class GeneralController < ApplicationController
-  @@file_downloads = ["graph_search.exe", "sample_params.params"]
+  before_filter :authenticate_user!, only: [:downloads]
+  
+  @@file_downloads = ["CWT_PD.exe", 
+                      "Graph_search.exe",
+                      "ExampleParams.params",
+                      "Tag_finder.exe",
+                      "ExampleParams.txt"]
+
   @@downloads_path = File.join(Rails.root, "public", "downloads_page")
 
   def index
@@ -24,6 +31,9 @@ class GeneralController < ApplicationController
       flash[:warning] = "Invalid filename"
       redirect_to downloads_path
     end
+  end
+
+  def downloads
   end
 
   def about

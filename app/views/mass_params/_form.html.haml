@@ -1,9 +1,11 @@
 = form_tag mass_params_new_file_path(@file), :method => :put do
   = javascript_include_tag "mass_params"
-  %div{:id => 'form', :class => ""}
+  %div{:id => 'form', :class => "param_form"}
     = label :file, :filename, 'File Name'
     = text_field :file, 'filename'
     = '.params'
+    <br>
+    <br>
     <br>
     = label :file, :charge_min, 'charge_min: '
     = text_field :file, 'charge_min'
@@ -52,7 +54,7 @@
     = text_area_tag :alt_pattern_more, nil, size: "40x10"
     <br>
     = "Examples: alt_pattern: pattern=0.1, 0.5, 0.25; mw=300; prior=0.0001"
-    <br>
+    <br><br>
     = label :file, :full_output, 'full_output: '
     = select(:file, 'full_output', { "false" => "false", "true" => "true"})
     <br>
@@ -66,5 +68,5 @@
     = select(:file, 'mz_charge_scan', { "false" => "false", "true" => "true"})
     <br>
   
-  = submit_tag 'Save File'
+  = submit_tag 'Save File', :class => "center-btn btn"
 
