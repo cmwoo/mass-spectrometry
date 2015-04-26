@@ -2,16 +2,73 @@
 -#  This file is app/views/general/examples.html.haml
 -#  To disable buttons, :disabled => 'true'
 
-%h1 This is the Downloads Files Page
+%h1 Downloads
 
 %div{:id => 'center-parent'}
 
   %div{:class => 'card', :id => 'center'}
     %div{:id => 'content'}
-      %p Graph Search Downloads 
-      %p <br />
-      = link_to "graph_search.exe", download_file_path(:file => 'graph_search.exe')
-      %p <br />
-      = link_to "sample_params.params", download_file_path(:file => 'sample_params.params')
+      %p <b> Conversion of RAW files to mzXML files: </b>
+
+      %p <br> Please use: <a href="http://tools.proteomecenter.org/wiki/index.php?title=Software:ReAdW">ReAdW.exe</a>
+
+      %p  <br> User notes:
+      %p{:class => 'indent'} – Must install on a computer with Thermo’s XCalibur software installed
+      %p{:class => 'indent'} – We do not guarantee program function with mzXML converters other than ReAdW.  If your mzXML file is not being processed properly, please get in touch with us, and we’re happy to troubleshoot.
+
+      %p <br> <b> Standalone Windows Executables: </b>
+
+      %p{:class => 'indent'} <br> <a href="/downloads/CWT_PD.exe">CWT_PD.exe</a>
+      %p{:class => 'indent'} <a href="/downloads/Graph_search.exe">Graph_search.exe</a>
+      %p{:class => 'indent'} <a href="/downloads/ExampleParams.params">ExampleParams.params</a>
+      %p{:class => 'indent'} <br> – CWT_PD accepts file inputs in profile mode only
+      %p{:class => 'indent'} – Graph_search accepts file inputs from CWT_PD only
+
+      %p <br>
+      %p{:class => 'indent'} <a href="/downloads/Tag_finder.exe">Tag_finder.exe</a>
+      %p{:class => 'indent'} <a href="/downloads/ExampleParams.txt">ExampleParams.txt</a> 
+      %p <br>
+
+      %p{:class => 'indent'} – Tag_finder accepts file inputs in centroided mode only.
+
+      %p <br> <b> Detailed Instructions for Use: </b>
+
+      %p <br> GRAPH_SEARCH: 
+
+      %p{:class => 'indent'} <br> 1.	Convert RAW file to mzXML in profile mode using ReAdW.
+      %p{:class => 'indent2'}a.	 Open a Windows command line (Start -> type cmd in search bar)
+      %p{:class => 'indent2'}b.	Navigate to the folder containing ReAdW.exe
+      %p{:class => 'indent2'}c.	Run ReAdW conversion by typing:
+      %p{:class => 'indent3'}ReAdW.exe --mzXML yourfile.RAW
+
+      %p{:class => 'indent'} <br> 2.	Convert mzXML to processed mzXML with CWT_PD
+      %p{:class => 'indent2'}a.	In Windows command line navigate to the folder containing CWT_PD.exe
+      %p{:class => 'indent2'}b.	Run CWT_PD by typing:
+      %p{:class => 'indent3'}CWT_PD –i yourfile.mzXML –o yourfile_processed.mzXML
+
+      %p{:class => 'indent2'} <br> A list of scans as they are being processed will be output on the screen, and a processed mzXML file should be produced at the end.
+
+      %p{:class => 'indent'} <br> 3.	Run graph_search to find patterned species in your file
+      %p{:class => 'indent2'}a.	In Windows command line navigate to the folder containing graph_search.exe
+      %p{:class => 'indent2'}b.	Params text file: this is where you can specify what pattern to search for, scoring, etc.
+      %p{:class => 'indent2'}c.	Run graph_search by typing:
+      %p{:class => 'indent3'}graph_search –i yourfile_processed.mzXML –p paramsfile.txt
+
+      %p{:class => 'indent2'} <br> Graph search will search your data for patterned species and output different files detailing the hits.
+
+
+      %p <br> TAG_FINDER: 
+
+      %p{:class => 'indent'} <br> 1.	Convert your file to a centroided mzXML file directly using a conversion software such as ReAdW type: 
+      %p{:class => 'indent2'}ReAdW.exe --mzXML –c yourfile.RAW
+
+      %p{:class => 'indent'} <br> 2.	Run tag_finder to find patterned species in your file
+      %p{:class => 'indent2'}a.	In Windows command line navigate to the folder containing tag_finder.exe
+      %p{:class => 'indent2'}b.	Tag_finder is defaulted to the dibromide pattern on peptides.  To run tag_finder type: 
+      %p{:class => 'indent3'}tag_finder.exe yourfile.mzXML
+      %p{:class => 'indent2'}c.	To run tag_finder with your preferred settings type:
+      %p{:class => 'indent3'}tag_finder.exe yourfile.mzXML yoursettings.txt
+
+      %p{:class => 'indent2'} <br> Tag_finder will search your data for patterned species and output a chart and an inclusion list.  If you file has tandem MS spectra, tag_finder will automatically detect this, and then generate a filtered.mzXML file containing only tandem MS spectra derived from patterned species.
 
 

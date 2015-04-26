@@ -17,10 +17,10 @@ Background:
     | results2.zxml             | params2.txt |       data2.zxml       |
     | results3.zxml             | params3.txt |       data3.zxml       |
 
-# PENDING: Feature will be completed later
-# Scenario: choose to fill out a parameters form
-#   Given I follow "Parameters Form"
-#   Then I should see the parameters form
+
+Scenario: choose to fill out a parameters form
+  Given I follow "Create a new parameters file"
+  Then I should be on the "Parameters Form" page
 
 Scenario: choose an old parameters file
   Given I press "Choose Existing Files"

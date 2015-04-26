@@ -11,6 +11,7 @@ When /^(?:|I )(?:should be|am) on (.+)$/ do |page_name|
     when /^the home page$/ then visit root_path
     when /^the edit profile page$/ then visit edit_user_registration_path
     when /^the user information page$/ then visit uploads_path
+    when /^the Parameters Form page$/ then visit mass_params_create_file_path
   end
 end
 

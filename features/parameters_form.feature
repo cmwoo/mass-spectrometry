@@ -13,7 +13,7 @@ Background:
 
 Scenario: input parameters through a form
   Given I am on the Upload Parameters page
-  And I follow "Create a new params file"
+  And I follow "Create a new parameters file"
   And I fill in "file_filename" with "test_form"
 	And I fill out the parameters form
   And I press "Save File"
