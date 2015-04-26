@@ -29,4 +29,4 @@ Scenario: do not run if no data file selected
   And I upload just a param file
   And I press "Save and Next"
   And I am on the Review and Run page
-  Then I should see "Please select a data .zxml file."
+  Then I should see "Please select a data .mzXML file."

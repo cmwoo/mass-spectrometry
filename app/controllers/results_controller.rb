@@ -32,7 +32,7 @@ class ResultsController < ApplicationController
    if !current_result
      flash[:warning] = "No files have been uploaded."
      @disabled = true
-   elsif !current_result.mass_params_idra
+   elsif !current_result.mass_params_id
        flash[:warning] = "One of the files has not been uploaded."
        @message = "Please select a parameters file."
        @disabled = true
