@@ -16,21 +16,19 @@
 
       %p <br /> We provide three IsoStamp algorithms with further description and references below.
 
-      %p <br /> (1) Graph_Search v1.9:  mzXML files in profile mode are processed using a continuous wavelet transform for peak optimization.  A graph theoretic algorithm is then applied to predict the presence of patterned species. Graph_Search scores based on the clustered peak shape as compared to a theoretical curve, peak abundance, and charge states.
+      %p <br /> <b>(1) Graph_Search v1.9:</b>  mzXML files in profile mode are processed using a continuous wavelet transform for peak optimization.  A graph theoretic algorithm is then applied to predict the presence of patterned species. Graph_Search scores based on the clustered peak shape as compared to a theoretical curve, peak abundance, and charge states.
 
       %p <br /> For references see:
 
-      %p Palaniappan, K. K.; Pitcher, A. A.; Smart, B. P.; Spiciarich, D. R.; Iavarone, A. T.; Bertozzi, C. R.  “Isotopic signature transfer and mass pattern prediction (IsoStamp): An enabling technique for chemically-directed proteomics.”  ACS Chem. Biol. 2011, 6, 829–836.
+      %p Palaniappan, K. K.; Pitcher, A. A.; Smart, B. P.; Spiciarich, D. R.; Iavarone, A. T.; Bertozzi, C. R.  “Isotopic signature transfer and mass pattern prediction (IsoStamp): An enabling technique for chemically-directed proteomics.”  ACS Chem. Biol. 2011, 6, 829–836.  LINK.
 
-      %p Austin Pitcher Thesis (LINK).
+      %p <br /> Austin Pitcher Thesis (LINK).
 
-      %p <br /> (2) Tag_Finder: mzXML files in centroided mode are processed by comparing grouped spectra to the predicted pattern as a function of mass and charge.  Tag_Finder scores on the difference between the predicted and observed peak distribution for tagged vs. untagged species.
+      %p <br /> <b>(2) Tag_Finder:</b> mzXML files in centroided mode are processed by comparing grouped spectra to the predicted pattern as a function of mass and charge.  Tag_Finder scores on the difference between the predicted and observed peak distribution for tagged vs. untagged species.
 
-      %p <br /> For references see:  manuscript in preparation
+      %p <br /> Tandem_Filter (a component of Tag_Finder): Uses the Tag_Finder pattern matching algorithm and the presence of signature fragment peaks to select tandem MS spectra derived from tagged species.  The filtered output file is then used for targeted database searching.
 
-      %p <br /> (3) MS2_Filter: Uses the Tag_Finder pattern matching algorithm and the presence of signature fragment peaks to select tandem MS spectra derived from tagged species.  The filtered output file is then used for targeted database searching.
-
-      %p <br /> For references see:  manuscript in preparation
+      %p <br /> For references see:  <i>manuscript in preparation</i>
 
     %div
     = button_to 'Instructions', instructions_path, :class => 'center-btn btn', :method => :get
