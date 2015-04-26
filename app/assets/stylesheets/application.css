@@ -205,6 +205,10 @@ p{
   padding-left: 40px;
 }
 
+.indent3 {
+  padding-left: 56px;
+}
+
 #tabs {
   text-align: center;
   display: inline-block;
