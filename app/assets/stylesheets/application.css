@@ -224,3 +224,27 @@ p{
 .msg {
   text-align: center;
 }
+
+.param_form {
+  text-align: left;
+}
+
+.param_form .btn {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.param_form label{
+  font-weight: 700;
+  width: 200px;
+  display: inline-block;
+}
+
+.param_form input{
+  margin: 2px;
+}
+
+.param_form select{
+  margin: 2px;
+}
