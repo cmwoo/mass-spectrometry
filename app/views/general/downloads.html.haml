@@ -10,7 +10,7 @@
     %div{:id => 'content'}
       %p <b> Conversion of RAW files to mzXML files: </b>
 
-      %p <br> Please use: ReAdW.exe
+      %p <br> Please use: <a href="http://tools.proteomecenter.org/wiki/index.php?title=Software:ReAdW">ReAdW.exe</a>
 
       %p  <br> User notes:
       %p{:class => 'indent'} – Must install on a computer with Thermo’s XCalibur software installed
@@ -18,21 +18,15 @@
 
       %p <br> <b> Standalone Windows Executables: </b>
 
-      %p{:class => 'indent'} <br> 
-      = link_to "CWT_PD.exe", download_file_path(:file => 'CWT_PD.exe')
-      %p{:class => 'indent'} 
-      = link_to "Graph_search.exe", download_file_path(:file => 'Graph_search.exe')
-      %p{:class => 'indent'}
-      = link_to "ExampleParams.params", download_file_path(:file => 'ExampleParams.params')
-
-      %p{:class => 'indent'} – CWT_PD accepts file inputs in profile mode only
+      %p{:class => 'indent'} <br> <a href="/downloads/CWT_PD.exe">CWT_PD.exe</a>
+      %p{:class => 'indent'} <a href="/downloads/Graph_search.exe">Graph_search.exe</a>
+      %p{:class => 'indent'} <a href="/downloads/ExampleParams.params">ExampleParams.params</a>
+      %p{:class => 'indent'} <br> – CWT_PD accepts file inputs in profile mode only
       %p{:class => 'indent'} – Graph_search accepts file inputs from CWT_PD only
 
       %p <br>
-      %p{:class => 'indent'} 
-      = link_to "Tag_finder.exe", download_file_path(:file => 'Tag_finder.exe')
-      %p{:class => 'indent'} 
-      = link_to "ExampleParams.txt", download_file_path(:file => 'ExampleParams.txt')
+      %p{:class => 'indent'} <a href="/downloads/Tag_finder.exe">Tag_finder.exe</a>
+      %p{:class => 'indent'} <a href="/downloads/ExampleParams.txt">ExampleParams.txt</a> 
       %p <br>
 
       %p{:class => 'indent'} – Tag_finder accepts file inputs in centroided mode only.
