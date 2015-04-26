@@ -180,7 +180,7 @@ end
 
 
 Given /^I am not on the home page/ do
-  visit citations_path
+  visit applications_path
 end
 
 Given /^I click on the icon/ do

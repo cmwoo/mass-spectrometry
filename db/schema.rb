@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150416030942) do
+ActiveRecord::Schema.define(:version => 20150426210549) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0, :null => false
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(:version => 20150416030942) do
     t.integer  "mass_data_id"
     t.integer  "user_id"
     t.boolean  "flag"
+    t.string   "s3id_2"
   end
 
   add_index "results", ["mass_data_id"], :name => "index_results_on_mass_data_id"

@@ -8,6 +8,8 @@
 
   %div{:class => 'card', :id => 'center'}
     %div{:id => 'content'}
+      %p <br /> INSTRUCTIONS FOR DOWNLOADABLES
+
       %p <b>GRAPH_SEARCH:</b> Download the params file (LINK)
 
       %p 1.	Convert RAW file to mzXML in profile mode using ReAdW.
@@ -42,7 +44,8 @@
 
       %p  <br /> 2.	Run tag_finder to find patterned species in your file
       %p{:class => 'indent'} a.	In Windows command line navigate to the folder containing tag_finder.exe
-      %p{:class => 'indent'} b.	Tag_finder is defaulted to the dibromide pattern on peptides.  To run tag_finder type: tag_finder.exe yourfile.mzXML
+      %p{:class => 'indent'} b.	Tag_finder is defaulted to the dibromide pattern on peptides.  To run tag_finder type: 
+      %p{:class => 'indent2'} tag_finder.exe yourfile.mzXML
       %p{:class => 'indent'} c.	To output default settings type:
       %p{:class => 'indent2'} tag_finder.exe –g yoursettings.txt
       %p{:class => 'indent2'} <br /> i.	Settings can be edited to change the base pattern (from peptide to other molecule types) and tag pattern (from dibromide to other pattern types)
@@ -58,15 +61,16 @@
 
       %p <br /> 2.	Run MS2_filter to filter for tandem MS spectra that are from tagged species:
       %p{:class => 'indent'} a.	In Windows command line navigate to the folder containing MS2_filter.exe
-      %p{:class => 'indent'} b.	MS2_filter is defaulted to the dibromide pattern and signature fragments for glycopeptides.  To run MS2_filter type: MS2_filter.exe yourfile.mzXML
+      %p{:class => 'indent'} b.	MS2_filter is defaulted to the dibromide pattern and signature fragments for glycopeptides.  To run MS2_filter type: 
+      %p{:class => 'indent2'} MS2_filter.exe yourfile.mzXML
       %p{:class => 'indent'} c.	To output default settings type:
       %p{:class => 'indent2'} MS2_filter.exe –g yoursettings.txt
       %p{:class => 'indent2'} <br /> i.	Settings can be edited to change the base pattern (from peptide to other molecule types) and tag pattern (from dibromide to other pattern types)
-      %p{:class => 'indent2'} <br /> ii.	Settings can be edited to guide for expected fragments (e.g., glycans) with “###” for signature fragments and “–###” for identification of the neutral or charged loss fragments
+      %p{:class => 'indent2'} <br /> ii. Settings can be edited to guide for expected fragments (e.g., glycans) with “###” for signature fragments and “–###” for identification of the neutral or charged loss fragments
       %p{:class => 'indent'} d.	To run MS2_filter with your preferred settings type:
       %p{:class => 'indent2'} MS2_filter.exe yourfile.mzXML yoursettings.txt
 
-      %p <br /> TEXT FOR THE INSTRUCTIONS ON UPLOAD PAGE:
+      %p <br /> INSTRUCTIONS ON UPLOAD:
 
       %p <br /> <b>GRAPH_SEARCH:</b> Download the params file (LINK)
 
@@ -90,7 +94,7 @@
 
       %p <br /> <b>MS2_Filter:</b> Download the params file (LINK)
 
-      %p <br /> 3.	Convert your file to a centroided mzXML file directly using a conversion software such as ReAdW (type: ReAdW.exe --mzXML –c yourfile.RAW)
+      %p <br /> 4.	Convert your file to a centroided mzXML file directly using a conversion software such as ReAdW (type: ReAdW.exe --mzXML –c yourfile.RAW)
 
       %p <br /> <b>Source for ReAdW:</b> <a href="http://tools.proteomecenter.org/wiki/index.php?title=Software:ReAdW">http://tools.proteomecenter.org/wiki/index.php?title=Software:ReAdW</a>
 

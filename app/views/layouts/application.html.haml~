@@ -5,13 +5,13 @@
     = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
     %div{:class => "card", :id=>"header"} 
-      = image_tag asset_path("icon.png"), :size => '75x75'
+      = link_to (image_tag asset_path("icon.png"), :size => '75x75'), root_path
       %div{:id => "headerLinks"}
         = link_to 'Home', root_path
         |
-        = link_to ' About', about_path
+        = link_to ' Applications', applications_path
         |
-        = link_to ' Examples', examples_path 
+        = link_to ' Downloads', downloads_path
         - if user_signed_in?
           |
           = link_to " Uploads", uploads_path

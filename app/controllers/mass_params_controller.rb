@@ -16,7 +16,7 @@ class MassParamsController < ApplicationController
     else
       @message = "Please choose a .txt or .params file to upload."
     end
-    @s3_direct_post = S3_BUCKET.presigned_post(key: "params/#{current_user.id}/${filename}", success_action_status: 201)
+    @s3_direct_post = S3_BUCKET.presigned_post(key: "#{current_user.id}/params/#{SecureRandom.uuid}/${filename}", success_action_status: 201)
     @mass_param = MassParam.new
   end
   

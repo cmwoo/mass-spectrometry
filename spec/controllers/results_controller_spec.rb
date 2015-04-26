@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe ResultsController do
 
-  describe "GET 'index'" do
+  describe "POST 'finish'" do
     it "returns http success" do
       user = double('user')
       allow(request.env['warden']).to receive(:authenticate!) { user }
@@ -11,8 +11,8 @@ describe ResultsController do
       result = Result.create(:user_id => 1, :mass_params_id => 1, :mass_data_id => 1)
       user.stub(:current_result).and_return(result)
 
-      get 'index'
-      response.should be_success
+      post 'finish'
+      response.should redirect_to finish_index_path
       result.has_been_run?.should == true
     end
   end
@@ -24,7 +24,7 @@ describe ResultsController do
       allow(controller).to receive(:current_user) { user }
 
       user.stub(:current_result).and_return(nil)
-      get 'index'
+      post 'finish'
       flash[:warning].should == "Please upload files to run."
     end
     it 'if the data file has not been uploaded' do
@@ -34,7 +34,7 @@ describe ResultsController do
 
       result = Result.create(:user_id => 1, :mass_params_id => 1)
       user.stub(:current_result).and_return(result)
-      get 'index'
+      post 'finish'
       flash[:warning].should == "Please upload files to run."
     end
     it 'if the params file has not been uploaded' do
@@ -44,7 +44,7 @@ describe ResultsController do
 
       result = Result.create(:user_id => 1, :mass_data_id => 1)
       user.stub(:current_result).and_return(result)
-      get 'index'
+      post 'finish'
       flash[:warning].should == "Please upload files to run."
     end
   end
@@ -72,6 +72,20 @@ describe ResultsController do
       flash[:warning].should == "One of the files has not been uploaded."
     end
 
+  end
+
+
+  describe "test finish" do
+    it "should call ssh function" do
+      user = double('user', :current_result => nil)
+      allow(request.env['warden']).to receive(:authenticate!) { user }
+      allow(controller).to receive(:current_user) { user }
+
+      r = double("Result")
+      Result.stub(:delay).and_return(r)
+      r.should_receive(:start_ssh)
+      post :finish
+    end
   end
 
 end

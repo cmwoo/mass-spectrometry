@@ -3,7 +3,7 @@ class Result < ActiveRecord::Base
   belongs_to :mass_data
   belongs_to :mass_params
 
-  attr_accessible :s3id, :mass_data_id, :mass_params_id, :user_id, :flag
+  attr_accessible :s3id, :mass_data_id, :mass_params_id, :user_id, :flag, :s3id_2
 
   def has_been_run?
     return self.flag == true

@@ -33,13 +33,13 @@ MassSpec::Application.routes.draw do
   match '/mass_params/upload' => 'mass_params#upload', :as => :upload_params
   match '/about' => 'general#about', :as => :about
   match '/downloads' => 'general#downloads', :as => :downloads
-  match '/citations' => 'general#citations', :as => :citations
+  match '/applications' => 'general#applications', :as => :applications
   match '/examples' => 'general#examples', :as => :examples
   match '/uploads' => 'user_uploads#uploads', :as => :uploads
   match '/instructions' => 'general#instructions', :as => :instructions
   root :to => 'general#index'
 
-  post '/finish' => 'general#finish', :as => :post_finish
+  post '/finish' => 'results#finish', :as => :post_finish
 
   match '/downloads/:file' => 'general#download_file', :as => :download_file, :constraints  => { :file => /[0-z\.]+/ }
 
