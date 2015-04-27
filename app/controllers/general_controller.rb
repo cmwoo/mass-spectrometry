@@ -1,7 +1,7 @@
 require 'net/ssh'
 
 class GeneralController < ApplicationController
-  before_filter :authenticate_user!, only: [:downloads]
+  before_filter :authenticate_user!, only: [:downloads, :examples]
   
   @@file_downloads = ["CWT_PD.exe", 
                       "Graph_search.exe",
@@ -34,6 +34,9 @@ class GeneralController < ApplicationController
   end
 
   def downloads
+  end
+
+  def examples
   end
 
   def about

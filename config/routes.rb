@@ -33,6 +33,7 @@ MassSpec::Application.routes.draw do
   match '/mass_params/upload' => 'mass_params#upload', :as => :upload_params
   match '/about' => 'general#about', :as => :about
   match '/downloads' => 'general#downloads', :as => :downloads
+  match '/examples' => 'general#examples', :as => :examples
   match '/applications' => 'general#applications', :as => :applications
   match '/examples' => 'general#examples', :as => :examples
   match '/uploads' => 'user_uploads#uploads', :as => :uploads
