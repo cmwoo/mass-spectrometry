@@ -10,6 +10,7 @@ describe ResultsController do
 
       result = Result.create(:user_id => 1, :mass_params_id => 1, :mass_data_id => 1)
       user.stub(:current_result).and_return(result)
+      result.stub(:start_ssh)
 
       post 'finish'
       response.should redirect_to finish_index_path
@@ -24,6 +25,8 @@ describe ResultsController do
       allow(controller).to receive(:current_user) { user }
 
       user.stub(:current_result).and_return(nil)
+      result.stub(:start_ssh)
+
       post 'finish'
       flash[:warning].should == "Please upload files to run."
     end
@@ -34,6 +37,8 @@ describe ResultsController do
 
       result = Result.create(:user_id => 1, :mass_params_id => 1)
       user.stub(:current_result).and_return(result)
+      result.stub(:start_ssh)
+
       post 'finish'
       flash[:warning].should == "Please upload files to run."
     end
@@ -44,6 +49,8 @@ describe ResultsController do
 
       result = Result.create(:user_id => 1, :mass_data_id => 1)
       user.stub(:current_result).and_return(result)
+      result.stub(:start_ssh)
+      
       post 'finish'
       flash[:warning].should == "Please upload files to run."
     end
