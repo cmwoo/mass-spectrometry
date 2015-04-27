@@ -33,23 +33,35 @@ class Result < ActiveRecord::Base
     mass_param = MassParam.find(self.mass_params_id)
 
     Net::SSH.start( hostname, username, :password => password ) do|ssh|
-      #process
-      ssh.exec!("mkdir #{rand_dir}")
-      ssh.exec!("cd #{rand_dir}")
+
+      #mkdir doesn't work
+      #ssh.exec!("mkdir #{rand_dir}")
+      #ssh.exec!("cd #{rand_dir}")
+
       #download data and params files from s3
       output = ssh.exec!("/cygdrive/c/'Program Files'/Amazon/AWSCLI/aws s3 cp s3://mass-spec-test-bucket/#{mass_datum.s3id} .")
+      puts output
       output = ssh.exec!("/cygdrive/c/'Program Files'/Amazon/AWSCLI/aws s3 cp s3://mass-spec-test-bucket/#{mass_param.s3id} .")
-      
+      puts output
+
       #run tag_finder
-      output = ssh.exec!("../tag_finder #{mass_datum.get_title} #{mass_param.get_title}")
+      output = ssh.exec!("./tag_finder #{mass_datum.get_title} #{mass_param.get_title}")
+      puts output
 
       #upload results files to s3
       output = ssh.exec!("/cygdrive/c/'Program Files'/Amazon/AWSCLI/aws s3 cp #{get_output1_title} s3://mass-spec-test-bucket/#{self.user_id}/results/#{rand_dir}/#{get_output1_title}")
+      puts output
       output = ssh.exec!("/cygdrive/c/'Program Files'/Amazon/AWSCLI/aws s3 cp #{get_output2_title} s3://mass-spec-test-bucket/#{self.user_id}/results/#{rand_dir}/#{get_output2_title}")
+      puts output
 
       #cleanup
-      ssh.exec!("cd ..")
-      ssh.exec!("rm -rf #{rand_dir}")
+      #ssh.exec!("cd ..")
+      #ssh.exec!("rm -rf #{rand_dir}")
+      ssh.exec!("rm #{get_output1_title}")
+      ssh.exec!("rm #{get_output2_title}")
+      ssh.exec!("rm #{mass_datum.get_title}")
+      ssh.exec!("rm #{mass_param.get_title}")
+
     end
 
     #update results model
