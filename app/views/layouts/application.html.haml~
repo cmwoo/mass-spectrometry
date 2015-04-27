@@ -12,6 +12,8 @@
         = link_to ' Applications', applications_path
         |
         = link_to ' Downloads', downloads_path
+        |
+        = link_to ' Examples', examples_path
         - if user_signed_in?
           |
           = link_to " Uploads", uploads_path
@@ -38,4 +40,4 @@
 
       = yield
   %footer#footer
-    Copyright/Contact information
+    &copy 2015 UC Berkeley <br>Contact Christina Woo cmwoo@berkeley.edu or David Spiciarich dspiciarich@berkeley.edu for more information.
