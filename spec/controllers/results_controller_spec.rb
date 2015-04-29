@@ -24,7 +24,8 @@ describe ResultsController do
       allow(request.env['warden']).to receive(:authenticate!) { user }
       allow(controller).to receive(:current_user) { user }
 
-      user.stub(:current_result).and_return(nil)
+      result = Result.create(:user_id => 1, :mass_params_id => nil, :mass_data_id => nil)
+      user.stub(:current_result).and_return(result)
       result.stub(:start_ssh)
 
       post 'finish'
@@ -81,18 +82,5 @@ describe ResultsController do
 
   end
 
-
-  describe "test finish" do
-    it "should call ssh function" do
-      user = double('user', :current_result => nil)
-      allow(request.env['warden']).to receive(:authenticate!) { user }
-      allow(controller).to receive(:current_user) { user }
-
-      r = double("Result")
-      Result.stub(:delay).and_return(r)
-      r.should_receive(:start_ssh)
-      post :finish
-    end
-  end
 
 end

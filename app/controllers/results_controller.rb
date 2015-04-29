@@ -12,8 +12,8 @@ class ResultsController < ApplicationController
         flash[:warning] = "Please upload files to run."
       else
         #start ssh session in background
-        #current_user.current_result.delay.start_ssh
-        current_user.current_result.start_ssh
+        current_user.current_result.delay.start_ssh
+        #current_user.current_result.start_ssh
         flash[:notice] = "Graph search is successfully running. You will receive an email when your analysis is complete."
         current_user.current_result.set_as_run
       end
@@ -38,7 +38,7 @@ class ResultsController < ApplicationController
        @disabled = true
    elsif !current_result.mass_data_id
        flash[:warning] = "One of the files has not been uploaded."
-       @message = "Please select a data .zxml file."
+       @message = "Please select a data .mzxml file."
        @disabled = true
    else
        @message = "Data: #{current_result.get_mass_data.get_title}\n\n Parameters: #{current_result.get_mass_params.get_title}"
