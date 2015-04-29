@@ -7,7 +7,7 @@ describe Result do
       result = Result.create(:user_id => 1, :mass_params_id => 1, :mass_data_id => 1)
       ssh_connection = mock("SSH Connection")
       Net::SSH.stub(:start).and_yield(ssh_connection)
-      ssh_connection.should_receive(:exec!).at_least(9)
+      ssh_connection.should_receive(:exec!).at_least(9).and_return("output string")
 
       mass_param = double("MassParam")
       mass_datum = double("MassDatum")
