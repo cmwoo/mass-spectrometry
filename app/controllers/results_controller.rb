@@ -37,11 +37,7 @@ class ResultsController < ApplicationController
        @disabled = true
    elsif !current_result.mass_data_id
        flash[:warning] = "One of the files has not been uploaded."
-<<<<<<< HEAD
        @message = "Please select a data .mzXML file."
-=======
-       @message = "Please select a data .mzxml file."
->>>>>>> 0859808dae531f9506e965b8b6f040929a7d592a
        @disabled = true
    else
        @message = "Data: #{current_result.get_mass_data.get_title}\n\n Parameters: #{current_result.get_mass_params.get_title}"
