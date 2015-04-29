@@ -95,14 +95,14 @@ Then /^"([^"]*)" links to the corresponding ([^"]*) file stored in s3 server$/ d
   else
     url = "https://s3.amazonaws.com/mass-spec-test-bucket/uploads/21998eeb-ed54-4914-9844-7a4b94cb285/" + link 
   end
-    page.should have_link(link, :href => url)
+  page.should have_link(link, :href => url)
 end
 
 Given(/^the following results \- params \- data files exist for the user$/) do |table|
   table.hashes.each do |attributes|
     mass_datum = MassDatum.create(:s3id => "uploads/21998eeb-ed54-4914-9844-7a4b94008985/"+attributes[:data], :user_id => 1)
     mass_param = MassParam.create(:s3id => "uploads/21998eeb-ed54-4914-9844-7a4b94008fff/"+attributes[:params], :user_id => 1)
-    result = Result.create(:s3id => "uploads/21998eeb-ed54-4914-9844-7a4b94cb285/"+attributes[:results], :mass_params_id => mass_param.id, :mass_data_id => mass_datum.id, :user_id => 1, :flag => true)
+    result = Result.create(:s3id => "uploads/21998eeb-ed54-4914-9844-7a4b94cb285/"+attributes[:results], :s3id_2 => "uploads/21998eeb-ed54-4914-9844-7a4b94cb285/"+attributes[:results] + "2", :mass_params_id => mass_param.id, :mass_data_id => mass_datum.id, :user_id => 1, :flag => true)
   end
 end
 

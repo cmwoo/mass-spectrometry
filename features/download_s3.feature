@@ -11,10 +11,9 @@ Background:
   And I am logged in
   And the following results - params - data files exist for the user
     |       results             | params      | data                   |
-    | results1.zxml             | params1.txt |       data1.zxml       |
-    | results2.zxml             | params2.txt |       data2.zxml       |
+    | data_chart.txt             | params1.txt |       data1.zxml       |
 
 Scenario: download the user’s existing files
   Given I am on the user information page
-  Then "results1.zxml" links to the corresponding results file stored in s3 server
+  Then "data_chart.txt" links to the corresponding results file stored in s3 server
   And "data1.zxml" links to the corresponding data file stored in s3 server
