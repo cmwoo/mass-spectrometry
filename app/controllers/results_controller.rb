@@ -13,7 +13,7 @@ class ResultsController < ApplicationController
       else
         #start ssh session in background
         current_user.current_result.delay.start_ssh
-        flash[:notice] = "Graph search is successfully running. You will be able to download the results from the uploads page when your analysis is complete."
+        flash[:notice] = "Tag finder is successfully running. You will be able to download the results from the uploads page when your analysis is complete."
         current_user.current_result.set_as_run
       end
     end

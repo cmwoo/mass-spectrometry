@@ -11,7 +11,7 @@ class MassDataController < ApplicationController
     if current_result && current_mass_data
       @message = "You have already uploaded #{current_mass_data.get_title}."
     else
-      @message = "Please choose a .zxml file to upload."
+      @message = "Please choose a .mzxml file to upload."
     end
     @s3_direct_post = S3_BUCKET.presigned_post(key: "#{current_user.id}/data/#{SecureRandom.uuid}/${filename}", success_action_status: 201)
     @mass_datum = MassDatum.new
@@ -33,6 +33,6 @@ class MassDataController < ApplicationController
   end
 
   def update_choice
-    update_model_choice(params[:data_id], :mass_data_id, :MassDatum, ".zxml")
+    update_model_choice(params[:data_id], :mass_data_id, :MassDatum, ".mzxml")
   end
 end

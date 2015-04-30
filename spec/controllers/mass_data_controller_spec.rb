@@ -51,7 +51,7 @@ describe MassDataController do
       
       post :update_choice, :data_id => 100
       response.should redirect_to choose_data_path
-      flash[:warning].should == "Please choose an existing .zxml file."
+      flash[:warning].should == "Please choose an existing .mzxml file."
     end
     
     it "should tell you if you have already uploaded a file" do
