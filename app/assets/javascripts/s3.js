@@ -19,7 +19,10 @@ var s3_upload_file = function(url, formData) {
         var uploadFile = data.files[0];
         if (!(/\.(params|mzXML|txt)$/i).test(uploadFile.name)) {
             alert('Incorrect file type');
-        }else {
+        } else if(data.originalFiles[0]['size'] && data.originalFiles[0]['size'] > 4000000000) {
+            alert('Filesize is too big');
+        }
+        else {
             data.submit();
         }
       },
