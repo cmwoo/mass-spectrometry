@@ -260,3 +260,11 @@ p{
 .param_form select{
   margin: 2px;
 }
+
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #d3d3d3;
+}

@@ -32,6 +32,8 @@ class Result < ActiveRecord::Base
     mass_datum = MassDatum.find(self.mass_data_id)
     mass_param = MassParam.find(self.mass_params_id)
 
+    includes_third_output = false
+
     Net::SSH.start( 'ec2-52-10-218-125.us-west-2.compute.amazonaws.com', 'root', :password => ENV["EC2_PASSWORD"] ) do|ssh|
 
       #download data and params files from s3
@@ -47,24 +49,42 @@ class Result < ActiveRecord::Base
         ssh.exec!("echo '#{program_output}' > #{get_output2_title}")
       end
       
+      if files.include?(get_output3_title)
+        includes_third_output = true
+      end
+
       #upload results files to s3
       ssh.exec!("/cygdrive/c/'Program Files'/Amazon/AWSCLI/aws s3 cp #{get_output1_title} s3://mass-spec-test-bucket/#{self.user_id}/results/#{rand_dir}/#{get_output1_title}")
       ssh.exec!("/cygdrive/c/'Program Files'/Amazon/AWSCLI/aws s3 cp #{get_output2_title} s3://mass-spec-test-bucket/#{self.user_id}/results/#{rand_dir}/#{get_output2_title}")
+      if includes_third_output
+        ssh.exec!("/cygdrive/c/'Program Files'/Amazon/AWSCLI/aws s3 cp #{get_output3_title} s3://mass-spec-test-bucket/#{self.user_id}/results/#{rand_dir}/#{get_output3_title}")
+      end
 
+      # remove input and output files
       ssh.exec!("rm #{get_output1_title}")
       ssh.exec!("rm #{get_output2_title}")
+      ssh.exec!("rm #{get_output3_title}")
       ssh.exec!("rm #{mass_datum.get_title}")
       ssh.exec!("rm #{mass_param.get_title}")
+
+      # remove any log files that might exist
+      ssh.exec!("rm -f #{get_title_without_ending}_filter_log*")
+
 
     end
 
     #update results model
     self.s3id = "#{self.user_id}/results/#{rand_dir}/#{get_output1_title}"
     self.s3id_2 = "#{self.user_id}/results/#{rand_dir}/#{get_output2_title}"
+
+    if includes_third_output
+      self.s3id_3 = "#{self.user_id}/results/#{rand_dir}/#{get_output3_title}"
+    end
     self.save!
 
   end
 
+  # gets title of data file without .mzxml ending
   def get_title_without_ending
     mass_datum_title = MassDatum.find(self.mass_data_id).get_title
     str_length = mass_datum_title.length - 6
@@ -72,11 +92,19 @@ class Result < ActiveRecord::Base
     return mass_datum_title[0, str_length]
   end
 
+  # returns [data_name]_chart.txt
   def get_output1_title
     return "#{self.get_title_without_ending}_chart.txt"
   end
 
+  # returns [data_name]_massspec.csv
   def get_output2_title
     return "#{self.get_title_without_ending}_massspec.csv"
   end
+
+  # returns [data_name]_filtered.mzxml
+  def get_output3_title
+    return "#{self.get_title_without_ending}_filtered.mzxml"
+  end
+
 end

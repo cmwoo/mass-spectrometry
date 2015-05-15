@@ -11,8 +11,7 @@
           %tr
             %th Data
             %th Params
-            %th Results (.txt)
-            %th Results (.csv)
+            %th Results
             %th Submission Date
         %tbody
           - @results.each do |result|
@@ -21,7 +20,12 @@
             %tr
               %td= if data then link_to(data.get_title(), result.get_url(data.s3id)) else "Upload" end
               %td= if params then link_to(params.get_title(), result.get_url(params.s3id)) else "Upload" end
-              %td= if !result.s3id then "Waiting..." else link_to(result.get_output1_title, result.get_url(result.s3id)) end
-              %td= if !result.s3id then "Waiting..." else link_to(result.get_output2_title,result.get_url(result.s3id_2)) end
+              %td
+                = if !result.s3id then "Waiting..." else link_to(result.get_output1_title, result.get_url(result.s3id)) end
+                %br
+                = if result.s3id_2 then link_to(result.get_output2_title,result.get_url(result.s3id_2)) end
+                %br
+                = if result.s3id_3 then link_to(result.get_output3_title,result.get_url(result.s3id_3)) end
+
               %td= result.created_at()
 
