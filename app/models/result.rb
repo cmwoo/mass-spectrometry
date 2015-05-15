@@ -23,7 +23,7 @@ class Result < ActiveRecord::Base
   end
 
   def get_url(object_id)
-    "https://s3.amazonaws.com/mass-spec-test-bucket/" + object_id
+    "https://s3-us-west-2.amazonaws.com/massspec/" + object_id
   end
 
   def start_ssh
@@ -34,11 +34,11 @@ class Result < ActiveRecord::Base
 
     includes_third_output = false
 
-    Net::SSH.start( 'ec2-52-10-218-125.us-west-2.compute.amazonaws.com', 'root', :password => ENV["EC2_PASSWORD"] ) do|ssh|
+    Net::SSH.start( 'ec2-52-25-108-244.us-west-2.compute.amazonaws.com', 'root', :password => ENV["EC2_PASSWORD"] ) do|ssh|
 
       #download data and params files from s3
-      ssh.exec!("/cygdrive/c/'Program Files'/Amazon/AWSCLI/aws s3 cp s3://mass-spec-test-bucket/#{mass_datum.s3id} .")
-      ssh.exec!("/cygdrive/c/'Program Files'/Amazon/AWSCLI/aws s3 cp s3://mass-spec-test-bucket/#{mass_param.s3id} .")
+      ssh.exec!("/cygdrive/c/'Program Files'/Amazon/AWSCLI/aws s3 cp s3://massspec/#{mass_datum.s3id} .")
+      ssh.exec!("/cygdrive/c/'Program Files'/Amazon/AWSCLI/aws s3 cp s3://massspec/#{mass_param.s3id} .")
 
       #run tag_finder
       program_output = ssh.exec!("./tag_finder #{mass_datum.get_title} #{mass_param.get_title}")
@@ -54,10 +54,10 @@ class Result < ActiveRecord::Base
       end
 
       #upload results files to s3
-      ssh.exec!("/cygdrive/c/'Program Files'/Amazon/AWSCLI/aws s3 cp #{get_output1_title} s3://mass-spec-test-bucket/#{self.user_id}/results/#{rand_dir}/#{get_output1_title}")
-      ssh.exec!("/cygdrive/c/'Program Files'/Amazon/AWSCLI/aws s3 cp #{get_output2_title} s3://mass-spec-test-bucket/#{self.user_id}/results/#{rand_dir}/#{get_output2_title}")
+      ssh.exec!("/cygdrive/c/'Program Files'/Amazon/AWSCLI/aws s3 cp #{get_output1_title} s3://massspec/#{self.user_id}/results/#{rand_dir}/#{get_output1_title}")
+      ssh.exec!("/cygdrive/c/'Program Files'/Amazon/AWSCLI/aws s3 cp #{get_output2_title} s3://massspec/#{self.user_id}/results/#{rand_dir}/#{get_output2_title}")
       if includes_third_output
-        ssh.exec!("/cygdrive/c/'Program Files'/Amazon/AWSCLI/aws s3 cp #{get_output3_title} s3://mass-spec-test-bucket/#{self.user_id}/results/#{rand_dir}/#{get_output3_title}")
+        ssh.exec!("/cygdrive/c/'Program Files'/Amazon/AWSCLI/aws s3 cp #{get_output3_title} s3://massspec/#{self.user_id}/results/#{rand_dir}/#{get_output3_title}")
       end
 
       # remove input and output files

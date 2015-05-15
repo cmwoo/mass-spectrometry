@@ -89,11 +89,11 @@ end
 
 Then /^"([^"]*)" links to the corresponding ([^"]*) file stored in s3 server$/ do |link, file_type|
   if file_type == "data"
-    url = "https://s3.amazonaws.com/mass-spec-test-bucket/uploads/21998eeb-ed54-4914-9844-7a4b94008985/" + link
+    url = "https://s3.amazonaws.com/massspec/uploads/21998eeb-ed54-4914-9844-7a4b94008985/" + link
   elsif file_type == "params"
-    url = "https://s3.amazonaws.com/mass-spec-test-bucket/uploads/21998eeb-ed54-4914-9844-7a4b94008fff/" + link
+    url = "https://s3.amazonaws.com/massspec/uploads/21998eeb-ed54-4914-9844-7a4b94008fff/" + link
   else
-    url = "https://s3.amazonaws.com/mass-spec-test-bucket/uploads/21998eeb-ed54-4914-9844-7a4b94cb285/" + link 
+    url = "https://s3.amazonaws.com/massspec/uploads/21998eeb-ed54-4914-9844-7a4b94cb285/" + link 
   end
   page.should have_link(link, :href => url)
 end
