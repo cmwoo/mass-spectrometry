@@ -1,18 +1,3 @@
-TandemFilter = {
-	TagMasses = 526.04, 528.055, -526.04, -528.055
-	fMaximumPrecursorMZ_Error = 1.0
-	fMinimumMS2_MassFraction = 0.005
-	iMinimumFragmentCharge = 0
-	iMaximumFragmentCharge = 2
-}
-TandemFilterScoring = {
-	fMS1_MatchFound = 20
-	fMS1_MatchScore = 2.0
-	fMS1_MatchMaxScoreEffect = 60.0
-	fMS2_TagFound = 20
-	fMS2_GoodInverseTagFound = 10
-	fMinimumScore = 30
-}
 PatternMatching = {
 	BasePattern = 0.99938760678656, 0.00057013045394, 0.0000422627595
 	comment = This is the expected mass distribution of a single AMU of peptide, caused by C-13, N-15, S-33, S-34, O-17, O-18, and deuterium.
@@ -39,8 +24,8 @@ PatternMatching = {
 	iBlurStep = 25
 	comment = Determines the degree of accuracy used in some internal optimizations.  Lower is more accurate, higher is faster.  Usually not significant either way.
 
-	fLargeMassThreshold = 5000.0
-	comment = 
+	fLargeMassThreshold = 0
+	comment = If this is non-zero, then species with mass significantly above this level are not penalized as much for looking similar to untagged / misaligned species.
 
 }
 MatchFilter = {
@@ -56,49 +41,97 @@ MatchFilter = {
 	fMaximumNoise = 2.5
 	comment = Matches for which the ratio of background noise to match intensity exceed this value will be discarded
 
-	fMinimumScore = -25.0
+	fMinimumScore = -20.0
 	comment = Matches which the scoring algorithm assigns a score below this value will be discarded
 
 	fMinimumPatternAmplitude = 10000.0
 	comment = Matches with an intensity less than this value will be discarded
 
 }
+TandemFilter = {
+	TagMasses = 526.04, 528.055, -526.04, -528.055
+	comment = Positives values indicate masses a tag might be found at, negative masses indicate masses a delta mass might be calculated from.
+
+	comment = Note that delta masses are only checked for in cases where the LC-MS machine identified the charge of precursor. (background noise of different charge values can prevent this)
+
+	fMaximumPrecursorMZ_Error = 1.0
+	comment = The precursor m/z value obtained is the value the machine was looking for, not necessarily the value the precursor was at.  This is the maximum difference the calculations will permit.
+
+	fMinimumMS2_MassFraction = 0.005
+	comment = This is the minimum mass fraction of the MS2 data that must correspond to potential tag masses in order for it to be counted.  The fraction is doubled for delta tag masses, due to the less exact calculations involved.
+
+	iMinimumFragmentCharge = 0
+	iMaximumFragmentCharge = 2
+}
+TandemFilterScoring = {
+	comment = Tandem Filtering gives each MS2 scan a score, in completely different units from the pattern matching scores produced when examining MS1 data.
+
+	fMS1_MatchFound = 20
+	comment = This amount is given as a flat bonus to any MS2 scan which corresponds to an identifiable MS1 pattern match.
+
+	fMS1_MatchScore = 2.0
+	comment = This (MS1 pattern match score * fMS1_MatchScore) is awarded in in addition to the flat bonus if the MS1 pattern match score is greater than zero.
+
+	fMS1_MatchMaxScoreEffect = 60.0
+	comment = No matter how high the score given to the corresponding MS1 pattern match is, the MS2 scan never gets more than this many points from the pattern match alone.
+
+	fMS2_TagFound = 20
+	comment = This is how many points an MS2 scans score is awarded if a tag mass is found within it.
+
+	fMS2_GoodInverseTagFound = 10
+	comment = This is how many points an MS2 scans score is awarded if a delta mass is found within it.
+
+	fMinimumScore = 30
+	comment = This is the minimum number of points an MS2 scan must be awarded for it to pass the filters.
+
+}
 Grouping = {
 	iMaxScanDifference = 20
+	comment = Adjacent and overlapping matches can always be combined.  This amount is the scans *between* two matches that can be skipped to combine them.
+
 	fScoreSynergyDistance = 10.0
+	comment = The maximum difference in scores between two matches in a group allowing them to grant a synergy bonus to each other.
+
 	fScoreSynergyBonus = 12.0
-}
-"Adjacent and overlapping matches can always be combined.  This amount is the scans *between* two matches that can be skipped to combine them." = {
-	comment = 
-
-}
-"The maximum difference in scores between two matches in a group allowing them to grant a synergy bonus to each other." = {
-	comment = 
-
-}
-"The maximum score boost a group can get from a synergy bonus." = {
-	comment = 
+	comment = The maximum score boost a group can get from a synergy bonus.
 
 }
 Output = {
+	bEnableSummary = 1
 	bEnableChart = 1
 	bEnableCSV = 1
+}
+OutputSummary = {
+	fBaseScore = 0.0
+	fScoreStep = 20.0
+	iMaxScoreSteps = 5
 }
 OutputChart = {
 	iMaxGroups = 3000
 }
 OutputCSV = {
-	iMaxGroups = 3000
-	fMinTime = 0
-	fMaxTime = 120.0
+	iMaxGroups = 1000
+	comment = Maximum number of items in the .csv output.  Actual maximum will be slightly lower due to conflicts being filtered out at a later stage.
+
 	fMinScore = 20.0
+	comment = Minimum score a match must have in order to be listed in the .csv output
+
+	fMinTime = 0
+	comment = Minimum time a .csv time window is permitted to reflect (units for this are MINUTES, not seconds)
+
+	fMaxTime = 120.0
+	comment = Maximum time a .csv time window is permitted to reflect (units for this are MINUTES, not seconds), corresponding to the expected duration of the LC-MS run.
+
+	fWindowTime = 2.0
+	comment = Width of the time window around each expected specie (units are MINUTES, not seconds).  The time window will be centered on the best scoring match for that specie.
+
 }
 ScoreWeights = {
 	LINEAR_ERROR = 20.0
 	OPTIMISTIC_LINEAR = 0.0
 	MSQR = 20.0
 	OPTIMISTIC_MSQR = 0.0
-	MZ_DEVIATION = 0.0
+	MZ_DEVIATION = 4.0
 	UNTAGGED = 10.0
 	MISALIGNED = 10.0
 	MAGNITUDE = 1.0
