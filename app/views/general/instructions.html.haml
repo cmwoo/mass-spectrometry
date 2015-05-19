@@ -9,7 +9,7 @@
   %div{:class => 'card', :id => 'center'}
     %div{:id => 'content'}
 
-      %p <br /> INSTRUCTIONS FOR WEBSITE:
+      %p <br /> <b>INSTRUCTIONS FOR WEBSITE:</b> All software is tested using data from a Thermo Orbitrap mass spectrometer.  It has not been tested with data from other sources.
 
       %p <br /> TAG_FINDER: Download the params file from the Download page.
 
@@ -23,13 +23,11 @@
 
       %p <br /> Tag_Finder will automatically detect if the dataset contains tandem MS data.  If so, it filter the dataset for spectra deriving from (1) patterned species in the MS1 and/or (2) expected glycopeptide fragments.
 
-      %p <br /> INSTRUCTIONS FOR DOWNLOADABLES:
+      %p <br /> <b>INSTRUCTIONS FOR DOWNLOADABLES:</b>
 
       %p <br /> <b>TAG_FINDER:</b> Download the params file from the Downloads page
 
       %p 1.	Convert your file to a centroided mzXML file directly using a conversion software such as ReAdW (type: ReAdW.exe --mzXML –c yourfile.RAW)
-
-      %p <br /> <b>Source for ReAdW:</b> <a href="http://tools.proteomecenter.org/wiki/index.php?title=Software:ReAdW">http://tools.proteomecenter.org/wiki/index.php?title=Software:ReAdW</a>
 
       %p  <br /> 2.	Run tag_finder to find patterned species in your file
       %p{:class => 'indent'} a.	In Windows command line navigate to the folder containing tag_finder.exe
@@ -48,7 +46,7 @@
       %p{:class => 'indent'} <br /> ii. Settings can be edited to guide for expected fragments (e.g., glycans) with “###” for signature fragments and “–###” for identification of the neutral or charged loss fragments
 
 
-      %p <b>GRAPH_SEARCH:</b> Download the params file from the Downloads page
+      %p <br /> <b>GRAPH_SEARCH:</b> Download the params file from the Downloads page
 
       %p 1.	Convert RAW file to mzXML in profile mode using ReAdW.
       
@@ -56,8 +54,6 @@
       %p{:class => 'indent'} b.	Navigate to the folder containing ReAdW.exe
       %p{:class => 'indent'} c.	Run ReAdW conversion by typing:
       %p{:class => 'indent2'} ReAdW.exe --mzXML yourfile.RAW
-
-      %p <br /> <b>Source for ReAdW:</b> <a href="http://tools.proteomecenter.org/wiki/index.php?title=Software:ReAdW">http://tools.proteomecenter.org/wiki/index.php?title=Software:ReAdW</a>
 
       %p <br /> 2.	Convert mzXML to processed mzXML with CWT_PD (this optimizes peak shape in preparation for the pattern recognition program)
       %p{:class => 'indent'} a.	In Windows command line navigate to the folder containing CWT_PD.exe
