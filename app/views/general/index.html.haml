@@ -14,7 +14,7 @@
 
       =image_tag asset_path("aboutimg.png")
 
-      %p <br /> We provide three IsoStamp algorithms with further description and references below.
+      %p <br /> We provide two IsoStamp algorithms with further description and references below.
 
       %p <br /> <b>(1) Graph_Search v1.9:</b>  mzXML files in profile mode are processed using a continuous wavelet transform for peak optimization.  A graph theoretic algorithm is then applied to predict the presence of patterned species. Graph_Search scores based on the clustered peak shape as compared to a theoretical curve, peak abundance, and charge states.
 
@@ -26,7 +26,7 @@
 
       %p <br /> <b>(2) Tag_Finder:</b> mzXML files in centroided mode are processed by comparing grouped spectra to the predicted pattern as a function of mass and charge.  Tag_Finder scores on the difference between the predicted and observed peak distribution for tagged vs. untagged species.
 
-      %p <br /> Tandem_Filter (a component of Tag_Finder): Uses the Tag_Finder pattern matching algorithm and the presence of signature fragment peaks to select tandem MS spectra derived from tagged species.  The filtered output file is then used for targeted database searching.
+      %p <br /> MS2_Filter (a component of Tag_Finder): Uses the Tag_Finder pattern matching algorithm and the presence of signature fragment peaks to select tandem MS spectra derived from tagged species.  The filtered output file is then used for targeted database searching.
 
       %p <br /> For references see:  <i>manuscript in preparation</i>
 
